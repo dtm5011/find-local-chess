@@ -1,4 +1,9 @@
 /* src/styles/global.css */
+::selection {
+  background-color: var(--wa-color-brand-fill-loud);
+  color: var(--wa-color-text-on-brand);
+}
+
 body {
   font-family: var(--wa-font-family-body);
   background-color: var(--wa-color-surface-default);
@@ -20,10 +25,11 @@ h1, h2, h3 {
 a {
   color: var(--wa-color-text-link);
   text-decoration: none;
+  transition: color 0.2s ease-in-out;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: var(--wa-color-brand-text-loud);
 }
 
 .container {
@@ -40,6 +46,12 @@ header {
   background-color: var(--wa-color-surface-raised);
   border-bottom: 1px solid var(--wa-color-surface-border);
   padding: 1rem 2rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+header:hover {
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
 }
 
 footer {
@@ -48,6 +60,12 @@ footer {
     border-top: 1px solid var(--wa-color-surface-border);
     margin-top: 2rem;
     background-color: var(--wa-color-surface-raised);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+footer:hover {
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
 }
 
 
@@ -95,4 +113,53 @@ wa-input:focus-visible {
   .skip-link {
     transition: none;
   }
+}
+
+wa-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+wa-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+}
+
+li a {
+  display: block;
+  padding: 1rem;
+  border-radius: var(--wa-border-radius-m);
+  transition: background-color 0.2s ease-in-out;
+}
+
+li a:hover {
+  background-color: var(--wa-color-surface-lowered);
+  text-decoration: none;
+}
+
+pre, code {
+  transition: background-color 0.2s ease-in-out;
+}
+
+pre:hover, code:hover {
+  background-color: var(--wa-color-surface-hover);
+}
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+.hero p {
+  animation: fadeInSlideUp 0.8s ease-out 0.4s forwards;
+  opacity: 0; /* Start with opacity 0 and let the animation handle it */
 }

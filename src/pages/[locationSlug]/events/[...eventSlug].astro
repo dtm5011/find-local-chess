@@ -17,61 +17,57 @@ const { Content } = await entry.render();
 <BaseLayout title={`${entry.data.title} - Find Local Chess`}>
   <div class="container">
     <article>
-      <header class="hero">
+      <div class="hero">
         <h1>{entry.data.title}</h1>
-      </header>
+      </div>
 
       <div class="grid">
-        <div class="details-grid">
-          <wa-card>
-            <h2 slot="header">Details</h2>
-            <div class="details-grid-2-col">
-              <div>
-                <h3>📅 When</h3>
-                <p><strong>{entry.data.day}</strong></p>
-                <p>{entry.data.time}</p>
-              </div>
-              <div>
-                <h3>📍 Where</h3>
-                <p><strong>{entry.data.location}</strong></p>
-                {entry.data.address && <p>{entry.data.address}</p>}
-              </div>
-              <div>
-                <h3>👥 Organizer</h3>
-                <p>{entry.data.organizer}</p>
-                {entry.data.contact && (
-                  <p><a href={`mailto:${entry.data.contact}`}>{entry.data.contact}</a></p>
-                )}
-              </div>
+        <wa-card>
+          <h2 slot="header">Details</h2>
+          <div class="details-grid-2-col">
+            <div>
+              <h3>📅 When</h3>
+              <p><strong>{entry.data.day}</strong></p>
+              <p>{entry.data.time}</p>
             </div>
-          </wa-card>
-
-          <wa-card>
-            <h2 slot="header">Info</h2>
-            <div class="details-grid-2-col">
-              {entry.data.entryFee && (
-                <div>
-                  <strong>💰 Entry Fee:</strong> {entry.data.entryFee}
-                </div>
-              )}
-              {entry.data.timeControl && (
-                <div>
-                  <strong>⏱️ Time Control:</strong> {entry.data.timeControl}
-                </div>
-              )}
-              {entry.data.rounds && (
-                <div>
-                  <strong>🏆 Rounds:</strong> {entry.data.rounds}
-                </div>
-              )}
-              {entry.data.link && (
-                <div>
-                  <strong>🔗 More Info:</strong> <a href={entry.data.link} target="_blank" rel="noopener noreferrer">Visit website</a>
-                </div>
+            <div>
+              <h3>📍 Where</h3>
+              <p><strong>{entry.data.location}</strong></p>
+              {entry.data.address && <p>{entry.data.address}</p>}
+            </div>
+            <div>
+              <h3>👥 Organizer</h3>
+              <p>{entry.data.organizer}</p>
+              {entry.data.contact && (
+                <p><a href={`mailto:${entry.data.contact}`}>{entry.data.contact}</a></p>
               )}
             </div>
-          </wa-card>
-        </div>
+            {entry.data.entryFee && (
+              <div>
+                <h3>💰 Entry Fee</h3>
+                <p>{entry.data.entryFee}</p>
+              </div>
+            )}
+            {entry.data.timeControl && (
+              <div>
+                <h3>⏱️ Time Control</h3>
+                <p>{entry.data.timeControl}</p>
+              </div>
+            )}
+            {entry.data.rounds && (
+              <div>
+                <h3>🏆 Rounds</h3>
+                <p>{entry.data.rounds}</p>
+              </div>
+            )}
+            {entry.data.link && (
+              <div>
+                <h3>🔗 More Info</h3>
+                <p><a href={entry.data.link} target="_blank" rel="noopener noreferrer">Visit website</a></p>
+              </div>
+            )}
+          </div>
+        </wa-card>
 
         <div class="content-area">
             <wa-card>
@@ -84,7 +80,7 @@ const { Content } = await entry.render();
       <footer>
         <div class="tags">
             {entry.data.tags.map(tag => (
-                <wa-tag>{tag}</wa-tag>
+                <wa-tag variant="brand">{tag}</wa-tag>
             ))}
         </div>
         <p><a href={`/${entry.data.locationSlug}`}>← Back to all events</a></p>
@@ -96,24 +92,25 @@ const { Content } = await entry.render();
 <style>
   .hero {
     text-align: center;
-    padding: 4rem 0;
+    padding: 2rem 0;
   }
 
   .grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
-  .details-grid {
-    display: grid;
-    gap: 2rem;
+
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr 2fr;
+    }
   }
-  
+
   .details-grid-2-col {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   wa-card {
@@ -121,7 +118,7 @@ const { Content } = await entry.render();
     border: 1px solid var(--wa-color-surface-border);
     box-shadow: var(--wa-shadow-s);
   }
-  
+
   footer {
     margin-top: 2rem;
     display: flex;

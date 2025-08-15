@@ -64,7 +64,7 @@ const sortedDays = Object.keys(eventsByDay).sort(
                 <p>{event.data.description}</p>
                 <div class="tags">
                   {event.data.tags.map(tag => (
-                    <wa-tag>{tag}</wa-tag>
+                    <wa-tag variant="brand">{tag}</wa-tag>
                   ))}
                 </div>
               </wa-card>
