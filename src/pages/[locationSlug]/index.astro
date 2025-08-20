@@ -1,104 +1,119 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-  const locations = await getCollection('locations');
-  return locations.map((location) => ({
+  const allLocations = await getCollection('locations');
+  return allLocations.map(location => ({
     params: { locationSlug: location.slug },
     props: { location },
   }));
 }
 
-const { locationSlug } = Astro.params;
 const { location } = Astro.props;
-const allEvents = await getCollection('events');
-const locationEvents = allEvents.filter(event => event.data.locationSlug === locationSlug);
+const allEvents = await getCollection('events', ({ data }) => data.locationSlug === location.slug);
 
-const eventsByDay: Record<string, CollectionEntry<"events">[]> = locationEvents.reduce((acc: Record<string, CollectionEntry<"events">[]>, event) => {
-  const day = event.data.day;
-  if (!acc[day]) {
-    acc[day] = [];
+// Group events by dayOfWeek
+const eventsByDay = allEvents.reduce((acc, event) => {
+  const { dayOfWeek } = event.data;
+  if (!acc[dayOfWeek]) {
+    acc[dayOfWeek] = [];
   }
-  acc[day].push(event);
+  acc[dayOfWeek].push(event);
   return acc;
 }, {});
 
-const daysOrder = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
-];
-
-const sortedDays = Object.keys(eventsByDay).sort(
-  (a, b) => daysOrder.indexOf(a) - daysOrder.indexOf(b)
-);
+const orderedDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const sortedDays = Object.keys(eventsByDay).sort((a, b) => orderedDays.indexOf(a) - orderedDays.indexOf(b));
 ---
 
-<BaseLayout title={`${location.data.name} Chess Events`}>
+<BaseLayout title={`Chess Events in ${location.data.name}`}>
   <div class="container">
-    <section class="hero">
-      <h1>Chess Events in {location.data.name}</h1>
+    <header class="location-header">
+      <h1>{location.data.name}</h1>
       <p>{location.data.description}</p>
-    </section>
+    </header>
 
-    {sortedDays.length > 0 ? (
-      sortedDays.map(day => (
-        <section>
+    <div class="events-grid">
+      {sortedDays.map(day => (
+        <section class="day-section">
           <h2>{day}</h2>
-          <div class="grid">
-            {eventsByDay[day].map((event) => (
-              <wa-card>
-                <h3 slot="header">
-                  <a href={`/find-local-chess/${locationSlug}/events/${event.slug}`}>{event.data.title}</a>
-                </h3>
-                <div>
-                  <p><strong>Time:</strong> {event.data.time}</p>
-                  <p><strong>Location:</strong> {event.data.location}</p>
-                  {event.data.entryFee && <p><strong>Entry Fee:</strong> {event.data.entryFee}</p>}
-                </div>
-                <p>{event.data.description}</p>
-                <div class="tags">
-                  {event.data.tags.map(tag => (
-                    <wa-tag variant="brand">{tag}</wa-tag>
-                  ))}
-                </div>
-              </wa-card>
+          <div class="events-list">
+            {eventsByDay[day].map(event => (
+              <a href={`/find-local-chess/${location.slug}/events/${event.slug}`} class="event-card-link">
+                <wa-card class="event-card">
+                  <h3 slot="header">{event.data.title}</h3>
+                  <p>{event.data.startTime}{event.data.endTime ? ` - ${event.data.endTime}` : ''}</p>
+                  <p>{event.data.venue}</p>
+                  <div class="tags">
+                    {event.data.tags?.map(tag => <wa-tag>{tag}</wa-tag>)}
+                  </div>
+                </wa-card>
+              </a>
             ))}
           </div>
         </section>
-      ))
-    ) : (
-      <p>No events found for {location.data.name}. <a href="/find-local-chess/contribute">Add an event!</a></p>
-    )}
+      ))}
+    </div>
   </div>
 </BaseLayout>
 
 <style>
-  .hero {
-    text-align: center;
-    padding: 4rem 0;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
   }
 
-  .grid {
+  .location-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
   }
 
-  wa-card {
-    background-color: var(--wa-color-surface-raised);
-    border: 1px solid var(--wa-color-surface-border);
-    box-shadow: var(--wa-shadow-s);
+  .day-section h2 {
+    border-bottom: 2px solid var(--wa-color-primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .events-list {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .event-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .event-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--wa-shadow-l);
+  }
+
+  .event-card h3 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .event-card p {
+    margin: 0.25rem 0;
   }
 
   .tags {
-    display: flex;
-    gap: 0.5rem;
     margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 </style>

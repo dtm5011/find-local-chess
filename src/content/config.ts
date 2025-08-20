@@ -4,19 +4,17 @@ const eventCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    day: z.string(),
-    time: z.string(),
-    location: z.string(),
-    address: z.string().optional(),
+    dayOfWeek: z.enum(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']),
+    recurrence: z.enum(['weekly', 'bi-weekly', 'monthly', 'first-of-month', 'last-of-month']).optional(),
+    startTime: z.string(),
+    endTime: z.string().optional(),
+    venue: z.string(),
     description: z.string(),
-    link: z.string().url().optional(),
-    organizer: z.string(),
+    organizer: z.string().optional(),
     contact: z.string().optional(),
-    entryFee: z.string().optional(),
-    timeControl: z.string().optional(),
-    rounds: z.number().optional(),
-    tags: z.array(z.string()).default([]),
-    locationSlug: z.string(), // New field to link events to locations
+    tags: z.array(z.enum(['tournament', 'casual', 'blitz', 'rapid', 'classical', 'scholastic', 'online'])).optional(),
+    locationSlug: z.string(),
+    link: z.string().url().optional(),
   }),
 });
 

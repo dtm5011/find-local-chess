@@ -1,163 +1,152 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { EventSchema } from '../lib/schema.ts';
+import { parse } from 'valibot';
 ---
 
 <BaseLayout title="Contribute Events - Find Local Chess">
   <div class="container">
     <section class="hero">
-      <h1>Contribute Events</h1>
+      <h1>Contribute an Event</h1>
       <p>
-        Help us keep Find Local Chess up to date! This website is community-driven, 
-        and we welcome contributions from anyone who knows about local chess events.
+        Know about a local chess event? Fill out the form below to add it to our list.
       </p>
     </section>
 
-    <div class="grid">
-      <div class="column">
-        <wa-card>
-          <h2 slot="header">How to Add an Event</h2>
-          <ol>
-            <li>
-              <h3>Fork the Repository</h3>
-              <p>
-                Visit our <a href="https://github.com/dtm5011/find-local-chess" target="_blank">GitHub repository</a> 
-                and click the "Fork" button to create your own copy.
-              </p>
-            </li>
-            <li>
-              <h3>Create Your Event File</h3>
-              <p>
-                Navigate to <code>src/content/events/</code> and create a new markdown file 
-                with a descriptive filename (e.g., <code>spring-tournament-2025.md</code>).
-              </p>
-            </li>
-            <li>
-              <h3>Use the Template</h3>
-              <p>Copy the template below and fill in your event details.</p>
-            </li>
-            <li>
-              <h3>Submit a Pull Request</h3>
-              <p>
-                Commit your changes and create a pull request. We'll review it and 
-                merge it if everything looks good!
-              </p>
-            </li>
-          </ol>
-        </wa-card>
-
-        <wa-card style="margin-top: 2rem;">
-          <h2 slot="header">Field Guidelines</h2>
-          <div class="grid-2-col">
-            <div>
-              <h3>Required Fields</h3>
-              <ul>
-                <li><strong>title:</strong> Clear, descriptive event name</li>
-                <li><strong>date:</strong> Event date in YYYY-MM-DD format</li>
-                <li><strong>time:</strong> Start time (include timezone if needed)</li>
-                <li><strong>location:</strong> Venue name</li>
-                <li><strong>description:</strong> Brief 1-2 sentence summary</li>
-                <li><strong>organizer:</strong> Person or organization running the event</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Optional Fields</h3>
-              <ul>
-                <li><strong>address:</strong> Full address for the venue</li>
-                <li><strong>link:</strong> Website URL for more information</li>
-                <li><strong>contact:</strong> Email address for questions</li>
-                <li><strong>entryFee:</strong> Cost to participate</li>
-                <li><strong>timeControl:</strong> Chess time control format</li>
-                <li><strong>rounds:</strong> Number of tournament rounds</li>
-                <li><strong>tags:</strong> Categories like "tournament", "casual", "blitz"</li>
-              </ul>
-            </div>
-          </div>
-        </wa-card>
-        
-        <wa-card style="margin-top: 2rem;">
-            <h2 slot="header">Need Help?</h2>
-            <p>
-                If you're not comfortable with GitHub or need assistance, you can:
-            </p>
-            <ul>
-                <li>
-                    <a href="https://github.com/dtm5011/find-local-chess/issues" target="_blank">
-                        Create an issue
-                    </a> with your event details and we'll add it for you
-                </li>
-                <li>Email us at [maintainer-email] with your event information</li>
-                <li>Ask for help in our community discussions</li>
-            </ul>
-        </wa-card>
-      </div>
-
-      <div class="column">
-        <wa-card>
-          <h2 slot="header">Event Template</h2>
-          <p>Copy this template to create a new event file:</p>
+    <wa-card>
+      <h2 slot="header">Event Details</h2>
+      <form id="event-form">
+        <div class="grid-2-col">
           <div>
-            <pre><code>---
-title: "Your Event Title"
-date: 2025-02-15
-time: "7:00 PM"
-location: "Venue Name"
-address: "123 Street Name, City, State 12345"
-description: "Brief description of your event"
-link: "https://example.com/more-info"
-organizer: "Organization or Person Name"
-contact: "email@example.com"
-entryFee: "$10"
-timeControl: "90+30 (90 minutes + 30 second increment)"
-rounds: 5
-tags: ["tournament", "classical", "weekend"]
----
-
-Add your detailed event description here using Markdown formatting.
-
-## What to Expect
-
-- Detail about the event
-- Registration information
-- Prize structure
-- Any special rules
-
-## How to Register
-
-Include registration details, deadlines, and any requirements.
-
-For questions, contact [organizer name] at [contact info].</code></pre>
+            <wa-input label="Event Name" id="title" required></wa-input>
+            <wa-select label="Day of the Week" id="dayOfWeek" required>
+              <wa-option value="Monday">Monday</wa-option>
+              <wa-option value="Tuesday">Tuesday</wa-option>
+              <wa-option value="Wednesday">Wednesday</wa-option>
+              <wa-option value="Thursday">Thursday</wa-option>
+              <wa-option value="Friday">Friday</wa-option>
+              <wa-option value="Saturday">Saturday</wa-option>
+              <wa-option value="Sunday">Sunday</wa-option>
+            </wa-select>
+            <wa-select label="Recurrence" id="recurrence">
+              <wa-option value="">None</wa-option>
+              <wa-option value="weekly">Weekly</wa-option>
+              <wa-option value="bi-weekly">Bi-Weekly</wa-option>
+              <wa-option value="monthly">Monthly</wa-option>
+              <wa-option value="first-of-month">First of the Month</wa-option>
+              <wa-option value="last-of-month">Last of the Month</wa-option>
+            </wa-select>
+            <wa-input type="time" label="Start Time" id="startTime" required></wa-input>
+            <wa-input type="time" label="End Time" id="endTime"></wa-input>
+            <wa-input label="Venue" id="venue" required></wa-input>
+            <wa-input label="Location Slug" id="locationSlug" required placeholder="e.g., san-diego"></wa-input>
           </div>
-        </wa-card>
-
-        <wa-card style="margin-top: 2rem;">
-          <h2 slot="header">Content Guidelines</h2>
-          <div class="grid-2-col">
-            <div>
-              <h3>✅ Please Include:</h3>
-              <ul>
-                <li>Accurate date, time, and location information</li>
-                <li>Clear description of the event format</li>
-                <li>Registration requirements and deadlines</li>
-                <li>Contact information for questions</li>
-                <li>Any special rules or requirements</li>
-              </ul>
-            </div>
-            <div>
-              <h3>❌ Please Avoid:</h3>
-              <ul>
-                <li>Promotional language or excessive marketing</li>
-                <li>Events that have already passed</li>
-                <li>Duplicate entries for the same event</li>
-                <li>Personal contact information in public descriptions</li>
-                <li>Misleading or inaccurate information</li>
-              </ul>
-            </div>
+          <div>
+            <wa-input label="Organizer" id="organizer"></wa-input>
+            <wa-input label="Website URL" id="link"></wa-input>
+            <wa-input label="Contact" id="contact"></wa-input>
+            <wa-select label="Tags" id="tags" multiple clearable>
+              <wa-option value="tournament">Tournament</wa-option>
+              <wa-option value="casual">Casual</wa-option>
+              <wa-option value="blitz">Blitz</wa-option>
+              <wa-option value="rapid">Rapid</wa-option>
+              <wa-option value="classical">Classical</wa-option>
+              <wa-option value="scholastic">Scholastic</wa-option>
+              <wa-option value="online">Online</wa-option>
+            </wa-select>
           </div>
-        </wa-card>
-      </div>
-    </div>
+        </div>
+        <wa-textarea label="Description" id="description" required></wa-textarea>
+        <wa-button type="submit">Submit Event</wa-button>
+      </form>
+      <div id="error-message" style="color: red; margin-top: 1rem;"></div>
+    </wa-card>
   </div>
 </BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('event-form');
+    const errorMessage = document.getElementById('error-message');
+
+    if (form) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        errorMessage.textContent = '';
+
+        const getFieldValue = (id) => {
+          const element = document.getElementById(id);
+          return element ? element.value : undefined;
+        };
+
+        const getSelectValues = (id) => {
+          const element = document.getElementById(id);
+          if (!element) {
+            return [];
+          }
+          const options = Array.from(element.selectedOptions);
+          return options.map(option => option.value);
+        };
+
+        const formData = {
+          title: getFieldValue('title'),
+          dayOfWeek: getFieldValue('dayOfWeek'),
+          recurrence: getFieldValue('recurrence'),
+          startTime: getFieldValue('startTime'),
+          endTime: getFieldValue('endTime'),
+          venue: getFieldValue('venue'),
+          description: getFieldValue('description'),
+          organizer: getFieldValue('organizer'),
+          link: getFieldValue('link'),
+          contact: getFieldValue('contact'),
+          tags: getSelectValues('tags'),
+          locationSlug: getFieldValue('locationSlug'),
+        };
+
+        try {
+          const validatedData = parse(EventSchema, formData);
+
+          const fileName = validatedData.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+          const fileContent = `---\n` +
+            `title: "${validatedData.title}"
+` +
+            `dayOfWeek: "${validatedData.dayOfWeek}"
+` +
+            (validatedData.recurrence ? `recurrence: "${validatedData.recurrence}"
+` : '') +           `startTime: "${validatedData.startTime}"
+` +
+            (validatedData.endTime ? `endTime: "${validatedData.endTime}"
+` : '') +           `venue: "${validatedData.venue}"
+` +
+            `description: "${validatedData.description}"
+` +
+            (validatedData.organizer ? `organizer: "${validatedData.organizer}"
+` : '') +           (validatedData.link ? `link: "${validatedData.link}"
+` : '') +           (validatedData.contact ? `contact: "${validatedData.contact}"
+` : '') +           (validatedData.tags && validatedData.tags.length > 0 ? `tags: [${validatedData.tags.map(tag => `"${tag}"`).join(', ')}]
+` : '') +           `locationSlug: "${validatedData.locationSlug}"
+` +
+            `---\n\n`;
+
+          const pullRequestBody = encodeURIComponent(`Please review and merge this new event.\n\n**Instructions:**\n\n1.  Make sure the file is named eversequote`src/content/events/${fileName}.md`reversequote.
+2.  Copy the following content and paste it into the file editor.
+
+reversequote`markdown
+${fileContent}
+`reversequote
+`);
+
+          const githubUrl = `https://github.com/dtm5011/find-local-chess/new/main?filename=src/content/events/${fileName}.md&title=New+Event%3A+${encodeURIComponent(validatedData.title)}&body=${pullRequestBody}`;
+
+          window.open(githubUrl, '_blank');
+        } catch (error) {
+          errorMessage.textContent = error.issues.map(issue => issue.message).join(', ');
+        }
+      });
+    }
+  });
+</script>
 
 <style>
   .hero {
@@ -165,52 +154,20 @@ For questions, contact [organizer name] at [contact info].</code></pre>
     padding: 4rem 0;
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-  }
-  
   .grid-2-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1rem;
   }
 
   wa-card {
     background-color: var(--wa-color-surface-raised);
     border: 1px solid var(--wa-color-surface-border);
     box-shadow: var(--wa-shadow-s);
+    padding: 2rem;
   }
 
-  ol, ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  li {
-    padding: 0.5rem 0;
-  }
-  
-  code {
-    background-color: var(--wa-color-surface-lowered);
-    padding: 0.25rem 0.5rem;
-    border-radius: var(--wa-border-radius-m);
-  }
-  
-  pre {
-    background-color: var(--wa-color-surface-lowered);
-    padding: 1rem;
-    border-radius: var(--wa-border-radius-m);
-    overflow-x: auto;
-  }
-
-  h3 {
-    margin: 0 0 0.5rem 0;
-  }
-
-  p {
-    margin: 0 0 1rem 0;
+  form > * + * {
+    margin-top: 1rem;
   }
 </style>

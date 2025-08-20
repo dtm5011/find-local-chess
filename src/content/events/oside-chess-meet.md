@@ -1,12 +1,14 @@
 ---
 title: "O'Side Chess Meet"
-day: "Saturdays"
-time: "2:00 PM - 6:00 PM"
-location: "Oceanside Pier (or Pier View Coffee)"
+dayOfWeek: "Saturday"
+recurrence: "weekly"
+startTime: "2:00 PM"
+endTime: "6:00 PM"
+venue: "Oceanside Pier (or Pier View Coffee)"
 description: "Casual chess meet-up in Oceanside."
 organizer: "OSIDECHESS"
 contact: "OSIDECHESSMEET@GMAIL.COM"
-tags: ["casual", "meetup", "oceanside"]
+tags: ["casual"]
 locationSlug: "san-diego"
 link: "https://www.instagram.com/osidechessmeet/"
 ---

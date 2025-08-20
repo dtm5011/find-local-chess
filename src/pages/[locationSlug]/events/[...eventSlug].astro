@@ -1,133 +1,70 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-  const eventEntries = await getCollection('events');
-  return eventEntries.map(entry => ({
-    params: { locationSlug: entry.data.locationSlug, eventSlug: entry.slug },
-    props: { entry },
+  const allEvents = await getCollection('events');
+  return allEvents.map(event => ({
+    params: { 
+      locationSlug: event.data.locationSlug,
+      eventSlug: event.slug 
+    },
+    props: { event },
   }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { event } = Astro.props;
+const { Content } = await event.render();
 ---
 
-<BaseLayout title={`${entry.data.title} - Find Local Chess`}>
+<BaseLayout title={event.data.title}>
   <div class="container">
     <article>
-      <div class="hero">
-        <h1>{entry.data.title}</h1>
-      </div>
-
-      <div class="grid">
-        <wa-card>
-          <h2 slot="header">Details</h2>
-          <div class="details-grid-2-col">
-            <div>
-              <h3>📅 When</h3>
-              <p><strong>{entry.data.day}</strong></p>
-              <p>{entry.data.time}</p>
-            </div>
-            <div>
-              <h3>📍 Where</h3>
-              <p><strong>{entry.data.location}</strong></p>
-              {entry.data.address && <p>{entry.data.address}</p>}
-            </div>
-            <div>
-              <h3>👥 Organizer</h3>
-              <p>{entry.data.organizer}</p>
-              {entry.data.contact && (
-                <p><a href={`mailto:${entry.data.contact}`}>{entry.data.contact}</a></p>
-              )}
-            </div>
-            {entry.data.entryFee && (
-              <div>
-                <h3>💰 Entry Fee</h3>
-                <p>{entry.data.entryFee}</p>
-              </div>
-            )}
-            {entry.data.timeControl && (
-              <div>
-                <h3>⏱️ Time Control</h3>
-                <p>{entry.data.timeControl}</p>
-              </div>
-            )}
-            {entry.data.rounds && (
-              <div>
-                <h3>🏆 Rounds</h3>
-                <p>{entry.data.rounds}</p>
-              </div>
-            )}
-            {entry.data.link && (
-              <div>
-                <h3>🔗 More Info</h3>
-                <p><a href={entry.data.link} target="_blank" rel="noopener noreferrer">Visit website</a></p>
-              </div>
-            )}
-          </div>
-        </wa-card>
-
-        <div class="content-area">
-            <wa-card>
-                <h2 slot="header">About this event</h2>
-                <Content />
-            </wa-card>
-        </div>
-      </div>
-
-      <footer>
+      <header>
+        <h1>{event.data.title}</h1>
+        <p><strong>When:</strong> {event.data.dayOfWeek} at {event.data.startTime}{event.data.endTime ? ` - ${event.data.endTime}` : ''}</p>
+        <p><strong>Where:</strong> {event.data.venue}</p>
+        <p><strong>Organizer:</strong> {event.data.organizer}</p>
         <div class="tags">
-            {entry.data.tags.map(tag => (
-                <wa-tag variant="brand">{tag}</wa-tag>
-            ))}
+          {event.data.tags?.map(tag => <wa-tag>{tag}</wa-tag>)}
         </div>
-        <p><a href={`/find-local-chess/${entry.data.locationSlug}`}>← Back to all events</a></p>
-      </footer>
+      </header>
+      <div class="content">
+        <Content />
+      </div>
     </article>
   </div>
 </BaseLayout>
 
 <style>
-  .hero {
-    text-align: center;
-    padding: 2rem 0;
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--wa-color-surface-border);
+    padding-bottom: 1rem;
   }
 
-  @media (min-width: 768px) {
-    .grid {
-      grid-template-columns: 1fr 2fr;
-    }
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
   }
 
-  .details-grid-2-col {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  wa-card {
-    background-color: var(--wa-color-surface-raised);
-    border: 1px solid var(--wa-color-surface-border);
-    box-shadow: var(--wa-shadow-s);
-  }
-
-  footer {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  p {
+    margin: 0.5rem 0;
   }
 
   .tags {
+    margin-top: 1rem;
     display: flex;
     gap: 0.5rem;
+  }
+
+  .content {
+    line-height: 1.6;
   }
 </style>
