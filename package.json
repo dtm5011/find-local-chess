@@ -11,7 +11,8 @@
     "check": "astro check",
     "mcp:playwright": "playwright-mcp",
     "wa:assets": "bun run scripts/copy-webawesome-assets.mjs",
-    "postinstall": "bun run scripts/copy-webawesome-assets.mjs"
+    "postinstall": "bun run scripts/copy-webawesome-assets.mjs",
+    "build:js": "bun build src/scripts/webawesome.ts --outdir public/assets"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

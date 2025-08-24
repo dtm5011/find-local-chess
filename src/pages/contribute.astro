@@ -65,22 +65,27 @@ import { parse } from 'valibot';
 </BaseLayout>
 
 <script>
+  import { parse } from 'valibot';
+  import { EventSchema } from '../lib/schema.ts';
+
   document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('event-form');
+    const form = document.getElementById('event-form') as HTMLFormElement;
     const errorMessage = document.getElementById('error-message');
+    const card = document.querySelector('wa-card');
 
     if (form) {
       form.addEventListener('submit', (event) => {
         event.preventDefault();
+        if (!errorMessage) return;
         errorMessage.textContent = '';
 
-        const getFieldValue = (id) => {
-          const element = document.getElementById(id);
+        const getFieldValue = (id: string) => {
+          const element = document.getElementById(id) as HTMLInputElement;
           return element ? element.value : undefined;
         };
 
-        const getSelectValues = (id) => {
-          const element = document.getElementById(id);
+        const getSelectValues = (id: string) => {
+          const element = document.getElementById(id) as HTMLSelectElement;
           if (!element) {
             return [];
           }
@@ -108,40 +113,48 @@ import { parse } from 'valibot';
 
           const fileName = validatedData.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 
-          const fileContent = `---\n` +
+          const fileContent = `---
+` +
             `title: "${validatedData.title}"
 ` +
             `dayOfWeek: "${validatedData.dayOfWeek}"
 ` +
             (validatedData.recurrence ? `recurrence: "${validatedData.recurrence}"
-` : '') +           `startTime: "${validatedData.startTime}"
+` : '') +
+            `startTime: "${validatedData.startTime}"
 ` +
             (validatedData.endTime ? `endTime: "${validatedData.endTime}"
-` : '') +           `venue: "${validatedData.venue}"
+` : '') +
+            `venue: "${validatedData.venue}"
 ` +
             `description: "${validatedData.description}"
 ` +
             (validatedData.organizer ? `organizer: "${validatedData.organizer}"
-` : '') +           (validatedData.link ? `link: "${validatedData.link}"
-` : '') +           (validatedData.contact ? `contact: "${validatedData.contact}"
-` : '') +           (validatedData.tags && validatedData.tags.length > 0 ? `tags: [${validatedData.tags.map(tag => `"${tag}"`).join(', ')}]
-` : '') +           `locationSlug: "${validatedData.locationSlug}"
+` : '') +
+            (validatedData.link ? `link: "${validatedData.link}"
+` : '') +
+            (validatedData.contact ? `contact: "${validatedData.contact}"
+` : '') +
+            (validatedData.tags && validatedData.tags.length > 0 ? `tags: [${validatedData.tags.map((tag: any) => `"${tag}"`).join(', ')}]
+` : '') +
+            `locationSlug: "${validatedData.locationSlug}"
 ` +
-            `---\n\n`;
+            `---
 
-          const pullRequestBody = encodeURIComponent(`Please review and merge this new event.\n\n**Instructions:**\n\n1.  Make sure the file is named eversequote`src/content/events/${fileName}.md`reversequote.
-2.  Copy the following content and paste it into the file editor.
+`;
 
-reversequote`markdown
-${fileContent}
-`reversequote
-`);
-
-          const githubUrl = `https://github.com/dtm5011/find-local-chess/new/main?filename=src/content/events/${fileName}.md&title=New+Event%3A+${encodeURIComponent(validatedData.title)}&body=${pullRequestBody}`;
+          const githubUrl = `https://github.com/dtm5011/find-local-chess/new/main/src/content/events?filename=${fileName}.md&value=${encodeURIComponent(fileContent)}`;
 
           window.open(githubUrl, '_blank');
-        } catch (error) {
-          errorMessage.textContent = error.issues.map(issue => issue.message).join(', ');
+
+        } catch (error: any) {
+          if (errorMessage) {
+            if (error.issues) {
+              errorMessage.textContent = error.issues.map((issue: any) => issue.message).join(', ');
+            } else {
+              errorMessage.textContent = 'An unexpected error occurred. Please try again.';
+            }
+          }
         }
       });
     }
