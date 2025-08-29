@@ -1,6 +1,6 @@
 import { object, string, optional, array, picklist } from 'valibot';
 
-export const EventSchema = object({
+const EventSchema = object({
   title: string(),
   dayOfWeek: picklist(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']),
   recurrence: optional(picklist(['weekly', 'bi-weekly', 'monthly', 'first-of-month', 'last-of-month'])),
@@ -14,3 +14,5 @@ export const EventSchema = object({
   locationSlug: string(),
   link: optional(string()),
 });
+
+export default EventSchema;

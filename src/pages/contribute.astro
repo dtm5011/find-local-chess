@@ -66,7 +66,7 @@ import { parse } from 'valibot';
 
 <script>
   import { parse } from 'valibot';
-  import { EventSchema } from '../lib/schema.ts';
+  import EventSchema from '../lib/schema.ts';
 
   document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('event-form') as HTMLFormElement;
@@ -74,23 +74,21 @@ import { parse } from 'valibot';
     const card = document.querySelector('wa-card');
 
     if (form) {
-      form.addEventListener('submit', (event) => {
+      form.addEventListener('submit', async (event) => {
         event.preventDefault();
         if (!errorMessage) return;
         errorMessage.textContent = '';
 
         const getFieldValue = (id: string) => {
-          const element = document.getElementById(id) as HTMLInputElement;
-          return element ? element.value : undefined;
+          const element = document.getElementById(id) as any;
+          if (!element) return undefined;
+          if (id === 'recurrence' && element.value === '') return undefined;
+          return element.value;
         };
 
         const getSelectValues = (id: string) => {
-          const element = document.getElementById(id) as HTMLSelectElement;
-          if (!element) {
-            return [];
-          }
-          const options = Array.from(element.selectedOptions);
-          return options.map(option => option.value);
+          const element = document.getElementById(id) as any;
+          return element ? element.value : [];
         };
 
         const formData = {
@@ -111,42 +109,39 @@ import { parse } from 'valibot';
         try {
           const validatedData = parse(EventSchema, formData);
 
-          const fileName = validatedData.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+          const body = new URLSearchParams();
+          for (const key in validatedData) {
+            const value = validatedData[key];
+            if (Array.isArray(value)) {
+              value.forEach(item => body.append(key, item));
+            } else if (value !== undefined) {
+              body.append(key, value);
+            }
+          }
 
-          const fileContent = `---
-` +
-            `title: "${validatedData.title}"
-` +
-            `dayOfWeek: "${validatedData.dayOfWeek}"
-` +
-            (validatedData.recurrence ? `recurrence: "${validatedData.recurrence}"
-` : '') +
-            `startTime: "${validatedData.startTime}"
-` +
-            (validatedData.endTime ? `endTime: "${validatedData.endTime}"
-` : '') +
-            `venue: "${validatedData.venue}"
-` +
-            `description: "${validatedData.description}"
-` +
-            (validatedData.organizer ? `organizer: "${validatedData.organizer}"
-` : '') +
-            (validatedData.link ? `link: "${validatedData.link}"
-` : '') +
-            (validatedData.contact ? `contact: "${validatedData.contact}"
-` : '') +
-            (validatedData.tags && validatedData.tags.length > 0 ? `tags: [${validatedData.tags.map((tag: any) => `"${tag}"`).join(', ')}]
-` : '') +
-            `locationSlug: "${validatedData.locationSlug}"
-` +
-            `---
+          
 
-`;
+          const response = await fetch('/api/create-event', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: body,
+          });
 
-          const githubUrl = `https://github.com/dtm5011/find-local-chess/new/main/src/content/events?filename=${fileName}.md&value=${encodeURIComponent(fileContent)}`;
-
-          window.open(githubUrl, '_blank');
-
+          if (response.ok) {
+            if (card) {
+              card.innerHTML = `
+                <h2 slot="header">Submission Successful!</h2>
+                <p>Your event has been submitted for review.</p>
+              `;
+            }
+          } else {
+            const errorData = await response.json();
+            if (errorMessage) {
+              errorMessage.textContent = errorData.message;
+            }
+          }
         } catch (error: any) {
           if (errorMessage) {
             if (error.issues) {

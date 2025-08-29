@@ -1,0 +1,36 @@
+---
+import { useSanityClient } from 'astro-sanity';
+import { groq } from 'astro-sanity';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const query = groq`*[_type == "event" && status == "approved"]`;
+  const events = await useSanityClient().fetch(query);
+
+  return events.map(event => ({
+    params: { slug: event.slug.current },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+---
+
+<BaseLayout title={event.title}>
+  <div class="container">
+    <article>
+      <header>
+        <h1>{event.title}</h1>
+        <p><strong>When:</strong> {event.dayOfWeek} at {event.startTime}{event.endTime ? ` - ${event.endTime}` : ''}</p>
+        <p><strong>Where:</strong> {event.venue}</p>
+        <p><strong>Organizer:</strong> {event.organizer}</p>
+        <div class="tags">
+          {event.tags?.map(tag => <wa-tag>{tag}</wa-tag>)}
+        </div>
+      </header>
+      <div class="content">
+        <p>{event.description}</p>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
