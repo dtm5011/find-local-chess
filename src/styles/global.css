@@ -40,13 +40,16 @@ a:hover {
 
 /* Layout */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: var(--wa-color-surface-raised);
   border-bottom: 1px solid var(--wa-color-surface-border);
   padding: 1rem 2rem;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header:hover {

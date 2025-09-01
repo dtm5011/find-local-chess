@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { EventSchema } from '../lib/schema.ts';
-import { parse } from 'valibot';
 ---
 
 <BaseLayout title="Contribute Events - Find Local Chess">
@@ -111,7 +109,7 @@ import { parse } from 'valibot';
 
           const body = new URLSearchParams();
           for (const key in validatedData) {
-            const value = validatedData[key];
+            const value = (validatedData as any)[key];
             if (Array.isArray(value)) {
               value.forEach(item => body.append(key, item));
             } else if (value !== undefined) {

@@ -8,8 +8,17 @@ export const prerender = false;
 export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.formData();
-    const data = Object.fromEntries(formData.entries());
-    data.tags = formData.getAll('tags');
+    const data: {[key: string]: any} = {};
+    for (const [key, value] of formData.entries()) {
+      if (key === 'tags') {
+        if (!data.tags) {
+          data.tags = [];
+        }
+        data.tags.push(value);
+      } else {
+        data[key] = value;
+      }
+    }
     
 
     const validatedData = valibot.parse(EventSchema, data);
@@ -23,12 +32,10 @@ export const POST: APIRoute = async ({ request }) => {
       token: process.env.SANITY_API_TOKEN,
     });
 
-    const { status, ...rest } = validatedData;
-
     const result = await client.createIfNotExists({
       _type: 'event',
       _id: 'drafts.' + validatedData.locationSlug + '-' + validatedData.title.toLowerCase().replace(/\s/g, '-'), // Add a unique ID for draft
-      ...rest,
+      ...validatedData,
       status: 'pending',
     });
 

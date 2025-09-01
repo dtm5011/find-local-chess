@@ -23,13 +23,13 @@ const { title, description = "Find local chess events, tournaments, and meetups 
     <title>{title}</title>
     <link rel="stylesheet" href="/find-local-chess/webawesome/styles/webawesome.css" />
     <link rel="stylesheet" href="/find-local-chess/webawesome/styles/themes/awesome.css" />
-    <script type="module" src="/find-local-chess/assets/webawesome.js"></script>
+    <script type="module" src="/find-local-chess/assets/webawesome.js" is:inline></script>
     
     <script is:inline src="/find-local-chess/scripts/theme-switcher.js"></script>
   </head>
   <body>
     <a href="#main-content" class="wa-visually-hidden skip-link">Skip to main content</a>
-    <header>
+    <header class="main-header">
       <div class="header-content">
         <h1><a href="/find-local-chess/"><img src="/find-local-chess/chess.svg" alt="Chess" class="chess-icon" /> Find Local Chess</a></h1>
         <nav aria-label="Primary">
@@ -70,9 +70,6 @@ const { title, description = "Find local chess events, tournaments, and meetups 
   header {
     padding: 1rem 2rem;
     border-bottom: 1px solid var(--wa-color-surface-border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 
   .header-content h1 a {

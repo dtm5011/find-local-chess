@@ -18,7 +18,7 @@ const locationEvents = allEvents.filter(event => event.data.locationSlug === loc
 
 // Group events by day of the week
 const eventsByDay: Record<string, CollectionEntry<"events">[]> = locationEvents.reduce((acc: Record<string, CollectionEntry<"events">[]>, event) => {
-  const day = event.data.day;
+  const day = event.data.dayOfWeek;
   if (!acc[day]) {
     acc[day] = [];
   }
@@ -54,8 +54,8 @@ const sortedDays = Object.keys(eventsByDay).sort(
               {eventsByDay[day].map((event) => (
                 <a href={`/find-local-chess/${location.slug}/events/${event.slug.split('/').slice(1).join('/')}`}>
                   <h3>{event.data.title}</h3>
-                  <p>{event.data.day}</p>
-                  <p>{event.data.location}</p>
+                  <p>{event.data.dayOfWeek}</p>
+                  <p>{event.data.venue}</p>
                 </a>
               ))}
             </div>

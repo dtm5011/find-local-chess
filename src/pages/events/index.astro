@@ -1,17 +1,16 @@
 ---
-import { useSanityClient } from 'astro-sanity';
-import { groq } from 'astro-sanity';
+import { sanityClient } from 'sanity:client';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const query = groq`*[_type == "event" && status == "approved"]`;
-const events = await useSanityClient().fetch(query);
+const query = `*[_type == "event" && status == "approved"]`;
+const events: any[] = await sanityClient.fetch(query);
 ---
 
 <BaseLayout title="Events">
   <div class="container">
     <h1>Events</h1>
     <ul>
-      {events.map(event => (
+      {events.map((event: any) => (
         <li>
           <a href={`/events/${event.slug.current}`}>{event.title}</a>
         </li>

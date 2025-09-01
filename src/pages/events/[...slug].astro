@@ -1,13 +1,12 @@
 ---
-import { useSanityClient } from 'astro-sanity';
-import { groq } from 'astro-sanity';
+import { sanityClient } from 'sanity:client';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-  const query = groq`*[_type == "event" && status == "approved"]`;
-  const events = await useSanityClient().fetch(query);
+  const query = `*[_type == "event" && status == "approved"]`;
+  const events: any[] = await sanityClient.fetch(query);
 
-  return events.map(event => ({
+  return events.map((event: any) => ({
     params: { slug: event.slug.current },
     props: { event },
   }));
@@ -25,7 +24,7 @@ const { event } = Astro.props;
         <p><strong>Where:</strong> {event.venue}</p>
         <p><strong>Organizer:</strong> {event.organizer}</p>
         <div class="tags">
-          {event.tags?.map(tag => <wa-tag>{tag}</wa-tag>)}
+          {event.tags?.map((tag: string) => <wa-tag>{tag}</wa-tag>)}
         </div>
       </header>
       <div class="content">

@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -14,7 +14,7 @@ const { location } = Astro.props;
 const allEvents = await getCollection('events', ({ data }) => data.locationSlug === location.slug);
 
 // Group events by dayOfWeek
-const eventsByDay = allEvents.reduce((acc, event) => {
+const eventsByDay: {[key: string]: any[]} = allEvents.reduce((acc: {[key: string]: any[]}, event) => {
   const { dayOfWeek } = event.data;
   if (!acc[dayOfWeek]) {
     acc[dayOfWeek] = [];
@@ -39,14 +39,14 @@ const sortedDays = Object.keys(eventsByDay).sort((a, b) => orderedDays.indexOf(a
         <section class="day-section">
           <h2>{day}</h2>
           <div class="events-list">
-            {eventsByDay[day].map(event => (
+            {(eventsByDay as any)[day].map((event: any) => (
               <a href={`/find-local-chess/${location.slug}/events/${event.slug}`} class="event-card-link">
                 <wa-card class="event-card">
                   <h3 slot="header">{event.data.title}</h3>
                   <p>{event.data.startTime}{event.data.endTime ? ` - ${event.data.endTime}` : ''}</p>
                   <p>{event.data.venue}</p>
                   <div class="tags">
-                    {event.data.tags?.map(tag => <wa-tag>{tag}</wa-tag>)}
+                    {event.data.tags?.map((tag: string) => <wa-tag>{tag}</wa-tag>)}
                   </div>
                 </wa-card>
               </a>
