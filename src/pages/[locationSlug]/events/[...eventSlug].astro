@@ -1,42 +1,47 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { sanityClient } from 'sanity:client';
 import { slugifyLocation } from '../../../lib/utils';
 
-export async function getStaticPaths() {
-  const allEvents = await getCollection('events');
-  return allEvents.map(event => ({
-    params: { 
-      locationSlug: slugifyLocation(event.data.location),
-      eventSlug: event.slug 
-    },
-    props: { event },
-  }));
+const { locationSlug, eventSlug } = Astro.params;
+
+// Find the event by slug
+const query = `*[_type == "event" && slug.current == $eventSlug && !(_id in path("drafts.**"))][0]{
+  ...,
+  "slug": slug.current
+}`;
+
+const event = await sanityClient.fetch(query, { eventSlug });
+
+if (!event) {
+  return Astro.redirect('/404');
 }
 
-const { event } = Astro.props;
-const { Content } = await event.render();
+// Verify the location slug matches
+if (slugifyLocation(event.location) !== locationSlug) {
+  return Astro.redirect('/404');
+}
 ---
 
-<BaseLayout title={event.data.title}>
+<BaseLayout title={event.title}>
   <div class="container">
     <article>
       <header>
-        <h1>{event.data.title}</h1>
+        <h1>{event.title}</h1>
         <dl class="event-meta">
           <dt>When:</dt>
-          <dd>{event.data.dayOfWeek} at {event.data.startTime}{event.data.endTime ? ` - ${event.data.endTime}` : ''}</dd>
+          <dd>{event.dayOfWeek} at {event.startTime}{event.endTime ? ` - ${event.endTime}` : ''}</dd>
           <dt>Where:</dt>
-          <dd>{event.data.venue}</dd>
+          <dd>{event.venue}</dd>
           <dt>Organizer:</dt>
-          <dd>{event.data.organizer}</dd>
+          <dd>{event.organizer}</dd>
         </dl>
         <div class="tags">
-          {event.data.tags?.map(tag => <wa-tag>{tag}</wa-tag>)}
+          {event.tags?.map(tag => <wa-tag>{tag}</wa-tag>)}
         </div>
       </header>
       <div class="content">
-        <Content />
+        <p>{event.description}</p>
       </div>
     </article>
   </div>

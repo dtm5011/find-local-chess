@@ -3,23 +3,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from 'sanity:client';
 import { slugifyLocation } from '../../lib/utils';
 
-export async function getStaticPaths() {
-  const query = `*[_type == "event" && !(_id in path("drafts.**"))]{
-    "location": location,
-  }`;
-
-  const events = await sanityClient.fetch(query);
-
-  const locations = [...new Set(events.map(event => event.location))];
-
-  return locations.map(location => ({
-    params: { locationSlug: slugifyLocation(location) },
-    props: { location },
-  }));
-}
-
 const { locationSlug } = Astro.params;
-const { location } = Astro.props;
+
+// Find the location name by reverse-looking up from all events
+const allLocationsQuery = `*[_type == "event" && !(_id in path("drafts.**"))]{
+  "location": location,
+}`;
+
+const allEvents = await sanityClient.fetch(allLocationsQuery);
+const allLocations = [...new Set(allEvents.map(event => event.location))];
+
+// Find the location that matches this slug
+const location = allLocations.find(loc => slugifyLocation(loc) === locationSlug);
+
+if (!location) {
+  return Astro.redirect('/404');
+}
 
 const query = `*[_type == "event" && location == $location && !(_id in path("drafts.**"))]{
   ...,
