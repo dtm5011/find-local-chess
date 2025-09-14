@@ -1,12 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { slugifyLocation } from '../../../lib/utils';
 
 export async function getStaticPaths() {
   const allEvents = await getCollection('events');
   return allEvents.map(event => ({
     params: { 
-      locationSlug: event.data.locationSlug,
+      locationSlug: slugifyLocation(event.data.location),
       eventSlug: event.slug 
     },
     props: { event },

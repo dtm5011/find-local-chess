@@ -1,119 +1,43 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from 'sanity:client';
+import { slugifyLocation } from '../../lib/utils';
 
 export async function getStaticPaths() {
-  const allLocations = await getCollection('locations');
-  return allLocations.map(location => ({
-    params: { locationSlug: location.slug },
+  const query = `*[_type == "event" && !(_id in path("drafts.**"))]{
+    "location": location,
+  }`;
+
+  const events = await sanityClient.fetch(query);
+
+  const locations = [...new Set(events.map(event => event.location))];
+
+  return locations.map(location => ({
+    params: { locationSlug: slugifyLocation(location) },
     props: { location },
   }));
 }
 
+const { locationSlug } = Astro.params;
 const { location } = Astro.props;
-const allEvents = await getCollection('events', ({ data }) => data.locationSlug === location.slug);
 
-// Group events by dayOfWeek
-const eventsByDay: {[key: string]: any[]} = allEvents.reduce((acc: {[key: string]: any[]}, event) => {
-  const { dayOfWeek } = event.data;
-  if (!acc[dayOfWeek]) {
-    acc[dayOfWeek] = [];
-  }
-  acc[dayOfWeek].push(event);
-  return acc;
-}, {});
+const query = `*[_type == "event" && location == $location && !(_id in path("drafts.**"))]{
+  ...,
+  "slug": slug.current
+}`;
 
-const orderedDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-const sortedDays = Object.keys(eventsByDay).sort((a, b) => orderedDays.indexOf(a) - orderedDays.indexOf(b));
+const events = await sanityClient.fetch(query, { location });
 ---
 
-<BaseLayout title={`Chess Events in ${location.data.name}`}>
+<BaseLayout title={`Events in ${location}`}>
   <div class="container">
-    <header class="location-header">
-      <h1>{location.data.name}</h1>
-      <p>{location.data.description}</p>
-    </header>
-
-    <div class="events-grid">
-      {sortedDays.map(day => (
-        <section class="day-section">
-          <h2>{day}</h2>
-          <div class="events-list">
-            {(eventsByDay as any)[day].map((event: any) => (
-              <a href={`/find-local-chess/${location.slug}/events/${event.slug}`} class="event-card-link">
-                <wa-card class="event-card">
-                  <h3 slot="header">{event.data.title}</h3>
-                  <p>{event.data.startTime}{event.data.endTime ? ` - ${event.data.endTime}` : ''}</p>
-                  <p>{event.data.venue}</p>
-                  <div class="tags">
-                    {event.data.tags?.map((tag: string) => <wa-tag>{tag}</wa-tag>)}
-                  </div>
-                </wa-card>
-              </a>
-            ))}
-          </div>
-        </section>
+    <h1>Events in {location}</h1>
+    <ul>
+      {events.map(event => (
+        <li>
+          <a href={`/find-local-chess/${locationSlug}/events/${event.slug}`}>{event.title}</a>
+        </li>
       ))}
-    </div>
+    </ul>
   </div>
 </BaseLayout>
-
-<style>
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  .location-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .events-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-
-  .day-section h2 {
-    border-bottom: 2px solid var(--wa-color-primary);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .events-list {
-    display: grid;
-    gap: 1.5rem;
-  }
-
-  .event-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .event-card {
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-
-  .event-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--wa-shadow-l);
-  }
-
-  .event-card h3 {
-    margin: 0 0 0.5rem 0;
-  }
-
-  .event-card p {
-    margin: 0.25rem 0;
-  }
-
-  .tags {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-</style>

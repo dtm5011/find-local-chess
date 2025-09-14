@@ -9,7 +9,7 @@ description: "Casual chess meet-up in Oceanside."
 organizer: "OSIDECHESS"
 contact: "OSIDECHESSMEET@GMAIL.COM"
 tags: ["casual"]
-locationSlug: "san-diego"
+location: "Oceanside, CA"
 link: "https://www.instagram.com/osidechessmeet/"
 ---
 

@@ -13,7 +13,7 @@ const eventCollection = defineCollection({
     organizer: z.string().optional(),
     contact: z.string().optional(),
     tags: z.array(z.enum(['tournament', 'casual', 'blitz', 'rapid', 'classical', 'scholastic', 'online'])).optional(),
-    locationSlug: z.string(),
+    location: z.string(),
     link: z.string().url().optional(),
   }),
 });

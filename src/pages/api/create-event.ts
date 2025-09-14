@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { createClient } from '@sanity/client';
 import EventSchema from '../../lib/schema';
 import * as valibot from 'valibot';
+import slugify from 'slugify';
 
 export const prerender = false;
 
@@ -32,10 +33,16 @@ export const POST: APIRoute = async ({ request }) => {
       token: process.env.SANITY_API_TOKEN,
     });
 
+    const titleSlug = slugify(validatedData.title, { lower: true, strict: true });
+    
     const result = await client.createIfNotExists({
       _type: 'event',
-      _id: 'drafts.' + validatedData.locationSlug + '-' + validatedData.title.toLowerCase().replace(/\s/g, '-'), // Add a unique ID for draft
+      _id: 'drafts.' + slugify(validatedData.location, { lower: true, strict: true }) + '-' + titleSlug,
       ...validatedData,
+      slug: {
+        _type: 'slug',
+        current: titleSlug,
+      },
       status: 'pending',
     });
 

@@ -1,11 +1,14 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { slugifyLocation } from '../../../lib/utils';
 
 export async function getStaticPaths() {
-  const locations = await getCollection('locations');
+  const allEvents = await getCollection('events');
+  const locations = [...new Set(allEvents.filter(event => event.data.location).map(event => event.data.location))];
+
   return locations.map((location) => ({
-    params: { locationSlug: location.slug },
+    params: { locationSlug: slugifyLocation(location) },
     props: { location },
   }));
 }
@@ -14,7 +17,7 @@ const { locationSlug } = Astro.params;
 const { location } = Astro.props;
 
 const allEvents = await getCollection('events');
-const locationEvents = allEvents.filter(event => event.data.locationSlug === locationSlug);
+const locationEvents = allEvents.filter(event => event.data.location === location);
 
 // Group events by day of the week
 const eventsByDay: Record<string, CollectionEntry<"events">[]> = locationEvents.reduce((acc: Record<string, CollectionEntry<"events">[]>, event) => {
@@ -41,10 +44,10 @@ const sortedDays = Object.keys(eventsByDay).sort(
 );
 ---
 
-<BaseLayout title={`Chess Events in ${location.data.name}`}>
+<BaseLayout title={`Chess Events in ${location}`}>
   <div>
     <section>
-      <h1>Events in {location.data.name}</h1>
+      <h1>Events in {location}</h1>
       
       <div>
         {sortedDays.map(day => (
@@ -52,7 +55,7 @@ const sortedDays = Object.keys(eventsByDay).sort(
             <h2>{day}</h2>
             <div>
               {eventsByDay[day].map((event) => (
-                <a href={`/find-local-chess/${location.slug}/events/${event.slug.split('/').slice(1).join('/')}`}>
+                <a href={`/find-local-chess/${slugifyLocation(location)}/events/${event.slug.split('/').slice(1).join('/')}`}>
                   <h3>{event.data.title}</h3>
                   <p>{event.data.dayOfWeek}</p>
                   <p>{event.data.venue}</p>

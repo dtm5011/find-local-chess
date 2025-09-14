@@ -1,8 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from 'sanity:client';
+import { slugifyLocation } from '../lib/utils';
 
-const allLocations = await getCollection('locations');
+const query = `*[_type == "event" && !(_id in path("drafts.**")) && defined(location)]{
+  "location": location,
+}`;
+
+const events = await sanityClient.fetch(query);
+
+const allLocations = [...new Set(events.filter(event => event.location).map(event => event.location))].map(location => ({
+  name: location,
+  slug: slugifyLocation(location)
+}));
 ---
 
 <BaseLayout title="Find Local Chess - Discover Chess Events Near You">
@@ -23,8 +33,7 @@ const allLocations = await getCollection('locations');
             {allLocations.map((location) => (
               <li>
                 <a href={`/find-local-chess/${location.slug}`}>
-                  <h3>{location.data.name}</h3>
-                  <p>{location.data.description}</p>
+                  <h3>{location.name}</h3>
                 </a>
               </li>
             ))}

@@ -1,4 +1,3 @@
-
 function fillForm() {
   function setInputValue(id, value) {
     const el = document.getElementById(id);
@@ -22,18 +21,22 @@ function fillForm() {
     }
   }
 
-  setInputValue('title', 'Dummy Event');
-  setSelectValue('dayOfWeek', 'Wednesday');
+  setInputValue('title', "O'Side Chess Meet");
+  const slugInput = document.querySelector('#slug input');
+  if (slugInput) {
+    slugInput.value = 'oside-chess-meet';
+  }
+  setSelectValue('dayOfWeek', 'Saturday');
   setSelectValue('recurrence', 'weekly');
-  setInputValue('startTime', '18:00');
-  setInputValue('endTime', '21:00');
-  setInputValue('venue', 'Dummy Venue');
-  setInputValue('locationSlug', 'dummy-location');
-  setInputValue('organizer', 'Dummy Organizer');
-  setInputValue('link', 'https://dummy-link.com');
-  setInputValue('contact', 'dummy-contact@example.com');
-  setSelectMultipleValue('tags', ['casual', 'blitz']);
-  setInputValue('description', 'This is a dummy event for testing purposes.');
+  setInputValue('startTime', '14:00');
+  setInputValue('endTime', '18:00');
+  setInputValue('venue', 'Oceanside Pier (or Pier View Coffee)');
+  setInputValue('location', 'Oceanside, CA');
+  setInputValue('organizer', 'OSIDECHESS');
+  setInputValue('link', 'https://www.instagram.com/osidechessmeet/');
+  setInputValue('contact', 'OSIDECHESSMEET@GMAIL.COM');
+  setSelectMultipleValue('tags', ['casual']);
+  setInputValue('description', 'Casual chess meet-up in Oceanside.');
 
   console.log('Form filled with dummy data.');
 }

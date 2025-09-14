@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Contribute Events - Find Local Chess">
@@ -7,7 +7,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="hero">
       <h1>Contribute an Event</h1>
       <p>
-        Know about a local chess event? Fill out the form below to add it to our list.
+        Know about a local chess event? Fill out the form below to add it to our
+        list.
       </p>
     </section>
 
@@ -29,15 +30,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <wa-select label="Recurrence" id="recurrence">
               <wa-option value="">None</wa-option>
               <wa-option value="weekly">Weekly</wa-option>
-              <wa-option value="bi-weekly">Bi-Weekly</wa-option>
+              <wa-option value="bi-weekly">Bi-weekly</wa-option>
               <wa-option value="monthly">Monthly</wa-option>
               <wa-option value="first-of-month">First of the Month</wa-option>
               <wa-option value="last-of-month">Last of the Month</wa-option>
             </wa-select>
-            <wa-input type="time" label="Start Time" id="startTime" required></wa-input>
+            <wa-input type="time" label="Start Time" id="startTime" required
+            ></wa-input>
             <wa-input type="time" label="End Time" id="endTime"></wa-input>
             <wa-input label="Venue" id="venue" required></wa-input>
-            <wa-input label="Location Slug" id="locationSlug" required placeholder="e.g., san-diego"></wa-input>
+            <wa-input
+              label="Location"
+              id="location"
+              required
+              placeholder="e.g., San Diego, CA"></wa-input>
           </div>
           <div>
             <wa-input label="Organizer" id="organizer"></wa-input>
@@ -54,7 +60,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </wa-select>
           </div>
         </div>
-        <wa-textarea label="Description" id="description" required></wa-textarea>
+        <wa-textarea label="Description" id="description" required
+        ></wa-textarea>
         <wa-button type="submit">Submit Event</wa-button>
       </form>
       <div id="error-message" style="color: red; margin-top: 1rem;"></div>
@@ -63,24 +70,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script>
-  import { parse } from 'valibot';
-  import EventSchema from '../lib/schema.ts';
+  import { parse } from "valibot";
+  import EventSchema from "../lib/schema.ts";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('event-form') as HTMLFormElement;
-    const errorMessage = document.getElementById('error-message');
-    const card = document.querySelector('wa-card');
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("event-form") as HTMLFormElement;
+    const errorMessage = document.getElementById("error-message");
+    const card = document.querySelector("wa-card");
 
     if (form) {
-      form.addEventListener('submit', async (event) => {
+      form.addEventListener("submit", async (event) => {
         event.preventDefault();
-        if (!errorMessage) return;
-        errorMessage.textContent = '';
+        if (errorMessage) {
+          errorMessage.textContent = "";
+        }
 
         const getFieldValue = (id: string) => {
           const element = document.getElementById(id) as any;
           if (!element) return undefined;
-          if (id === 'recurrence' && element.value === '') return undefined;
+          if ((id === "recurrence" || id === "link") && element.value === "")
+            return undefined;
           return element.value;
         };
 
@@ -90,39 +99,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         };
 
         const formData = {
-          title: getFieldValue('title'),
-          dayOfWeek: getFieldValue('dayOfWeek'),
-          recurrence: getFieldValue('recurrence'),
-          startTime: getFieldValue('startTime'),
-          endTime: getFieldValue('endTime'),
-          venue: getFieldValue('venue'),
-          description: getFieldValue('description'),
-          organizer: getFieldValue('organizer'),
-          link: getFieldValue('link'),
-          contact: getFieldValue('contact'),
-          tags: getSelectValues('tags'),
-          locationSlug: getFieldValue('locationSlug'),
+          title: getFieldValue("title"),
+          dayOfWeek: getFieldValue("dayOfWeek"),
+          recurrence: getFieldValue("recurrence"),
+          startTime: getFieldValue("startTime"),
+          endTime: getFieldValue("endTime"),
+          venue: getFieldValue("venue"),
+          description: getFieldValue("description"),
+          organizer: getFieldValue("organizer"),
+          link: getFieldValue("link"),
+          contact: getFieldValue("contact"),
+          tags: getSelectValues("tags"),
+          location: getFieldValue("location"),
         };
 
         try {
+          console.log("Form data before validation:", formData);
           const validatedData = parse(EventSchema, formData);
+          console.log("Validated data:", validatedData);
 
-          const body = new URLSearchParams();
+          const body = new FormData();
           for (const key in validatedData) {
             const value = (validatedData as any)[key];
             if (Array.isArray(value)) {
-              value.forEach(item => body.append(key, item));
+              value.forEach((item) => body.append(key, item));
             } else if (value !== undefined) {
               body.append(key, value);
             }
           }
 
-          
+          // Log FormData contents
+          console.log("FormData contents:");
+          for (const [key, value] of body.entries()) {
+            console.log(`${key}: ${value}`);
+          }
 
-          const response = await fetch('/api/create-event', {
-            method: 'POST',
+          const response = await fetch("/find-local-chess/api/create-event", {
+            method: "POST",
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
+              // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: body,
           });
@@ -136,16 +151,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             }
           } else {
             const errorData = await response.json();
+            console.log("API Error Response:", errorData);
             if (errorMessage) {
-              errorMessage.textContent = errorData.message;
+              errorMessage.textContent = `${errorData.message}${errorData.error ? ": " + errorData.error : ""}`;
             }
           }
         } catch (error: any) {
           if (errorMessage) {
             if (error.issues) {
-              errorMessage.textContent = error.issues.map((issue: any) => issue.message).join(', ');
+              errorMessage.textContent = error.issues
+                .map((issue: any) => issue.message)
+                .join(", ");
             } else {
-              errorMessage.textContent = 'An unexpected error occurred. Please try again.';
+              errorMessage.textContent =
+                "An unexpected error occurred. Please try again.";
             }
           }
         }

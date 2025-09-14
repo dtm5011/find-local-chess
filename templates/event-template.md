@@ -8,7 +8,7 @@ organizer: "Organization or Person Name"
 link: "https://example.com/more-info"
 contact: "email@example.com"
 tags: ["tournament", "classical", "weekend"]
-locationSlug: "san-diego"
+location: "City, State"
 ---
 
 Add your detailed event description here using Markdown formatting.

@@ -9,6 +9,15 @@ export default {
       title: 'Title',
     },
     {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    },
+    {
       name: 'dayOfWeek',
       type: 'string',
       title: 'Day of the Week',
@@ -54,9 +63,9 @@ export default {
       title: 'Venue',
     },
     {
-      name: 'locationSlug',
+      name: 'location',
       type: 'string',
-      title: 'Location Slug',
+      title: 'Location',
     },
     {
       name: 'description',

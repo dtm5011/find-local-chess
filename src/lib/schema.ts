@@ -11,7 +11,7 @@ const EventSchema = object({
   organizer: optional(string()),
   contact: optional(string()),
   tags: optional(array(picklist(['tournament', 'casual', 'blitz', 'rapid', 'classical', 'scholastic', 'online']))),
-  locationSlug: string(),
+  location: string(),
   link: optional(string()),
 });
 
