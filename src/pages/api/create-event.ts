@@ -35,9 +35,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     const titleSlug = slugify(validatedData.title, { lower: true, strict: true });
     
-    const result = await client.createIfNotExists({
+    const result = await client.create({
       _type: 'event',
-      _id: 'drafts.' + slugify(validatedData.location, { lower: true, strict: true }) + '-' + titleSlug,
       ...validatedData,
       slug: {
         _type: 'slug',

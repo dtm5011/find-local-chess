@@ -1,14 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sanity from '@sanity/astro';
+import vercel from '@astrojs/vercel';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://dtm5011.github.io',
-  base: '/find-local-chess',
+  site: 'https://find-local-chess.vercel.app', // Update this after deployment
+  output: 'server',
+  adapter: vercel(),
   integrations: [
     sanity({
       projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
