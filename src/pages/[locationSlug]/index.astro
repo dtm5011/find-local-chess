@@ -35,7 +35,7 @@ const events = await sanityClient.fetch(query, { location });
     <ul>
       {events.map(event => (
         <li>
-          <a href={`/find-local-chess/${locationSlug}/events/${event.slug}`}>{event.title}</a>
+          <a href={`/${locationSlug}/events/${event.slug}`}>{event.title}</a>
         </li>
       ))}
     </ul>

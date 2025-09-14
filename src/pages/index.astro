@@ -32,7 +32,7 @@ const allLocations = [...new Set(events.filter(event => event.location).map(even
           <ul>
             {allLocations.map((location) => (
               <li>
-                <a href={`/find-local-chess/${location.slug}`}>
+                <a href={`/${location.slug}`}>
                   <h3>{location.name}</h3>
                 </a>
               </li>
@@ -49,7 +49,7 @@ const allLocations = [...new Set(events.filter(event => event.location).map(even
             event information through GitHub pull requests.
           </p>
           <p>
-            <a href="/find-local-chess/contribute">Learn how to contribute →</a>
+            <a href="/contribute">Learn how to contribute →</a>
           </p>
         </wa-card>
 

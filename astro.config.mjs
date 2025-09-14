@@ -8,7 +8,7 @@ dotenv.config();
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://find-local-chess.vercel.app', // Update this after deployment
+  site: 'https://find-local-chess-website.vercel.app',
   output: 'server',
   adapter: vercel(),
   integrations: [

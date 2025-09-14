@@ -22,7 +22,7 @@ const locations = [...new Set(events.filter(event => event.location).map(event =
     <ul>
       {locations.map(location => (
         <li>
-          <a href={`/find-local-chess/${location.slug}`}>{location.name}</a>
+          <a href={`/${location.slug}`}>{location.name}</a>
         </li>
       ))}
     </ul>

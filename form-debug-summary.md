@@ -24,7 +24,7 @@
 ## Testing Steps
 
 1. **Manual Testing** (Recommended):
-   - Open http://localhost:4321/find-local-chess/contribute
+   - Open http://localhost:4321/contribute
    - Open browser developer tools (F12)
    - Fill out the form with test data
    - Submit and check console for errors
