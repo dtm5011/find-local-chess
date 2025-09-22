@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { sanityClient } from 'sanity:client';
-import { slugifyLocation } from '../../../lib/utils';
+import { slugifyLocation, formatTimeRange } from '../../../lib/utils';
 
 const { locationSlug, eventSlug } = Astro.params;
 
@@ -30,7 +30,7 @@ if (slugifyLocation(event.location) !== locationSlug) {
         <h1>{event.title}</h1>
         <dl class="event-meta">
           <dt>When:</dt>
-          <dd>{event.dayOfWeek} at {event.startTime}{event.endTime ? ` - ${event.endTime}` : ''}</dd>
+          <dd>{event.dayOfWeek} at {formatTimeRange(event.startTime, event.endTime)}</dd>
           <dt>Where:</dt>
           <dd>{event.venue}</dd>
           <dt>Organizer:</dt>

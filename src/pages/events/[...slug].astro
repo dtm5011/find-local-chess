@@ -1,6 +1,7 @@
 ---
 import { sanityClient } from 'sanity:client';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatTimeRange } from '../../lib/utils';
 
 export async function getStaticPaths() {
   const query = `*[_type == "event" && status == "approved"]`;
@@ -20,7 +21,7 @@ const { event } = Astro.props;
     <article>
       <header>
         <h1>{event.title}</h1>
-        <p><strong>When:</strong> {event.dayOfWeek} at {event.startTime}{event.endTime ? ` - ${event.endTime}` : ''}</p>
+        <p><strong>When:</strong> {event.dayOfWeek} at {formatTimeRange(event.startTime, event.endTime)}</p>
         <p><strong>Where:</strong> {event.venue}</p>
         <p><strong>Organizer:</strong> {event.organizer}</p>
         <div class="tags">
