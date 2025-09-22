@@ -24,7 +24,6 @@ export const POST: APIRoute = async ({ request }) => {
 
     const validatedData = valibot.parse(EventSchema, data);
 
-    
     const client = createClient({
       projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
       dataset: process.env.PUBLIC_SANITY_DATASET,
@@ -35,7 +34,11 @@ export const POST: APIRoute = async ({ request }) => {
 
     const titleSlug = slugify(validatedData.title, { lower: true, strict: true });
     
-    const result = await client.create({
+    // Create as draft with a unique ID
+    const draftId = `drafts.${slugify(validatedData.location, { lower: true, strict: true })}-${titleSlug}-${Date.now()}`;
+    
+    const result = await client.createIfNotExists({
+      _id: draftId,
       _type: 'event',
       ...validatedData,
       slug: {
