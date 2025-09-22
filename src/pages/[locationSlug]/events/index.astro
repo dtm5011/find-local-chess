@@ -1,27 +1,36 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { slugifyLocation } from '../../../lib/utils';
-
-export async function getStaticPaths() {
-  const allEvents = await getCollection('events');
-  const locations = [...new Set(allEvents.filter(event => event.data.location).map(event => event.data.location))];
-
-  return locations.map((location) => ({
-    params: { locationSlug: slugifyLocation(location) },
-    props: { location },
-  }));
-}
+import { sanityClient } from 'sanity:client';
+import { slugifyLocation, formatTimeRange } from '../../../lib/utils';
 
 const { locationSlug } = Astro.params;
-const { location } = Astro.props;
 
-const allEvents = await getCollection('events');
-const locationEvents = allEvents.filter(event => event.data.location === location);
+// Find the location name by reverse-looking up from all events
+const allLocationsQuery = `*[_type == "event" && !(_id in path("drafts.**"))]{
+  "location": location,
+}`;
+
+const allEvents = await sanityClient.fetch(allLocationsQuery);
+const allLocations = [...new Set(allEvents.map(event => event.location))];
+
+// Find the location that matches this slug
+const location = allLocations.find(loc => slugifyLocation(loc) === locationSlug);
+
+if (!location) {
+  return Astro.redirect('/404');
+}
+
+// Get events for this location
+const eventsQuery = `*[_type == "event" && location == $location && !(_id in path("drafts.**"))]{
+  ...,
+  "slug": slug.current
+} | order(dayOfWeek)`;
+
+const locationEvents = await sanityClient.fetch(eventsQuery, { location });
 
 // Group events by day of the week
-const eventsByDay: Record<string, CollectionEntry<"events">[]> = locationEvents.reduce((acc: Record<string, CollectionEntry<"events">[]>, event) => {
-  const day = event.data.dayOfWeek;
+const eventsByDay: Record<string, any[]> = locationEvents.reduce((acc: Record<string, any[]>, event) => {
+  const day = event.dayOfWeek;
   if (!acc[day]) {
     acc[day] = [];
   }
@@ -55,10 +64,10 @@ const sortedDays = Object.keys(eventsByDay).sort(
             <h2>{day}</h2>
             <div>
               {eventsByDay[day].map((event) => (
-                <a href={`/${slugifyLocation(location)}/events/${event.slug.split('/').slice(1).join('/')}`}>
-                  <h3>{event.data.title}</h3>
-                  <p>{event.data.dayOfWeek}</p>
-                  <p>{event.data.venue}</p>
+                <a href={`/${slugifyLocation(location)}/events/${event.slug}`}>
+                  <h3>{event.title}</h3>
+                  <p>{formatTimeRange(event.startTime, event.endTime)}</p>
+                  <p>{event.venue}</p>
                 </a>
               ))}
             </div>
