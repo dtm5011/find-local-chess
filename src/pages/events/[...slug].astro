@@ -3,17 +3,15 @@ import { sanityClient } from 'sanity:client';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatTimeRange } from '../../lib/utils';
 
-export async function getStaticPaths() {
-  const query = `*[_type == "event" && status == "approved"]`;
-  const events: any[] = await sanityClient.fetch(query);
+const { slug } = Astro.params;
 
-  return events.map((event: any) => ({
-    params: { slug: event.slug.current },
-    props: { event },
-  }));
+// Get the event by slug
+const query = `*[_type == "event" && slug.current == $slug && !(_id in path("drafts.**"))][0]`;
+const event = await sanityClient.fetch(query, { slug });
+
+if (!event) {
+  return Astro.redirect('/404');
 }
-
-const { event } = Astro.props;
 ---
 
 <BaseLayout title={event.title}>

@@ -1,4 +1,4 @@
-import { object, string, optional, array, picklist, url, minLength, nonEmpty, custom } from 'valibot';
+import { object, string, optional, array, picklist, minLength, nonEmpty, custom } from 'valibot';
 
 // Custom URL validator that's more strict
 const strictUrl = custom<string>((input) => {
