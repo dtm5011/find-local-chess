@@ -10,7 +10,7 @@ const { title, description = "Find local chess events, tournaments, and meetups 
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="wa-theme-awesome wa-dark">
+<html lang="en" class="wa-theme-awesome">
   <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -25,7 +25,25 @@ const { title, description = "Find local chess events, tournaments, and meetups 
     <link rel="stylesheet" href="/webawesome/styles/themes/awesome.css" />
     <script type="module" src="/assets/webawesome.js" is:inline></script>
     
-    <script is:inline src="/scripts/theme-switcher.js"></script>
+    <script is:inline>
+      // Use system preference for theme
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('wa-dark');
+      } else {
+        document.documentElement.classList.add('wa-light');
+      }
+
+      // Listen for system theme changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (e.matches) {
+          document.documentElement.classList.remove('wa-light');
+          document.documentElement.classList.add('wa-dark');
+        } else {
+          document.documentElement.classList.remove('wa-dark');
+          document.documentElement.classList.add('wa-light');
+        }
+      });
+    </script>
   </head>
   <body>
     <a href="#main-content" class="wa-visually-hidden skip-link">Skip to main content</a>
@@ -40,12 +58,7 @@ const { title, description = "Find local chess events, tournaments, and meetups 
           </ul>
         </nav>
       </div>
-      <div class="theme-switcher">
-        <wa-select id="theme-toggle" value="dark" label="Theme">
-          <wa-option value="light">Light</wa-option>
-          <wa-option value="dark">Dark</wa-option>
-        </wa-select>
-      </div>
+
     </header>
 
     <main id="main-content">
@@ -68,15 +81,27 @@ const { title, description = "Find local chess events, tournaments, and meetups 
 </html>
 
 <style>
-  header {
-    padding: 1rem 2rem;
+  .main-header {
+    padding: 1rem;
     border-bottom: 1px solid var(--wa-color-surface-border);
+  }
+
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-content h1 {
+    margin: 0;
+    font-size: 1.5rem;
   }
 
   .header-content h1 a {
     display: flex;
-    align-items: end;
+    align-items: center;
     gap: 0.5rem;
+    text-decoration: none;
   }
 
   .chess-icon {
@@ -93,7 +118,8 @@ const { title, description = "Find local chess events, tournaments, and meetups 
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: var(--wa-space-m);
+    gap: 0.5rem;
+    flex-wrap: wrap;
   }
 
   nav a {
@@ -101,6 +127,7 @@ const { title, description = "Find local chess events, tournaments, and meetups 
     padding: 0.5rem 1rem;
     border-radius: var(--wa-border-radius-m);
     transition: background-color 0.2s ease-in-out;
+    font-size: 0.9rem;
   }
 
   nav a:hover {
@@ -108,11 +135,44 @@ const { title, description = "Find local chess events, tournaments, and meetups 
     text-decoration: none;
   }
 
+
+
   footer {
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
     border-top: 1px solid var(--wa-color-surface-border);
     margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+
+  /* Tablet and up */
+  @media (min-width: 768px) {
+    .main-header {
+      padding: 1rem 2rem;
+    }
+
+    .header-content {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .header-content h1 {
+      font-size: 2rem;
+    }
+
+    nav ul {
+      gap: var(--wa-space-m);
+    }
+
+    nav a {
+      font-size: 1rem;
+    }
+
+    footer {
+      padding: 2rem;
+      font-size: 1rem;
+    }
   }
 </style>
 

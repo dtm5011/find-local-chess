@@ -65,15 +65,26 @@ const allLocations = [...new Set(events.filter(event => event.location).map(even
 </BaseLayout>
 
 <style>
+  .container {
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
   .hero {
     text-align: center;
-    padding: 4rem 0;
+    padding: 2rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--wa-space-l);
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   wa-card {
@@ -92,13 +103,31 @@ const allLocations = [...new Set(events.filter(event => event.location).map(even
     padding: 0.5rem 0;
   }
 
-  
-
   h3 {
     margin: 0 0 0.5rem 0;
   }
 
   p {
     margin: 0;
+  }
+
+  /* Tablet and up */
+  @media (min-width: 768px) {
+    .container {
+      padding: 0 2rem;
+    }
+
+    .hero {
+      padding: 4rem 0;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+    }
+
+    .grid {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: var(--wa-space-l);
+    }
   }
 </style>

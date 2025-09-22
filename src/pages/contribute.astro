@@ -223,14 +223,25 @@ const existingLocations = [...new Set(events.map(event => event.location))].sort
 </script>
 
 <style>
+  .container {
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
   .hero {
     text-align: center;
-    padding: 4rem 0;
+    padding: 2rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 
   .grid-2-col {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 
@@ -238,10 +249,33 @@ const existingLocations = [...new Set(events.map(event => event.location))].sort
     background-color: var(--wa-color-surface-raised);
     border: 1px solid var(--wa-color-surface-border);
     box-shadow: var(--wa-shadow-s);
-    padding: 2rem;
+    padding: 1rem;
   }
 
   form > * + * {
     margin-top: 1rem;
+  }
+
+  /* Tablet and up */
+  @media (min-width: 768px) {
+    .container {
+      padding: 0 2rem;
+    }
+
+    .hero {
+      padding: 4rem 0;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+    }
+
+    .grid-2-col {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    wa-card {
+      padding: 2rem;
+    }
   }
 </style>
