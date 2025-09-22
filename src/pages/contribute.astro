@@ -1,14 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { sanityClient } from 'sanity:client';
-
-// Get existing locations for the dropdown
-const locationsQuery = `*[_type == "event" && !(_id in path("drafts.**")) && defined(location)]{
-  "location": location,
-}`;
-
-const events = await sanityClient.fetch(locationsQuery);
-const existingLocations = [...new Set(events.map(event => event.location))].sort();
 ---
 
 <BaseLayout title="Contribute Events - Find Local Chess">
@@ -48,24 +39,19 @@ const existingLocations = [...new Set(events.map(event => event.location))].sort
             ></wa-input>
             <wa-input type="time" label="End Time" id="endTime"></wa-input>
             <wa-input label="Venue" id="venue" required></wa-input>
-            <wa-input 
-              label="Location" 
-              id="location" 
-              required 
+            <wa-input
+              label="Location"
+              id="location"
+              required
               placeholder="e.g., San Diego, CA"
-              list="locations-list">
+            >
             </wa-input>
-            <datalist id="locations-list">
-              {existingLocations.map(location => (
-                <option value={location}></option>
-              ))}
-            </datalist>
           </div>
           <div>
             <wa-input label="Organizer" id="organizer"></wa-input>
-            <wa-input 
-              label="Website URL" 
-              id="link" 
+            <wa-input
+              label="Website URL"
+              id="link"
               type="url"
               placeholder="https://example.com"></wa-input>
             <wa-input label="Contact" id="contact"></wa-input>
@@ -101,21 +87,25 @@ const existingLocations = [...new Set(events.map(event => event.location))].sort
 
     // Add real-time URL validation
     if (linkInput) {
-      linkInput.addEventListener('blur', () => {
+      linkInput.addEventListener("blur", () => {
         const value = linkInput.value.trim();
-        if (value && value !== '') {
+        if (value && value !== "") {
           try {
             const url = new URL(value);
-            if (url.protocol !== 'http:' && url.protocol !== 'https:') {
-              linkInput.setCustomValidity('URL must start with http:// or https://');
+            if (url.protocol !== "http:" && url.protocol !== "https:") {
+              linkInput.setCustomValidity(
+                "URL must start with http:// or https://",
+              );
             } else {
-              linkInput.setCustomValidity('');
+              linkInput.setCustomValidity("");
             }
           } catch {
-            linkInput.setCustomValidity('Please enter a valid URL (e.g., https://example.com)');
+            linkInput.setCustomValidity(
+              "Please enter a valid URL (e.g., https://example.com)",
+            );
           }
         } else {
-          linkInput.setCustomValidity('');
+          linkInput.setCustomValidity("");
         }
       });
     }
@@ -194,17 +184,18 @@ const existingLocations = [...new Set(events.map(event => event.location))].sort
             if (error.issues) {
               // Show validation errors in a more user-friendly way
               const errorList = error.issues.map((issue: any) => {
-                const fieldName = issue.path?.[0]?.key || 'Unknown field';
+                const fieldName = issue.path?.[0]?.key || "Unknown field";
                 return `${fieldName}: ${issue.message}`;
               });
               errorMessage.innerHTML = `
                 <strong>Please fix the following errors:</strong>
                 <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
-                  ${errorList.map(err => `<li>${err}</li>`).join('')}
+                  ${errorList.map((err) => `<li>${err}</li>`).join("")}
                 </ul>
               `;
             } else {
-              errorMessage.textContent = "An unexpected error occurred. Please try again.";
+              errorMessage.textContent =
+                "An unexpected error occurred. Please try again.";
             }
           }
         }
