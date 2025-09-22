@@ -38,7 +38,7 @@ function fillForm() {
   setSelectMultipleValue('tags', ['casual']);
   setInputValue('description', 'Casual chess meet-up in Oceanside.');
 
-  console.log('Form filled with dummy data.');
+  // console.log('Form filled with dummy data.');
 }
 
 fillForm();

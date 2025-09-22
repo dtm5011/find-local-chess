@@ -11,32 +11,6 @@ A community-driven website for discovering local chess events, tournaments, and 
 - **Responsive Design**: Works great on desktop and mobile
 - **Vercel Deployment**: Automatically deployed via Vercel with serverless functions
 
-## 📁 Project Structure
-
-```text
-/
-├── public/                 # Static assets
-├── sanity-studio/         # Sanity CMS configuration
-│   └── schemas/
-│       └── event.ts       # Event schema definition
-├── src/
-│   ├── lib/
-│   │   ├── schema.ts      # Valibot validation schema
-│   │   └── utils.ts       # Utility functions
-│   ├── layouts/
-│   │   └── BaseLayout.astro
-│   └── pages/
-│       ├── index.astro              # Homepage
-│       ├── contribute.astro         # Event submission form
-│       ├── locations.astro          # All locations
-│       ├── [locationSlug]/
-│       │   ├── index.astro          # Location page
-│       │   └── events/
-│       │       └── [...eventSlug].astro # Individual event pages
-│       └── api/
-│           └── create-event.ts      # Form submission API
-└── package.json
-```
 
 ## 🧞 Commands
 
@@ -45,9 +19,9 @@ All commands are run from the root of the project:
 | Command           | Action                                        |
 | :---------------- | :-------------------------------------------- |
 | `bun install`     | Installs dependencies                         |
-| `bun dev`         | Starts local dev server at localhost:4321    |
-| `bun build`       | Build your production site to `./dist/`      |
-| `bun preview`     | Preview your build locally, before deploying |
+| `bun run dev`     | Starts local dev server at localhost:4321    |
+| `bun run build`   | Build your production site to `./dist/`      |
+| `bun run preview` | Preview your build locally, before deploying |
 
 ## 🔧 Environment Setup
 

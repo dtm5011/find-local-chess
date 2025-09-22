@@ -156,9 +156,7 @@ const existingLocations = [...new Set(events.map(event => event.location))].sort
         };
 
         try {
-          console.log("Form data before validation:", formData);
           const validatedData = parse(EventSchema, formData);
-          console.log("Validated data:", validatedData);
 
           const body = new FormData();
           for (const key in validatedData) {
@@ -168,12 +166,6 @@ const existingLocations = [...new Set(events.map(event => event.location))].sort
             } else if (value !== undefined) {
               body.append(key, value);
             }
-          }
-
-          // Log FormData contents
-          console.log("FormData contents:");
-          for (const [key, value] of body.entries()) {
-            console.log(`${key}: ${value}`);
           }
 
           const response = await fetch("/api/create-event", {
@@ -193,7 +185,6 @@ const existingLocations = [...new Set(events.map(event => event.location))].sort
             }
           } else {
             const errorData = await response.json();
-            console.log("API Error Response:", errorData);
             if (errorMessage) {
               errorMessage.textContent = `${errorData.message}${errorData.error ? ": " + errorData.error : ""}`;
             }
