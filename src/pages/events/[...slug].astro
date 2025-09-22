@@ -19,9 +19,27 @@ if (!event) {
     <article>
       <header>
         <h1>{event.title}</h1>
-        <p><strong>When:</strong> {event.dayOfWeek} at {formatTimeRange(event.startTime, event.endTime)}</p>
-        <p><strong>Where:</strong> {event.venue}</p>
-        <p><strong>Organizer:</strong> {event.organizer}</p>
+        <dl class="event-meta">
+          <dt>When:</dt>
+          <dd>
+            {event.dayOfWeek} at {formatTimeRange(event.startTime, event.endTime)}
+            {event.recurrence && <span class="recurrence"> • {event.recurrence}</span>}
+          </dd>
+          <dt>Where:</dt>
+          <dd>{event.venue}, {event.location}</dd>
+          {event.organizer && (
+            <dt>Organizer:</dt>
+            <dd>{event.organizer}</dd>
+          )}
+          {event.contact && (
+            <dt>Contact:</dt>
+            <dd>{event.contact}</dd>
+          )}
+          {event.link && (
+            <dt>Website:</dt>
+            <dd><a href={event.link} target="_blank" rel="noopener noreferrer">{event.link}</a></dd>
+          )}
+        </dl>
         <div class="tags">
           {event.tags?.map((tag: string) => <wa-tag>{tag}</wa-tag>)}
         </div>
@@ -32,3 +50,67 @@ if (!event) {
     </article>
   </div>
 </BaseLayout>
+
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--wa-color-surface-border);
+    padding-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .event-meta {
+    margin: 1.5rem 0;
+  }
+
+  .event-meta dt {
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+
+  .event-meta dt:first-child {
+    margin-top: 0;
+  }
+
+  .event-meta dd {
+    margin-bottom: 0.5rem;
+  }
+
+  .recurrence {
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+  .tags {
+    margin-top: 1.5rem;
+  }
+
+  .tags wa-tag {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .content {
+    line-height: 1.7;
+    font-size: 1.1rem;
+  }
+
+  a {
+    color: var(--wa-color-brand-fill-loud);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
