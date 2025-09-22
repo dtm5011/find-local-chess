@@ -1,5 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { sanityClient } from 'sanity:client';
+
+// Get existing locations for the dropdown
+const locationsQuery = `*[_type == "event" && !(_id in path("drafts.**")) && defined(location)]{
+  "location": location,
+}`;
+
+const events = await sanityClient.fetch(locationsQuery);
+const existingLocations = [...new Set(events.map(event => event.location))].sort();
 ---
 
 <BaseLayout title="Contribute Events - Find Local Chess">
@@ -39,15 +48,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             ></wa-input>
             <wa-input type="time" label="End Time" id="endTime"></wa-input>
             <wa-input label="Venue" id="venue" required></wa-input>
-            <wa-input
-              label="Location"
-              id="location"
-              required
-              placeholder="e.g., San Diego, CA"></wa-input>
+            <wa-input 
+              label="Location" 
+              id="location" 
+              required 
+              placeholder="e.g., San Diego, CA"
+              list="locations-list">
+            </wa-input>
+            <datalist id="locations-list">
+              {existingLocations.map(location => (
+                <option value={location}></option>
+              ))}
+            </datalist>
           </div>
           <div>
             <wa-input label="Organizer" id="organizer"></wa-input>
-            <wa-input label="Website URL" id="link"></wa-input>
+            <wa-input 
+              label="Website URL" 
+              id="link" 
+              type="url"
+              placeholder="https://example.com"></wa-input>
             <wa-input label="Contact" id="contact"></wa-input>
             <wa-select label="Tags" id="tags" multiple clearable>
               <wa-option value="tournament">Tournament</wa-option>
@@ -77,6 +97,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     const form = document.getElementById("event-form") as HTMLFormElement;
     const errorMessage = document.getElementById("error-message");
     const card = document.querySelector("wa-card");
+    const linkInput = document.getElementById("link") as any;
+
+    // Add real-time URL validation
+    if (linkInput) {
+      linkInput.addEventListener('blur', () => {
+        const value = linkInput.value.trim();
+        if (value && value !== '') {
+          try {
+            const url = new URL(value);
+            if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+              linkInput.setCustomValidity('URL must start with http:// or https://');
+            } else {
+              linkInput.setCustomValidity('');
+            }
+          } catch {
+            linkInput.setCustomValidity('Please enter a valid URL (e.g., https://example.com)');
+          }
+        } else {
+          linkInput.setCustomValidity('');
+        }
+      });
+    }
 
     if (form) {
       form.addEventListener("submit", async (event) => {
@@ -159,12 +201,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         } catch (error: any) {
           if (errorMessage) {
             if (error.issues) {
-              errorMessage.textContent = error.issues
-                .map((issue: any) => issue.message)
-                .join(", ");
+              // Show validation errors in a more user-friendly way
+              const errorList = error.issues.map((issue: any) => {
+                const fieldName = issue.path?.[0]?.key || 'Unknown field';
+                return `${fieldName}: ${issue.message}`;
+              });
+              errorMessage.innerHTML = `
+                <strong>Please fix the following errors:</strong>
+                <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                  ${errorList.map(err => `<li>${err}</li>`).join('')}
+                </ul>
+              `;
             } else {
-              errorMessage.textContent =
-                "An unexpected error occurred. Please try again.";
+              errorMessage.textContent = "An unexpected error occurred. Please try again.";
             }
           }
         }
