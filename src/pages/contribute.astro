@@ -120,14 +120,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         const getFieldValue = (id: string) => {
           const element = document.getElementById(id) as any;
           if (!element) return undefined;
-          if ((id === "recurrence" || id === "link") && element.value === "")
-            return undefined;
-          return element.value;
+          const value = element.value?.trim();
+          // Return undefined for empty optional fields
+          if (!value || value === "") return undefined;
+          return value;
         };
 
         const getSelectValues = (id: string) => {
           const element = document.getElementById(id) as any;
-          return element ? element.value : [];
+          if (!element) return undefined;
+          const value = element.value;
+          // Return undefined if empty array or no selection
+          if (!value || (Array.isArray(value) && value.length === 0))
+            return undefined;
+          return value;
         };
 
         const formData = {
