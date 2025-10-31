@@ -53,6 +53,8 @@ import '../tag/tag.js';
  * @csspart clear-button - The clear button.
  * @csspart expand-icon - The container that wraps the expand icon.
  *
+ * @cssproperty [--show-duration=100ms] - The duration of the show animation.
+ * @cssproperty [--hide-duration=100ms] - The duration of the hide animation.
  * @cssproperty [--tag-max-size=10ch] - When using `multiple`, the max size of tags before their content is truncated.
  *
  * @cssstate blank - The select is empty.
@@ -111,7 +113,7 @@ export default class WaSelect extends WebAwesomeFormAssociatedElement {
      */
     open: boolean;
     /** The select's visual appearance. */
-    appearance: 'filled' | 'outlined';
+    appearance: 'filled' | 'outlined' | 'filled-outlined';
     /** Draws a pill-style select with rounded edges. */
     pill: boolean;
     /** The select's label. If you need to display HTML, use the `label` slot instead. */
@@ -154,6 +156,7 @@ export default class WaSelect extends WebAwesomeFormAssociatedElement {
     private handleDocumentKeyDown;
     private handleDocumentMouseDown;
     private handleLabelClick;
+    private handleComboboxClick;
     private handleComboboxMouseDown;
     private handleComboboxKeyDown;
     private handleClearClick;

@@ -1,10 +1,11 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   registerTranslation
-} from "../chunks/chunk.K5GQ3GNY.js";
+} from "../chunks/chunk.I24ISEJH.js";
 import {
   en_default
-} from "../chunks/chunk.RCONWWCA.js";
-import "../chunks/chunk.RBKXYBVR.js";
+} from "../chunks/chunk.OKWGTFUF.js";
+import "../chunks/chunk.I37X32SU.js";
 
 // src/translations/en-gb.ts
 var translation = {

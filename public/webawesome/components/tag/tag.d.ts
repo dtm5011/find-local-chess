@@ -23,7 +23,7 @@ export default class WaTag extends WebAwesomeElement {
     /** The tag's theme variant. Defaults to `neutral` if not within another element with a variant. */
     variant: 'brand' | 'neutral' | 'success' | 'warning' | 'danger';
     /** The tag's visual appearance. */
-    appearance: 'accent' | 'outlined accent' | 'filled' | 'outlined' | 'outlined filled';
+    appearance: 'accent' | 'filled' | 'outlined' | 'filled-outlined';
     /** The tag's size. */
     size: 'small' | 'medium' | 'large';
     /** Draws a pill-style tag with rounded edges. */

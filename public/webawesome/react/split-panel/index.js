@@ -1,15 +1,16 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   split_panel_default
-} from "../../chunks/chunk.3NIXUPPA.js";
-import "../../chunks/chunk.WWCJU7MB.js";
-import "../../chunks/chunk.UKTQUJRS.js";
-import "../../chunks/chunk.X4B65RQG.js";
-import "../../chunks/chunk.GUORSRKN.js";
-import "../../chunks/chunk.K5GQ3GNY.js";
-import "../../chunks/chunk.RCONWWCA.js";
-import "../../chunks/chunk.2NT6DI7B.js";
-import "../../chunks/chunk.ETAGLSDL.js";
-import "../../chunks/chunk.RBKXYBVR.js";
+} from "../../chunks/chunk.B35TQBQ3.js";
+import "../../chunks/chunk.XT5HTSFZ.js";
+import "../../chunks/chunk.CI74OXU3.js";
+import "../../chunks/chunk.AJ3PNG3J.js";
+import "../../chunks/chunk.2WYO32PF.js";
+import "../../chunks/chunk.I24ISEJH.js";
+import "../../chunks/chunk.OKWGTFUF.js";
+import "../../chunks/chunk.N3AZYXKV.js";
+import "../../chunks/chunk.LU7TFTYS.js";
+import "../../chunks/chunk.I37X32SU.js";
 export {
   split_panel_default as default
 };

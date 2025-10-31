@@ -52,7 +52,7 @@ export default class WaDropdown extends WebAwesomeElement {
     disconnectedCallback(): void;
     firstUpdated(): void;
     updated(changedProperties: PropertyValues): Promise<void>;
-    /** Gets all <wa-dropdown-item> elements slotted in the menu that aren't disabled. */
+    /** Gets all dropdown items slotted in the menu. */
     private getItems;
     /** Gets all dropdown items in a specific submenu. */
     private getSubmenuItems;

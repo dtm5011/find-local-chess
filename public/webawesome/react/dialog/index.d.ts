@@ -24,6 +24,7 @@ export type { WaAfterHideEvent, WaAfterShowEvent, WaHideEvent, WaShowEvent } fro
  *  behavior such as data loss.
  * @event wa-after-hide - Emitted after the dialog closes and all animations are complete.
  *
+ * @csspart dialog - The dialog's internal `<dialog>` element.
  * @csspart header - The dialog's header. This element wraps the title and header actions.
  * @csspart header-actions - Optional actions to add to the header. Works best with `<wa-button>`.
  * @csspart title - The dialog's title.

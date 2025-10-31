@@ -1,4 +1,5 @@
-import "../chunks/chunk.RBKXYBVR.js";
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
+import "../chunks/chunk.I37X32SU.js";
 
 // src/translations/fi.ts
 import { registerTranslation } from "@shoelace-style/localize";

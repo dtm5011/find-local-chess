@@ -26,8 +26,8 @@ import '../icon/icon.js';
  *
  * @csspart label - The label
  * @csspart hint - The hint's wrapper.
- * @csspart input - The wrapper being rendered as an input
- * @csspart base - The internal `<input>` control.
+ * @csspart base - The wrapper being rendered as an input
+ * @csspart input - The internal `<input>` control.
  * @csspart start - The container that wraps the `start` slot.
  * @csspart clear-button - The clear button.
  * @csspart password-toggle-button - The password toggle button.
@@ -63,7 +63,7 @@ export default class WaInput extends WebAwesomeFormAssociatedElement {
     /** The input's size. */
     size: 'small' | 'medium' | 'large';
     /** The input's visual appearance. */
-    appearance: 'filled' | 'outlined';
+    appearance: 'filled' | 'outlined' | 'filled-outlined';
     /** Draws a pill-style input with rounded edges. */
     pill: boolean;
     /** The input's label. If you need to display HTML, use the `label` slot instead. */

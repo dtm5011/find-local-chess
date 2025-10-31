@@ -1,9 +1,10 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   WaBadge
-} from "../../chunks/chunk.2HCAJCKW.js";
-import "../../chunks/chunk.EYAWV5KE.js";
-import "../../chunks/chunk.ETAGLSDL.js";
-import "../../chunks/chunk.RBKXYBVR.js";
+} from "../../chunks/chunk.PHETFPJU.js";
+import "../../chunks/chunk.R6O3GHMM.js";
+import "../../chunks/chunk.LU7TFTYS.js";
+import "../../chunks/chunk.I37X32SU.js";
 export {
   WaBadge as default
 };

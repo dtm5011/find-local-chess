@@ -1,10 +1,11 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   WaCard
-} from "../../chunks/chunk.IKLFSMG3.js";
-import "../../chunks/chunk.DGCYKUU5.js";
-import "../../chunks/chunk.NC5QP643.js";
-import "../../chunks/chunk.ETAGLSDL.js";
-import "../../chunks/chunk.RBKXYBVR.js";
+} from "../../chunks/chunk.7XSHZOR6.js";
+import "../../chunks/chunk.SFADIYDM.js";
+import "../../chunks/chunk.GY3LNU3J.js";
+import "../../chunks/chunk.LU7TFTYS.js";
+import "../../chunks/chunk.I37X32SU.js";
 export {
   WaCard as default
 };

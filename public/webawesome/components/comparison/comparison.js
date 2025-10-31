@@ -1,18 +1,19 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   WaComparison
-} from "../../chunks/chunk.5WMBTY7P.js";
-import "../../chunks/chunk.UKTQUJRS.js";
-import "../../chunks/chunk.GUORSRKN.js";
-import "../../chunks/chunk.K5GQ3GNY.js";
-import "../../chunks/chunk.RCONWWCA.js";
-import "../../chunks/chunk.SZUJSHFH.js";
-import "../../chunks/chunk.YAKPUWOF.js";
-import "../../chunks/chunk.OUUMRN6Q.js";
-import "../../chunks/chunk.HNHPBE3O.js";
-import "../../chunks/chunk.UPHXFDHQ.js";
-import "../../chunks/chunk.2NT6DI7B.js";
-import "../../chunks/chunk.ETAGLSDL.js";
-import "../../chunks/chunk.RBKXYBVR.js";
+} from "../../chunks/chunk.H3FRROSL.js";
+import "../../chunks/chunk.CI74OXU3.js";
+import "../../chunks/chunk.2WYO32PF.js";
+import "../../chunks/chunk.I24ISEJH.js";
+import "../../chunks/chunk.OKWGTFUF.js";
+import "../../chunks/chunk.7VQYTP6Y.js";
+import "../../chunks/chunk.YNHANM3W.js";
+import "../../chunks/chunk.LTSJC6DR.js";
+import "../../chunks/chunk.I3WWI2TE.js";
+import "../../chunks/chunk.64T5YF4D.js";
+import "../../chunks/chunk.N3AZYXKV.js";
+import "../../chunks/chunk.LU7TFTYS.js";
+import "../../chunks/chunk.I37X32SU.js";
 export {
   WaComparison as default
 };

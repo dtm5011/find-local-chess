@@ -53,9 +53,9 @@ export default class WaDetails extends WebAwesomeElement {
     /** Disables the details so it can't be toggled. */
     disabled: boolean;
     /** The element's visual appearance. */
-    appearance: 'filled' | 'outlined' | 'plain';
-    /** The position of the expand/collapse icon. */
-    iconPosition: 'start' | 'end';
+    appearance: 'filled' | 'outlined' | 'filled-outlined' | 'plain';
+    /** The location of the expand/collapse icon. */
+    iconPlacement: 'start' | 'end';
     disconnectedCallback(): void;
     firstUpdated(): void;
     updated(changedProperties: PropertyValues<this>): void;

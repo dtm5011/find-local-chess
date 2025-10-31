@@ -1,61 +1,61 @@
 
-import type { WaAnimatedImage } from "components/animated-image/animated-image.js";
-import type { WaAnimation } from "components/animation/animation.js";
-import type { WaAvatar } from "components/avatar/avatar.js";
-import type { WaBadge } from "components/badge/badge.js";
-import type { WaButton } from "components/button/button.js";
-import type { WaBreadcrumbItem } from "components/breadcrumb-item/breadcrumb-item.js";
-import type { WaButtonGroup } from "components/button-group/button-group.js";
-import type { WaBreadcrumb } from "components/breadcrumb/breadcrumb.js";
-import type { WaCallout } from "components/callout/callout.js";
-import type { WaCard } from "components/card/card.js";
-import type { WaCarousel } from "components/carousel/carousel.js";
-import type { WaCarouselItem } from "components/carousel-item/carousel-item.js";
-import type { WaCheckbox } from "components/checkbox/checkbox.js";
-import type { WaColorPicker } from "components/color-picker/color-picker.js";
-import type { WaComparison } from "components/comparison/comparison.js";
-import type { WaCopyButton } from "components/copy-button/copy-button.js";
-import type { WaDetails } from "components/details/details.js";
-import type { WaDialog } from "components/dialog/dialog.js";
-import type { WaDivider } from "components/divider/divider.js";
-import type { WaDrawer } from "components/drawer/drawer.js";
-import type { WaDropdown } from "components/dropdown/dropdown.js";
-import type { WaDropdownItem } from "components/dropdown-item/dropdown-item.js";
-import type { WaFormatBytes } from "components/format-bytes/format-bytes.js";
-import type { WaFormatDate } from "components/format-date/format-date.js";
-import type { WaFormatNumber } from "components/format-number/format-number.js";
-import type { WaIcon } from "components/icon/icon.js";
-import type { WaInclude } from "components/include/include.js";
-import type { WaInput } from "components/input/input.js";
-import type { WaMutationObserver } from "components/mutation-observer/mutation-observer.js";
-import type { WaOption } from "components/option/option.js";
-import type { WaPage } from "components/page/page.js";
-import type { WaPopover } from "components/popover/popover.js";
-import type { WaPopup } from "components/popup/popup.js";
-import type { WaProgressBar } from "components/progress-bar/progress-bar.js";
-import type { WaProgressRing } from "components/progress-ring/progress-ring.js";
-import type { WaQrCode } from "components/qr-code/qr-code.js";
-import type { WaRadio } from "components/radio/radio.js";
-import type { WaRadioGroup } from "components/radio-group/radio-group.js";
-import type { WaRating } from "components/rating/rating.js";
-import type { WaRelativeTime } from "components/relative-time/relative-time.js";
-import type { WaResizeObserver } from "components/resize-observer/resize-observer.js";
-import type { WaScroller } from "components/scroller/scroller.js";
-import type { WaSelect } from "components/select/select.js";
-import type { WaSkeleton } from "components/skeleton/skeleton.js";
-import type { WaSlider } from "components/slider/slider.js";
-import type { WaSpinner } from "components/spinner/spinner.js";
-import type { WaSplitPanel } from "components/split-panel/split-panel.js";
-import type { WaSwitch } from "components/switch/switch.js";
-import type { WaTab } from "components/tab/tab.js";
-import type { WaTabGroup } from "components/tab-group/tab-group.js";
-import type { WaTabPanel } from "components/tab-panel/tab-panel.js";
-import type { WaTag } from "components/tag/tag.js";
-import type { WaTextarea } from "components/textarea/textarea.js";
-import type { WaTooltip } from "components/tooltip/tooltip.js";
-import type { WaTree } from "components/tree/tree.js";
-import type { WaTreeItem } from "components/tree-item/tree-item.js";
-import type { WaZoomableFrame } from "components/zoomable-frame/zoomable-frame.js";
+import type { default as WaAnimatedImage } from "./components/animated-image/animated-image.js";
+import type { default as WaAnimation } from "./components/animation/animation.js";
+import type { default as WaAvatar } from "./components/avatar/avatar.js";
+import type { default as WaBadge } from "./components/badge/badge.js";
+import type { default as WaBreadcrumbItem } from "./components/breadcrumb-item/breadcrumb-item.js";
+import type { default as WaBreadcrumb } from "./components/breadcrumb/breadcrumb.js";
+import type { default as WaButton } from "./components/button/button.js";
+import type { default as WaButtonGroup } from "./components/button-group/button-group.js";
+import type { default as WaCallout } from "./components/callout/callout.js";
+import type { default as WaCard } from "./components/card/card.js";
+import type { default as WaCarousel } from "./components/carousel/carousel.js";
+import type { default as WaCarouselItem } from "./components/carousel-item/carousel-item.js";
+import type { default as WaCheckbox } from "./components/checkbox/checkbox.js";
+import type { default as WaColorPicker } from "./components/color-picker/color-picker.js";
+import type { default as WaComparison } from "./components/comparison/comparison.js";
+import type { default as WaCopyButton } from "./components/copy-button/copy-button.js";
+import type { default as WaDetails } from "./components/details/details.js";
+import type { default as WaDialog } from "./components/dialog/dialog.js";
+import type { default as WaDivider } from "./components/divider/divider.js";
+import type { default as WaDrawer } from "./components/drawer/drawer.js";
+import type { default as WaDropdown } from "./components/dropdown/dropdown.js";
+import type { default as WaDropdownItem } from "./components/dropdown-item/dropdown-item.js";
+import type { default as WaFormatBytes } from "./components/format-bytes/format-bytes.js";
+import type { default as WaFormatDate } from "./components/format-date/format-date.js";
+import type { default as WaFormatNumber } from "./components/format-number/format-number.js";
+import type { default as WaIcon } from "./components/icon/icon.js";
+import type { default as WaInclude } from "./components/include/include.js";
+import type { default as WaInput } from "./components/input/input.js";
+import type { default as WaIntersectionObserver } from "./components/intersection-observer/intersection-observer.js";
+import type { default as WaMutationObserver } from "./components/mutation-observer/mutation-observer.js";
+import type { default as WaOption } from "./components/option/option.js";
+import type { default as WaPopover } from "./components/popover/popover.js";
+import type { default as WaPopup } from "./components/popup/popup.js";
+import type { default as WaProgressBar } from "./components/progress-bar/progress-bar.js";
+import type { default as WaProgressRing } from "./components/progress-ring/progress-ring.js";
+import type { default as WaQrCode } from "./components/qr-code/qr-code.js";
+import type { default as WaRadio } from "./components/radio/radio.js";
+import type { default as WaRadioGroup } from "./components/radio-group/radio-group.js";
+import type { default as WaRating } from "./components/rating/rating.js";
+import type { default as WaRelativeTime } from "./components/relative-time/relative-time.js";
+import type { default as WaResizeObserver } from "./components/resize-observer/resize-observer.js";
+import type { default as WaScroller } from "./components/scroller/scroller.js";
+import type { default as WaSelect } from "./components/select/select.js";
+import type { default as WaSkeleton } from "./components/skeleton/skeleton.js";
+import type { default as WaSlider } from "./components/slider/slider.js";
+import type { default as WaSpinner } from "./components/spinner/spinner.js";
+import type { default as WaSplitPanel } from "./components/split-panel/split-panel.js";
+import type { default as WaSwitch } from "./components/switch/switch.js";
+import type { default as WaTab } from "./components/tab/tab.js";
+import type { default as WaTabGroup } from "./components/tab-group/tab-group.js";
+import type { default as WaTabPanel } from "./components/tab-panel/tab-panel.js";
+import type { default as WaTag } from "./components/tag/tag.js";
+import type { default as WaTextarea } from "./components/textarea/textarea.js";
+import type { default as WaTooltip } from "./components/tooltip/tooltip.js";
+import type { default as WaTree } from "./components/tree/tree.js";
+import type { default as WaTreeItem } from "./components/tree-item/tree-item.js";
+import type { default as WaZoomableFrame } from "./components/zoomable-frame/zoomable-frame.js";
 
 /**
  * This type can be used to create scoped tags for your components.
@@ -246,6 +246,34 @@ export type WaBadgeProps = {
 }
 
 
+export type WaBreadcrumbItemProps = {
+  /** Optional URL to direct the user to when the breadcrumb item is activated. When set, a link will be rendered
+internally. When unset, a button will be rendered instead. */
+  "href"?: WaBreadcrumbItem['href'];
+  /** Tells the browser where to open the link. Only used when `href` is set. */
+  "target"?: WaBreadcrumbItem['target'];
+  /** The `rel` attribute to use on the link. Only used when `href` is set. */
+  "rel"?: WaBreadcrumbItem['rel'];
+  /**  */
+  "defaultSlot"?: WaBreadcrumbItem['defaultSlot'];
+
+
+}
+
+
+export type WaBreadcrumbProps = {
+  /** The label to use for the breadcrumb control. This will not be shown on the screen, but it will be announced by
+screen readers and other assistive devices to provide more context for users. */
+  "label"?: WaBreadcrumb['label'];
+  /**  */
+  "defaultSlot"?: WaBreadcrumb['defaultSlot'];
+  /**  */
+  "separatorSlot"?: WaBreadcrumb['separatorSlot'];
+
+
+}
+
+
 export type WaButtonProps = {
   /**  */
   "title"?: WaButton['title'];
@@ -327,29 +355,12 @@ value of this attribute must be an id of a form in the same document or shadow r
 }
 
 
-export type WaBreadcrumbItemProps = {
-  /** Optional URL to direct the user to when the breadcrumb item is activated. When set, a link will be rendered
-internally. When unset, a button will be rendered instead. */
-  "href"?: WaBreadcrumbItem['href'];
-  /** Tells the browser where to open the link. Only used when `href` is set. */
-  "target"?: WaBreadcrumbItem['target'];
-  /** The `rel` attribute to use on the link. Only used when `href` is set. */
-  "rel"?: WaBreadcrumbItem['rel'];
-  /**  */
-  "defaultSlot"?: WaBreadcrumbItem['defaultSlot'];
-
-
-}
-
-
 export type WaButtonGroupProps = {
   /** A label to use for the button group. This won't be displayed on the screen, but it will be announced by assistive
 devices when interacting with the control and is strongly recommended. */
   "label"?: WaButtonGroup['label'];
   /** The button group's orientation. */
   "orientation"?: WaButtonGroup['orientation'];
-  /** The component's size. */
-  "size"?: WaButtonGroup['size'];
   /** The button group's theme variant. Defaults to `neutral` if not within another element with a variant. */
   "variant"?: WaButtonGroup['variant'];
   /**  */
@@ -358,19 +369,6 @@ devices when interacting with the control and is strongly recommended. */
   "disableRole"?: WaButtonGroup['disableRole'];
   /**  */
   "hasOutlined"?: WaButtonGroup['hasOutlined'];
-
-
-}
-
-
-export type WaBreadcrumbProps = {
-  /** The label to use for the breadcrumb control. This will not be shown on the screen, but it will be announced by
-screen readers and other assistive devices to provide more context for users. */
-  "label"?: WaBreadcrumb['label'];
-  /**  */
-  "defaultSlot"?: WaBreadcrumb['defaultSlot'];
-  /**  */
-  "separatorSlot"?: WaBreadcrumb['separatorSlot'];
 
 
 }
@@ -403,6 +401,8 @@ export type WaCardProps = {
   "with-footer"?: WaCard['withFooter'];
   /** Renders the card with a footer. Only needed for SSR, otherwise is automatically added. */
   "withFooter"?: WaCard['withFooter'];
+  /** Renders the card's orientation * */
+  "orientation"?: WaCard['orientation'];
 
 
 }
@@ -668,10 +668,10 @@ can use the `show()` and `hide()` methods and this attribute will reflect the de
   "disabled"?: WaDetails['disabled'];
   /** The element's visual appearance. */
   "appearance"?: WaDetails['appearance'];
-  /** The position of the expand/collapse icon. */
-  "icon-position"?: WaDetails['iconPosition'];
-  /** The position of the expand/collapse icon. */
-  "iconPosition"?: WaDetails['iconPosition'];
+  /** The location of the expand/collapse icon. */
+  "icon-placement"?: WaDetails['iconPlacement'];
+  /** The location of the expand/collapse icon. */
+  "iconPlacement"?: WaDetails['iconPlacement'];
   /**  */
   "details"?: WaDetails['details'];
   /**  */
@@ -924,10 +924,14 @@ one. */
 the `classic` and `sharp` families. Some variants require a Font Awesome Pro subscription. Custom icon libraries
 may or may not use this property. */
   "variant"?: WaIcon['variant'];
-  /** Draws the icon in a fixed-width both. */
-  "fixed-width"?: WaIcon['fixedWidth'];
-  /** Draws the icon in a fixed-width both. */
-  "fixedWidth"?: WaIcon['fixedWidth'];
+  /** Sets the width of the icon to match the cropped SVG viewBox. This operates like the Font `fa-width-auto` class. */
+  "auto-width"?: WaIcon['autoWidth'];
+  /** Sets the width of the icon to match the cropped SVG viewBox. This operates like the Font `fa-width-auto` class. */
+  "autoWidth"?: WaIcon['autoWidth'];
+  /** Swaps the opacity of duotone icons. */
+  "swap-opacity"?: WaIcon['swapOpacity'];
+  /** Swaps the opacity of duotone icons. */
+  "swapOpacity"?: WaIcon['swapOpacity'];
   /** An external URL of an SVG file. Be sure you trust the content you are including, as it will be executed as code and
 can result in XSS attacks. */
   "src"?: WaIcon['src'];
@@ -964,7 +968,7 @@ code and can result in XSS attacks. */
   /** Emitted when the included file is loaded. */
   "onwa-load"?: (e: CustomEvent<never>) => void;
   /** Emitted when the included file fails to load due to an error. */
-  "onwa-error"?: (e: CustomEvent<{ status: number }>) => void;
+  "onwa-include-error"?: (e: CustomEvent<{ status: number }>) => void;
 }
 
 
@@ -1073,6 +1077,31 @@ keyboard on supportive devices. */
 }
 
 
+export type WaIntersectionObserverProps = {
+  /** Element ID to define the viewport boundaries for tracked targets. */
+  "root"?: WaIntersectionObserver['root'];
+  /** Offset space around the root boundary. Accepts values like CSS margin syntax. */
+  "root-margin"?: WaIntersectionObserver['rootMargin'];
+  /** Offset space around the root boundary. Accepts values like CSS margin syntax. */
+  "rootMargin"?: WaIntersectionObserver['rootMargin'];
+  /** One or more space-separated values representing visibility percentages that trigger the observer callback. */
+  "threshold"?: WaIntersectionObserver['threshold'];
+  /** CSS class applied to elements during intersection. Automatically removed when elements leave
+the viewport, enabling pure CSS styling based on visibility state. */
+  "intersect-class"?: WaIntersectionObserver['intersectClass'];
+  /** CSS class applied to elements during intersection. Automatically removed when elements leave
+the viewport, enabling pure CSS styling based on visibility state. */
+  "intersectClass"?: WaIntersectionObserver['intersectClass'];
+  /** If enabled, observation ceases after initial intersection. */
+  "once"?: WaIntersectionObserver['once'];
+  /** Deactivates the intersection observer functionality. */
+  "disabled"?: WaIntersectionObserver['disabled'];
+
+  /** Fired when a tracked element begins or ceases intersecting. */
+  "onwa-intersect"?: (e: CustomEvent<{ entry: IntersectionObserverEntry }>) => void;
+}
+
+
 export type WaMutationObserverProps = {
   /** Watches for changes to attributes. To watch only specific attributes, separate them by a space, e.g.
 `attr="class id title"`. To watch all attributes, use `*`. */
@@ -1123,53 +1152,6 @@ Usually automatically generated, but can be useful to provide manually for cases
   "_label"?: WaOption['_label'];
   /** The default label, generated from the element contents. Will be equal to `label` in most cases. */
   "defaultLabel"?: WaOption['defaultLabel'];
-
-
-}
-
-
-export type WaPageProps = {
-  /** The view is a reflection of the "mobileBreakpoint", when the page is larger than the `mobile-breakpoint` (768px by
-default), it is considered to be a "desktop" view. The view is merely a way to distinguish when to show/hide the
-navigation. You can use additional media queries to make other adjustments to content as necessary.
-The default is "desktop" because the "mobile navigation drawer" isn't accessible via SSR due to drawer requiring JS. */
-  "view"?: WaPage['view'];
-  /** Whether or not the navigation drawer is open. Note, the navigation drawer is only "open" on mobile views. */
-  "nav-open"?: WaPage['navOpen'];
-  /** Whether or not the navigation drawer is open. Note, the navigation drawer is only "open" on mobile views. */
-  "navOpen"?: WaPage['navOpen'];
-  /** At what page width to hide the "navigation" slot and collapse into a hamburger button.
-Accepts both numbers (interpreted as px) and CSS lengths (e.g. `50em`), which are resolved based on the root element. */
-  "mobile-breakpoint"?: WaPage['mobileBreakpoint'];
-  /** At what page width to hide the "navigation" slot and collapse into a hamburger button.
-Accepts both numbers (interpreted as px) and CSS lengths (e.g. `50em`), which are resolved based on the root element. */
-  "mobileBreakpoint"?: WaPage['mobileBreakpoint'];
-  /** Where to place the navigation when in the mobile viewport. */
-  "navigation-placement"?: WaPage['navigationPlacement'];
-  /** Where to place the navigation when in the mobile viewport. */
-  "navigationPlacement"?: WaPage['navigationPlacement'];
-  /** Determines whether or not to hide the default hamburger button.
-This will automatically flip to "true" if you add an element with `data-toggle-nav` anywhere in the element light DOM.
-Generally this will be set for you and you don't need to do anything, unless you're using SSR, in which case you should set this manually for initial page loads. */
-  "disable-navigation-toggle"?: WaPage['disableNavigationToggle'];
-  /** Determines whether or not to hide the default hamburger button.
-This will automatically flip to "true" if you add an element with `data-toggle-nav` anywhere in the element light DOM.
-Generally this will be set for you and you don't need to do anything, unless you're using SSR, in which case you should set this manually for initial page loads. */
-  "disableNavigationToggle"?: WaPage['disableNavigationToggle'];
-  /**  */
-  "header"?: WaPage['header'];
-  /**  */
-  "subheader"?: WaPage['subheader'];
-  /**  */
-  "footer"?: WaPage['footer'];
-  /**  */
-  "banner"?: WaPage['banner'];
-  /**  */
-  "navigationDrawer"?: WaPage['navigationDrawer'];
-  /**  */
-  "navigationToggleSlot"?: WaPage['navigationToggleSlot'];
-  /**  */
-  "pageResizeObserver"?: WaPage['pageResizeObserver'];
 
 
 }
@@ -1374,7 +1356,7 @@ export type WaRadioProps = {
   "form"?: WaRadio['form'];
   /** The radio's value. When selected, the radio group will receive this value. */
   "value"?: WaRadio['value'];
-  /** The radio's value. When selected, the radio group will receive this value. */
+  /** The radio's visual appearance. */
   "appearance"?: WaRadio['appearance'];
   /** The radio's size. When used inside a radio group, the size will be determined by the radio group's size so this
 attribute can typically be omitted. */
@@ -1419,8 +1401,6 @@ instead. */
   "with-hint"?: WaRadioGroup['withHint'];
   /** Used for SSR. if true, will show slotted hint on initial render. */
   "withHint"?: WaRadioGroup['withHint'];
-  /**  */
-  "hasRadioButtons"?: WaRadioGroup['hasRadioButtons'];
   /**  */
   "defaultSlot"?: WaRadioGroup['defaultSlot'];
 
@@ -1698,8 +1678,6 @@ this attribute must be an ID of a form in the same document or shadow root. */
   "track"?: WaSlider['track'];
   /**  */
   "tooltip"?: WaSlider['tooltip'];
-  /**  */
-  "tooltips"?: WaSlider['tooltips'];
   /** A custom formatting function to apply to the value. This will be shown in the tooltip and announced by screen
 readers. Must be set with JavaScript. Property only. */
   "valueFormatter"?: WaSlider['valueFormatter'];
@@ -2303,6 +2281,75 @@ export type WaZoomableFrameProps = {
  * 
  * Component attributes and properties that can be applied to the element or by using JavaScript.
  * 
+ * - `href`: Optional URL to direct the user to when the breadcrumb item is activated. When set, a link will be rendered
+ * internally. When unset, a button will be rendered instead. 
+ * - `target`: Tells the browser where to open the link. Only used when `href` is set. 
+ * - `rel`: The `rel` attribute to use on the link. Only used when `href` is set. 
+ * - `defaultSlot`: undefined (property only)
+ * 
+ * #### Slots
+ * 
+ * Areas where markup can be added to the component.
+ * 
+ * - `(default)`: The breadcrumb item's label.
+ * - `start`: An element, such as `<wa-icon>`, placed before the label.
+ * - `end`: An element, such as `<wa-icon>`, placed after the label.
+ * - `separator`: The separator to use for the breadcrumb item. This will only change the separator for this item. If you want to change it for all items in the group, set the separator on `<wa-breadcrumb>` instead.
+ * 
+ * #### Methods
+ * 
+ * Methods that can be called to access component functionality.
+ * 
+ * - `hrefChanged() => void`: undefined
+ * - `handleSlotChange() => void`: undefined
+ * 
+ * #### CSS Parts
+ * 
+ * Custom selectors for styling elements within the component.
+ * 
+ * - `label`: The breadcrumb item's label.
+ * - `start`: The container that wraps the `start` slot.
+ * - `end`: The container that wraps the `end` slot.
+ * - `separator`: The container that wraps the separator.
+  */
+    "wa-breadcrumb-item": Partial<WaBreadcrumbItemProps & BaseProps<WaBreadcrumbItem> & BaseEvents>;
+
+
+  /**
+     * 
+ * 
+ * #### Attributes & Properties
+ * 
+ * Component attributes and properties that can be applied to the element or by using JavaScript.
+ * 
+ * - `label`: The label to use for the breadcrumb control. This will not be shown on the screen, but it will be announced by
+ * screen readers and other assistive devices to provide more context for users. 
+ * - `defaultSlot`: undefined (property only)
+ * - `separatorSlot`: undefined (property only)
+ * 
+ * #### Slots
+ * 
+ * Areas where markup can be added to the component.
+ * 
+ * - `(default)`: One or more breadcrumb items to display.
+ * - `separator`: The separator to use between breadcrumb items. Works best with `<wa-icon>`.
+ * 
+ * #### CSS Parts
+ * 
+ * Custom selectors for styling elements within the component.
+ * 
+ * - `base`: The component's base wrapper.
+  */
+    "wa-breadcrumb": Partial<WaBreadcrumbProps & BaseProps<WaBreadcrumb> & BaseEvents>;
+
+
+  /**
+     * 
+ * 
+ * #### Attributes & Properties
+ * 
+ * Component attributes and properties that can be applied to the element or by using JavaScript.
+ * 
  * - `title`: undefined 
  * - `variant`: The button's theme variant. Defaults to `neutral` if not within another element with a variant. 
  * - `appearance`: The button's visual appearance. 
@@ -2382,51 +2429,9 @@ export type WaZoomableFrameProps = {
  * 
  * Component attributes and properties that can be applied to the element or by using JavaScript.
  * 
- * - `href`: Optional URL to direct the user to when the breadcrumb item is activated. When set, a link will be rendered
- * internally. When unset, a button will be rendered instead. 
- * - `target`: Tells the browser where to open the link. Only used when `href` is set. 
- * - `rel`: The `rel` attribute to use on the link. Only used when `href` is set. 
- * - `defaultSlot`: undefined (property only)
- * 
- * #### Slots
- * 
- * Areas where markup can be added to the component.
- * 
- * - `(default)`: The breadcrumb item's label.
- * - `start`: An element, such as `<wa-icon>`, placed before the label.
- * - `end`: An element, such as `<wa-icon>`, placed after the label.
- * - `separator`: The separator to use for the breadcrumb item. This will only change the separator for this item. If you want to change it for all items in the group, set the separator on `<wa-breadcrumb>` instead.
- * 
- * #### Methods
- * 
- * Methods that can be called to access component functionality.
- * 
- * - `hrefChanged() => void`: undefined
- * - `handleSlotChange() => void`: undefined
- * 
- * #### CSS Parts
- * 
- * Custom selectors for styling elements within the component.
- * 
- * - `label`: The breadcrumb item's label.
- * - `start`: The container that wraps the `start` slot.
- * - `end`: The container that wraps the `end` slot.
- * - `separator`: The container that wraps the separator.
-  */
-    "wa-breadcrumb-item": Partial<WaBreadcrumbItemProps & BaseProps<WaBreadcrumbItem> & BaseEvents>;
-
-
-  /**
-     * 
- * 
- * #### Attributes & Properties
- * 
- * Component attributes and properties that can be applied to the element or by using JavaScript.
- * 
  * - `label`: A label to use for the button group. This won't be displayed on the screen, but it will be announced by assistive
  * devices when interacting with the control and is strongly recommended. 
  * - `orientation`: The button group's orientation. 
- * - `size`: The component's size. 
  * - `variant`: The button group's theme variant. Defaults to `neutral` if not within another element with a variant. 
  * - `defaultSlot`: undefined (property only)
  * - `disableRole`: undefined (property only)
@@ -2445,34 +2450,6 @@ export type WaZoomableFrameProps = {
  * - `base`: The component's base wrapper.
   */
     "wa-button-group": Partial<WaButtonGroupProps & BaseProps<WaButtonGroup> & BaseEvents>;
-
-
-  /**
-     * 
- * 
- * #### Attributes & Properties
- * 
- * Component attributes and properties that can be applied to the element or by using JavaScript.
- * 
- * - `label`: The label to use for the breadcrumb control. This will not be shown on the screen, but it will be announced by
- * screen readers and other assistive devices to provide more context for users. 
- * - `defaultSlot`: undefined (property only)
- * - `separatorSlot`: undefined (property only)
- * 
- * #### Slots
- * 
- * Areas where markup can be added to the component.
- * 
- * - `(default)`: One or more breadcrumb items to display.
- * - `separator`: The separator to use between breadcrumb items. Works best with `<wa-icon>`.
- * 
- * #### CSS Parts
- * 
- * Custom selectors for styling elements within the component.
- * 
- * - `base`: The component's base wrapper.
-  */
-    "wa-breadcrumb": Partial<WaBreadcrumbProps & BaseProps<WaBreadcrumb> & BaseEvents>;
 
 
   /**
@@ -2514,6 +2491,7 @@ export type WaZoomableFrameProps = {
  * - `with-header`/`withHeader`: Renders the card with a header. Only needed for SSR, otherwise is automatically added. 
  * - `with-media`/`withMedia`: Renders the card with an image. Only needed for SSR, otherwise is automatically added. 
  * - `with-footer`/`withFooter`: Renders the card with a footer. Only needed for SSR, otherwise is automatically added. 
+ * - `orientation`: Renders the card's orientation * 
  * 
  * #### Slots
  * 
@@ -2523,6 +2501,9 @@ export type WaZoomableFrameProps = {
  * - `header`: An optional header for the card.
  * - `footer`: An optional footer for the card.
  * - `media`: An optional media section to render at the start of the card.
+ * - `actions`: An optional actions section to render at the end for the horizontal card.
+ * - `header-actions`: An optional actions section to render in the header of the vertical card.
+ * - `footer-actions`: An optional actions section to render in the footer of the vertical card.
  * 
  * #### CSS Custom Properties
  * 
@@ -2976,7 +2957,7 @@ export type WaZoomableFrameProps = {
  * - `name`: Groups related details elements. When one opens, others with the same name will close. 
  * - `disabled`: Disables the details so it can't be toggled. 
  * - `appearance`: The element's visual appearance. 
- * - `icon-position`/`iconPosition`: The position of the expand/collapse icon. 
+ * - `icon-placement`/`iconPlacement`: The location of the expand/collapse icon. 
  * - `details`: undefined (property only)
  * - `header`: undefined (property only)
  * - `body`: undefined (property only)
@@ -3089,6 +3070,7 @@ export type WaZoomableFrameProps = {
  * 
  * Custom selectors for styling elements within the component.
  * 
+ * - `dialog`: The dialog's internal `<dialog>` element.
  * - `header`: The dialog's header. This element wraps the title and header actions.
  * - `header-actions`: Optional actions to add to the header. Works best with `<wa-button>`.
  * - `title`: The dialog's title.
@@ -3180,6 +3162,7 @@ export type WaZoomableFrameProps = {
  * 
  * Custom selectors for styling elements within the component.
  * 
+ * - `dialog`: The drawer's internal `<dialog>` element.
  * - `header`: The drawer's header. This element wraps the title and header actions.
  * - `header-actions`: Optional actions to add to the header. Works best with `<wa-button>`.
  * - `title`: The drawer's title.
@@ -3369,7 +3352,8 @@ export type WaZoomableFrameProps = {
  * - `variant`: The name of the icon's variant. For Font Awesome, valid options include `thin`, `light`, `regular`, and `solid` for
  * the `classic` and `sharp` families. Some variants require a Font Awesome Pro subscription. Custom icon libraries
  * may or may not use this property. 
- * - `fixed-width`/`fixedWidth`: Draws the icon in a fixed-width both. 
+ * - `auto-width`/`autoWidth`: Sets the width of the icon to match the cropped SVG viewBox. This operates like the Font `fa-width-auto` class. 
+ * - `swap-opacity`/`swapOpacity`: Swaps the opacity of duotone icons. 
  * - `src`: An external URL of an SVG file. Be sure you trust the content you are including, as it will be executed as code and
  * can result in XSS attacks. 
  * - `label`: An alternate description to use for assistive devices. If omitted, the icon will be considered presentational and
@@ -3429,7 +3413,7 @@ export type WaZoomableFrameProps = {
  * 
  * - `undefined`: undefined
  * - `wa-load`: Emitted when the included file is loaded.
- * - `wa-error`: Emitted when the included file fails to load due to an error.
+ * - `wa-include-error`: Emitted when the included file fails to load due to an error.
  * 
  * #### Methods
  * 
@@ -3533,8 +3517,8 @@ export type WaZoomableFrameProps = {
  * 
  * - `label`: The label
  * - `hint`: The hint's wrapper.
- * - `input`: The wrapper being rendered as an input
- * - `base`: The internal `<input>` control.
+ * - `base`: The wrapper being rendered as an input
+ * - `input`: The internal `<input>` control.
  * - `start`: The container that wraps the `start` slot.
  * - `clear-button`: The clear button.
  * - `password-toggle-button`: The password toggle button.
@@ -3547,6 +3531,43 @@ export type WaZoomableFrameProps = {
  * - `blank`: The input is empty.
   */
     "wa-input": Partial<WaInputProps & BaseProps<WaInput> & BaseEvents>;
+
+
+  /**
+     * 
+ * 
+ * #### Attributes & Properties
+ * 
+ * Component attributes and properties that can be applied to the element or by using JavaScript.
+ * 
+ * - `root`: Element ID to define the viewport boundaries for tracked targets. 
+ * - `root-margin`/`rootMargin`: Offset space around the root boundary. Accepts values like CSS margin syntax. 
+ * - `threshold`: One or more space-separated values representing visibility percentages that trigger the observer callback. 
+ * - `intersect-class`/`intersectClass`: CSS class applied to elements during intersection. Automatically removed when elements leave
+ * the viewport, enabling pure CSS styling based on visibility state. 
+ * - `once`: If enabled, observation ceases after initial intersection. 
+ * - `disabled`: Deactivates the intersection observer functionality. 
+ * 
+ * #### Events
+ * 
+ * Events that will be emitted by the component.
+ * 
+ * - `wa-intersect`: Fired when a tracked element begins or ceases intersecting.
+ * 
+ * #### Slots
+ * 
+ * Areas where markup can be added to the component.
+ * 
+ * - `(default)`: Elements to track. Only immediate children of the host are monitored.
+ * 
+ * #### Methods
+ * 
+ * Methods that can be called to access component functionality.
+ * 
+ * - `handleDisabledChange() => void`: undefined
+ * - `handleOptionsChange() => void`: undefined
+  */
+    "wa-intersection-observer": Partial<WaIntersectionObserverProps & BaseProps<WaIntersectionObserver> & BaseEvents>;
 
 
   /**
@@ -3631,98 +3652,6 @@ export type WaZoomableFrameProps = {
  * - `hover`: Like `:hover` but works while dragging in Safari
   */
     "wa-option": Partial<WaOptionProps & BaseProps<WaOption> & BaseEvents>;
-
-
-  /**
-     * 
- * 
- * #### Attributes & Properties
- * 
- * Component attributes and properties that can be applied to the element or by using JavaScript.
- * 
- * - `view`: The view is a reflection of the "mobileBreakpoint", when the page is larger than the `mobile-breakpoint` (768px by
- * default), it is considered to be a "desktop" view. The view is merely a way to distinguish when to show/hide the
- * navigation. You can use additional media queries to make other adjustments to content as necessary.
- * The default is "desktop" because the "mobile navigation drawer" isn't accessible via SSR due to drawer requiring JS. 
- * - `nav-open`/`navOpen`: Whether or not the navigation drawer is open. Note, the navigation drawer is only "open" on mobile views. 
- * - `mobile-breakpoint`/`mobileBreakpoint`: At what page width to hide the "navigation" slot and collapse into a hamburger button.
- * Accepts both numbers (interpreted as px) and CSS lengths (e.g. `50em`), which are resolved based on the root element. 
- * - `navigation-placement`/`navigationPlacement`: Where to place the navigation when in the mobile viewport. 
- * - `disable-navigation-toggle`/`disableNavigationToggle`: Determines whether or not to hide the default hamburger button.
- * This will automatically flip to "true" if you add an element with `data-toggle-nav` anywhere in the element light DOM.
- * Generally this will be set for you and you don't need to do anything, unless you're using SSR, in which case you should set this manually for initial page loads. 
- * - `header`: undefined (property only)
- * - `subheader`: undefined (property only)
- * - `footer`: undefined (property only)
- * - `banner`: undefined (property only)
- * - `navigationDrawer`: undefined (property only)
- * - `navigationToggleSlot`: undefined (property only)
- * - `pageResizeObserver`: undefined (property only)
- * 
- * #### Slots
- * 
- * Areas where markup can be added to the component.
- * 
- * - `(default)`: The page's main content.
- * - `banner`: The banner that gets display above the header. The banner will not be shown if no content is provided.
- * - `header`: The header to display at the top of the page. If a banner is present, the header will appear below the banner. The header will not be shown if there is no content.
- * - `subheader`: A subheader to display below the `header`. This is a good place to put things like breadcrumbs.
- * - `menu`: The left side of the page. If you slot an element in here, you will override the default `navigation` slot and will be handling navigation on your own. This also will not disable the fallback behavior of the navigation button. This section "sticks" to the top as the page scrolls.
- * - `navigation-header`: The header for a navigation area. On mobile this will be the header for `<wa-drawer>`.
- * - `navigation`: The main content to display in the navigation area. This is displayed on the left side of the page, if `menu` is not used. This section "sticks" to the top as the page scrolls.
- * - `navigation-footer`: The footer for a navigation area. On mobile this will be the footer for `<wa-drawer>`.
- * - `navigation-toggle`: Use this slot to slot in your own button + icon for toggling the navigation drawer. By default it is a `<wa-button>` + a 3 bars `<wa-icon>`
- * - `navigation-toggle-icon`: Use this to slot in your own icon for toggling the navigation drawer. By default it is 3 bars `<wa-icon>`.
- * - `main-header`: Header to display inline above the main content.
- * - `main-footer`: Footer to display inline below the main content.
- * - `aside`: Content to be shown on the right side of the page. Typically contains a table of contents, ads, etc. This section "sticks" to the top as the page scrolls.
- * - `skip-to-content`: The "skip to content" slot. You can override this If you would like to override the `Skip to content` button and add additional "Skip to X", they can be inserted here.
- * - `footer`: The content to display in the footer. This is always displayed underneath the viewport so will always make the page "scrollable".
- * 
- * #### Methods
- * 
- * Methods that can be called to access component functionality.
- * 
- * - `showNavigation() => void`: Shows the mobile navigation drawer
- * - `hideNavigation() => void`: Hides the mobile navigation drawer
- * - `toggleNavigation() => void`: Toggles the mobile navigation drawer
- * 
- * #### CSS Custom Properties
- * 
- * CSS variables available for styling the component.
- * 
- * - `--menu-width`: The width of the page's "menu" section. (default: `auto`)
- * - `--main-width`: The width of the page's "main" section. (default: `1fr`)
- * - `--aside-width`: The wide of the page's "aside" section. (default: `auto`)
- * - `--banner-height`: The height of the banner. This gets calculated when the page initializes. If the height is known, you can set it here to prevent shifting when the page loads. (default: `0px`)
- * - `--header-height`: The height of the header. This gets calculated when the page initializes. If the height is known, you can set it here to prevent shifting when the page loads. (default: `0px`)
- * - `--subheader-height`: The height of the subheader. This gets calculated when the page initializes. If the height is known, you can set it here to prevent shifting when the page loads. (default: `0px`)
- * 
- * #### CSS Parts
- * 
- * Custom selectors for styling elements within the component.
- * 
- * - `base`: The component's base wrapper.
- * - `banner`: The banner to show above header.
- * - `header`: The header, usually for top level navigation / branding.
- * - `subheader`: Shown below the header, usually intended for things like breadcrumbs and other page level navigation.
- * - `body`: The wrapper around menu, main, and aside.
- * - `menu`: The left hand side of the page. Generally intended for navigation.
- * - `navigation`: The `<nav>` that wraps the navigation slots on desktop viewports.
- * - `navigation-header`: The header for a navigation area. On mobile this will be the header for `<wa-drawer>`.
- * - `navigation-footer`: The footer for a navigation area. On mobile this will be the footer for `<wa-drawer>`.
- * - `navigation-toggle`: The default `<wa-button>` that will toggle the `<wa-drawer>` for mobile viewports.
- * - `navigation-toggle-icon`: The default `<wa-icon>` displayed inside of the navigation-toggle button.
- * - `main-header`: The header above main content.
- * - `main-content`: The main content.
- * - `main-footer`: The footer below main content.
- * - `aside`: The right hand side of the page. Used for things like table of contents, ads, etc.
- * - `skip-links`: Wrapper around skip-link
- * - `skip-link`: The "skip to main content" link
- * - `footer`: The footer of the page. This is always below the initial viewport size.
- * - `dialog-wrapper`: A wrapper around elements such as dialogs or other modal-like elements.
-  */
-    "wa-page": Partial<WaPageProps & BaseProps<WaPage> & BaseEvents>;
 
 
   /**
@@ -4009,7 +3938,7 @@ export type WaZoomableFrameProps = {
  * 
  * - `form`: The string pointing to a form's id. 
  * - `value`: The radio's value. When selected, the radio group will receive this value. 
- * - `appearance`: The radio's value. When selected, the radio group will receive this value. 
+ * - `appearance`: The radio's visual appearance. 
  * - `size`: The radio's size. When used inside a radio group, the size will be determined by the radio group's size so this
  * attribute can typically be omitted. 
  * - `disabled`: Disables the radio. 
@@ -4077,7 +4006,6 @@ export type WaZoomableFrameProps = {
  * - `required`: Ensures a child radio is checked before allowing the containing form to submit. 
  * - `with-label`/`withLabel`: Used for SSR. if true, will show slotted label on initial render. 
  * - `with-hint`/`withHint`: Used for SSR. if true, will show slotted hint on initial render. 
- * - `hasRadioButtons`: undefined (property only)
  * - `defaultSlot`: undefined (property only)
  * - `value`: The current value of the radio group, submitted as a name/value pair with form data. (property only)
  * - `validationTarget`: We use the first available radio as the validationTarget similar to native HTML that shows the validation popup on
@@ -4350,6 +4278,8 @@ export type WaZoomableFrameProps = {
  * 
  * CSS variables available for styling the component.
  * 
+ * - `--show-duration`: The duration of the show animation. (default: `100ms`)
+ * - `--hide-duration`: The duration of the hide animation. (default: `100ms`)
  * - `--tag-max-size`: When using `multiple`, the max size of tags before their content is truncated. (default: `10ch`)
  * 
  * #### CSS Parts
@@ -4444,7 +4374,6 @@ export type WaZoomableFrameProps = {
  * - `thumbMax`: undefined (property only)
  * - `track`: undefined (property only)
  * - `tooltip`: undefined (property only)
- * - `tooltips`: undefined (property only)
  * - `value`: The current value of the slider, submitted as a name/value pair with form data. (property only)
  * - `isRange`: Get if this is a range slider (property only) (readonly)
  * - `valueFormatter`: A custom formatting function to apply to the value. This will be shown in the tooltip and announced by screen
@@ -5052,7 +4981,7 @@ export type WaZoomableFrameProps = {
  * 
  * CSS variables available for styling the component.
  * 
- * - `--indent-size`: The size of the indentation for nested items. (default: `var(--wa-spacing-m)`)
+ * - `--indent-size`: The size of the indentation for nested items. (default: `var(--wa-space-m)`)
  * - `--indent-guide-color`: The color of the indentation line. (default: `var(--wa-color-surface-border)`)
  * - `--indent-guide-offset`: The amount of vertical spacing to leave between the top and bottom of the indentation line's starting position. (default: `0`)
  * - `--indent-guide-style`: The style of the indentation line, e.g. solid, dotted, dashed. (default: `solid`)
@@ -5266,18 +5195,6 @@ export type CustomCssProperties = {
   "--secondary-color"?: string;
   /** Sets a duotone icon's secondary opacity. */
   "--secondary-opacity"?: string;
-  /** The width of the page's "menu" section. */
-  "--menu-width"?: string;
-  /** The width of the page's "main" section. */
-  "--main-width"?: string;
-  /** The wide of the page's "aside" section. */
-  "--aside-width"?: string;
-  /** The height of the banner. This gets calculated when the page initializes. If the height is known, you can set it here to prevent shifting when the page loads. */
-  "--banner-height"?: string;
-  /** The height of the header. This gets calculated when the page initializes. If the height is known, you can set it here to prevent shifting when the page loads. */
-  "--header-height"?: string;
-  /** The height of the subheader. This gets calculated when the page initializes. If the height is known, you can set it here to prevent shifting when the page loads. */
-  "--subheader-height"?: string;
   /** The size of the tiny arrow that points to the popover (set to zero to remove). */
   "--arrow-size"?: string;
   /** The maximum width of the popover's body content. */

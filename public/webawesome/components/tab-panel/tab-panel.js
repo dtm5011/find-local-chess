@@ -1,9 +1,10 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   WaTabPanel
-} from "../../chunks/chunk.VWFLALKM.js";
-import "../../chunks/chunk.2NT6DI7B.js";
-import "../../chunks/chunk.ETAGLSDL.js";
-import "../../chunks/chunk.RBKXYBVR.js";
+} from "../../chunks/chunk.OSAYSFAI.js";
+import "../../chunks/chunk.N3AZYXKV.js";
+import "../../chunks/chunk.LU7TFTYS.js";
+import "../../chunks/chunk.I37X32SU.js";
 export {
   WaTabPanel as default
 };

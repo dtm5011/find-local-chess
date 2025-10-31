@@ -1,10 +1,10 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   WaButtonGroup
-} from "../../chunks/chunk.J6CQSAY5.js";
-import "../../chunks/chunk.NC5QP643.js";
-import "../../chunks/chunk.EYAWV5KE.js";
-import "../../chunks/chunk.ETAGLSDL.js";
-import "../../chunks/chunk.RBKXYBVR.js";
+} from "../../chunks/chunk.EN65I53H.js";
+import "../../chunks/chunk.R6O3GHMM.js";
+import "../../chunks/chunk.LU7TFTYS.js";
+import "../../chunks/chunk.I37X32SU.js";
 export {
   WaButtonGroup as default
 };

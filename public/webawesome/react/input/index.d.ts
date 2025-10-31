@@ -27,8 +27,8 @@ export type { WaClearEvent, WaInvalidEvent } from '../../events/events.js';
  *
  * @csspart label - The label
  * @csspart hint - The hint's wrapper.
- * @csspart input - The wrapper being rendered as an input
- * @csspart base - The internal `<input>` control.
+ * @csspart base - The wrapper being rendered as an input
+ * @csspart input - The internal `<input>` control.
  * @csspart start - The container that wraps the `start` slot.
  * @csspart clear-button - The clear button.
  * @csspart password-toggle-button - The password toggle button.

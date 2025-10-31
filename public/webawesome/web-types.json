@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
   "name": "@awesome.me/webawesome",
-  "version": "3.0.0-beta.4",
+  "version": "3.0.0",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -345,7 +345,7 @@
               "name": "appearance",
               "description": "The badge's visual appearance.",
               "value": {
-                "type": "'accent' | 'filled' | 'outlined'",
+                "type": "'accent' | 'filled' | 'outlined' | 'filled-outlined'",
                 "default": "'accent'"
               }
             },
@@ -375,7 +375,7 @@
               {
                 "name": "appearance",
                 "description": "The badge's visual appearance.",
-                "type": "'accent' | 'filled' | 'outlined'"
+                "type": "'accent' | 'filled' | 'outlined' | 'filled-outlined'"
               },
               {
                 "name": "pill",
@@ -386,6 +386,102 @@
                 "name": "attention",
                 "description": "Adds an animation to draw attention to the badge.",
                 "type": "'none' | 'pulse' | 'bounce'"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "wa-breadcrumb-item",
+          "description": "Breadcrumb Items are used inside breadcrumbs to represent different links.\n---\n\n\n### **Slots:**\n - _default_ - The breadcrumb item's label.\n- **start** - An element, such as `<wa-icon>`, placed before the label.\n- **end** - An element, such as `<wa-icon>`, placed after the label.\n- **separator** - The separator to use for the breadcrumb item. This will only change the separator for this item. If you want to change it for all items in the group, set the separator on `<wa-breadcrumb>` instead.\n\n### **CSS Parts:**\n - **label** - The breadcrumb item's label.\n- **start** - The container that wraps the `start` slot.\n- **end** - The container that wraps the `end` slot.\n- **separator** - The container that wraps the separator.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "href",
+              "description": "Optional URL to direct the user to when the breadcrumb item is activated. When set, a link will be rendered\ninternally. When unset, a button will be rendered instead.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "target",
+              "description": "Tells the browser where to open the link. Only used when `href` is set.",
+              "value": {
+                "type": "'_blank' | '_parent' | '_self' | '_top' | undefined"
+              }
+            },
+            {
+              "name": "rel",
+              "description": "The `rel` attribute to use on the link. Only used when `href` is set.",
+              "value": { "type": "string", "default": "'noreferrer noopener'" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The breadcrumb item's label." },
+            {
+              "name": "start",
+              "description": "An element, such as `<wa-icon>`, placed before the label."
+            },
+            {
+              "name": "end",
+              "description": "An element, such as `<wa-icon>`, placed after the label."
+            },
+            {
+              "name": "separator",
+              "description": "The separator to use for the breadcrumb item. This will only change the separator for this item. If you want to change it for all items in the group, set the separator on `<wa-breadcrumb>` instead."
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "defaultSlot", "type": "HTMLSlotElement" },
+              {
+                "name": "href",
+                "description": "Optional URL to direct the user to when the breadcrumb item is activated. When set, a link will be rendered\ninternally. When unset, a button will be rendered instead.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "target",
+                "description": "Tells the browser where to open the link. Only used when `href` is set.",
+                "type": "'_blank' | '_parent' | '_self' | '_top' | undefined"
+              },
+              {
+                "name": "rel",
+                "description": "The `rel` attribute to use on the link. Only used when `href` is set.",
+                "type": "string"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "wa-breadcrumb",
+          "description": "Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.\n---\n\n\n### **Slots:**\n - _default_ - One or more breadcrumb items to display.\n- **separator** - The separator to use between breadcrumb items. Works best with `<wa-icon>`.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "label",
+              "description": "The label to use for the breadcrumb control. This will not be shown on the screen, but it will be announced by\nscreen readers and other assistive devices to provide more context for users.",
+              "value": { "type": "string", "default": "''" }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "One or more breadcrumb items to display."
+            },
+            {
+              "name": "separator",
+              "description": "The separator to use between breadcrumb items. Works best with `<wa-icon>`."
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "defaultSlot", "type": "HTMLSlotElement" },
+              { "name": "separatorSlot", "type": "HTMLSlotElement" },
+              {
+                "name": "label",
+                "description": "The label to use for the breadcrumb control. This will not be shown on the screen, but it will be announced by\nscreen readers and other assistive devices to provide more context for users.",
+                "type": "string"
               }
             ],
             "events": []
@@ -409,7 +505,7 @@
               "name": "appearance",
               "description": "The button's visual appearance.",
               "value": {
-                "type": "'accent' | 'filled' | 'outlined' | 'plain'",
+                "type": "'accent' | 'filled' | 'outlined' | 'filled-outlined' | 'plain'",
                 "default": "'accent'"
               }
             },
@@ -558,7 +654,7 @@
               {
                 "name": "appearance",
                 "description": "The button's visual appearance.",
-                "type": "'accent' | 'filled' | 'outlined' | 'plain'"
+                "type": "'accent' | 'filled' | 'outlined' | 'filled-outlined' | 'plain'"
               },
               {
                 "name": "size",
@@ -668,67 +764,6 @@
           }
         },
         {
-          "name": "wa-breadcrumb-item",
-          "description": "Breadcrumb Items are used inside breadcrumbs to represent different links.\n---\n\n\n### **Slots:**\n - _default_ - The breadcrumb item's label.\n- **start** - An element, such as `<wa-icon>`, placed before the label.\n- **end** - An element, such as `<wa-icon>`, placed after the label.\n- **separator** - The separator to use for the breadcrumb item. This will only change the separator for this item. If you want to change it for all items in the group, set the separator on `<wa-breadcrumb>` instead.\n\n### **CSS Parts:**\n - **label** - The breadcrumb item's label.\n- **start** - The container that wraps the `start` slot.\n- **end** - The container that wraps the `end` slot.\n- **separator** - The container that wraps the separator.",
-          "doc-url": "",
-          "attributes": [
-            {
-              "name": "href",
-              "description": "Optional URL to direct the user to when the breadcrumb item is activated. When set, a link will be rendered\ninternally. When unset, a button will be rendered instead.",
-              "value": { "type": "string | undefined" }
-            },
-            {
-              "name": "target",
-              "description": "Tells the browser where to open the link. Only used when `href` is set.",
-              "value": {
-                "type": "'_blank' | '_parent' | '_self' | '_top' | undefined"
-              }
-            },
-            {
-              "name": "rel",
-              "description": "The `rel` attribute to use on the link. Only used when `href` is set.",
-              "value": { "type": "string", "default": "'noreferrer noopener'" }
-            }
-          ],
-          "slots": [
-            { "name": "", "description": "The breadcrumb item's label." },
-            {
-              "name": "start",
-              "description": "An element, such as `<wa-icon>`, placed before the label."
-            },
-            {
-              "name": "end",
-              "description": "An element, such as `<wa-icon>`, placed after the label."
-            },
-            {
-              "name": "separator",
-              "description": "The separator to use for the breadcrumb item. This will only change the separator for this item. If you want to change it for all items in the group, set the separator on `<wa-breadcrumb>` instead."
-            }
-          ],
-          "events": [],
-          "js": {
-            "properties": [
-              { "name": "defaultSlot", "type": "HTMLSlotElement" },
-              {
-                "name": "href",
-                "description": "Optional URL to direct the user to when the breadcrumb item is activated. When set, a link will be rendered\ninternally. When unset, a button will be rendered instead.",
-                "type": "string | undefined"
-              },
-              {
-                "name": "target",
-                "description": "Tells the browser where to open the link. Only used when `href` is set.",
-                "type": "'_blank' | '_parent' | '_self' | '_top' | undefined"
-              },
-              {
-                "name": "rel",
-                "description": "The `rel` attribute to use on the link. Only used when `href` is set.",
-                "type": "string"
-              }
-            ],
-            "events": []
-          }
-        },
-        {
           "name": "wa-button-group",
           "description": "Button groups can be used to group related buttons into sections.\n---\n\n\n### **Slots:**\n - _default_ - One or more `<wa-button>` elements to display in the button group.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
           "doc-url": "",
@@ -745,11 +780,6 @@
                 "type": "'horizontal' | 'vertical'",
                 "default": "'horizontal'"
               }
-            },
-            {
-              "name": "size",
-              "description": "The component's size.",
-              "value": { "type": "'small' | 'medium' | 'large'" }
             },
             {
               "name": "variant",
@@ -783,49 +813,9 @@
                 "type": "'horizontal' | 'vertical'"
               },
               {
-                "name": "size",
-                "description": "The component's size.",
-                "type": "'small' | 'medium' | 'large'"
-              },
-              {
                 "name": "variant",
                 "description": "The button group's theme variant. Defaults to `neutral` if not within another element with a variant.",
                 "type": "'neutral' | 'brand' | 'success' | 'warning' | 'danger'"
-              }
-            ],
-            "events": []
-          }
-        },
-        {
-          "name": "wa-breadcrumb",
-          "description": "Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.\n---\n\n\n### **Slots:**\n - _default_ - One or more breadcrumb items to display.\n- **separator** - The separator to use between breadcrumb items. Works best with `<wa-icon>`.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
-          "doc-url": "",
-          "attributes": [
-            {
-              "name": "label",
-              "description": "The label to use for the breadcrumb control. This will not be shown on the screen, but it will be announced by\nscreen readers and other assistive devices to provide more context for users.",
-              "value": { "type": "string", "default": "''" }
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "One or more breadcrumb items to display."
-            },
-            {
-              "name": "separator",
-              "description": "The separator to use between breadcrumb items. Works best with `<wa-icon>`."
-            }
-          ],
-          "events": [],
-          "js": {
-            "properties": [
-              { "name": "defaultSlot", "type": "HTMLSlotElement" },
-              { "name": "separatorSlot", "type": "HTMLSlotElement" },
-              {
-                "name": "label",
-                "description": "The label to use for the breadcrumb control. This will not be shown on the screen, but it will be announced by\nscreen readers and other assistive devices to provide more context for users.",
-                "type": "string"
               }
             ],
             "events": []
@@ -848,8 +838,7 @@
               "name": "appearance",
               "description": "The callout's visual appearance.",
               "value": {
-                "type": "| 'accent'\n    | 'filled'\n    | 'outlined'\n    | 'plain'\n    | 'outlined filled'\n    | 'outlined accent'",
-                "default": "'outlined filled'"
+                "type": "'accent' | 'filled' | 'outlined' | 'plain' | 'filled-outlined'"
               }
             },
             {
@@ -879,7 +868,7 @@
               {
                 "name": "appearance",
                 "description": "The callout's visual appearance.",
-                "type": "| 'accent'\n    | 'filled'\n    | 'outlined'\n    | 'plain'\n    | 'outlined filled'\n    | 'outlined accent'"
+                "type": "'accent' | 'filled' | 'outlined' | 'plain' | 'filled-outlined'"
               },
               {
                 "name": "size",
@@ -892,7 +881,7 @@
         },
         {
           "name": "wa-card",
-          "description": "Cards can be used to group related subjects in a container.\n---\n\n\n### **Slots:**\n - _default_ - The card's main content.\n- **header** - An optional header for the card.\n- **footer** - An optional footer for the card.\n- **media** - An optional media section to render at the start of the card.\n\n### **CSS Properties:**\n - **--spacing** - The amount of space around and between sections of the card. Expects a single value. _(default: var(--wa-space-l))_\n\n### **CSS Parts:**\n - **media** - The container that wraps the card's media.\n- **header** - The container that wraps the card's header.\n- **body** - The container that wraps the card's main content.\n- **footer** - The container that wraps the card's footer.",
+          "description": "Cards can be used to group related subjects in a container.\n---\n\n\n### **Slots:**\n - _default_ - The card's main content.\n- **header** - An optional header for the card.\n- **footer** - An optional footer for the card.\n- **media** - An optional media section to render at the start of the card.\n- **actions** - An optional actions section to render at the end for the horizontal card.\n- **header-actions** - An optional actions section to render in the header of the vertical card.\n- **footer-actions** - An optional actions section to render in the footer of the vertical card.\n\n### **CSS Properties:**\n - **--spacing** - The amount of space around and between sections of the card. Expects a single value. _(default: var(--wa-space-l))_\n\n### **CSS Parts:**\n - **media** - The container that wraps the card's media.\n- **header** - The container that wraps the card's header.\n- **body** - The container that wraps the card's main content.\n- **footer** - The container that wraps the card's footer.",
           "doc-url": "",
           "attributes": [
             {
@@ -917,6 +906,14 @@
               "name": "with-footer",
               "description": "Renders the card with a footer. Only needed for SSR, otherwise is automatically added.",
               "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "orientation",
+              "description": "Renders the card's orientation *",
+              "value": {
+                "type": "'horizontal' | 'vertical'",
+                "default": "'vertical'"
+              }
             }
           ],
           "slots": [
@@ -932,6 +929,18 @@
             {
               "name": "media",
               "description": "An optional media section to render at the start of the card."
+            },
+            {
+              "name": "actions",
+              "description": "An optional actions section to render at the end for the horizontal card."
+            },
+            {
+              "name": "header-actions",
+              "description": "An optional actions section to render in the header of the vertical card."
+            },
+            {
+              "name": "footer-actions",
+              "description": "An optional actions section to render in the footer of the vertical card."
             }
           ],
           "events": [],
@@ -956,6 +965,11 @@
                 "name": "withFooter",
                 "description": "Renders the card with a footer. Only needed for SSR, otherwise is automatically added.",
                 "type": "boolean"
+              },
+              {
+                "name": "orientation",
+                "description": "Renders the card's orientation *",
+                "type": "'horizontal' | 'vertical'"
               }
             ],
             "events": []
@@ -1739,13 +1753,13 @@
               "name": "appearance",
               "description": "The element's visual appearance.",
               "value": {
-                "type": "'filled' | 'outlined' | 'plain'",
+                "type": "'filled' | 'outlined' | 'filled-outlined' | 'plain'",
                 "default": "'outlined'"
               }
             },
             {
-              "name": "icon-position",
-              "description": "The position of the expand/collapse icon.",
+              "name": "icon-placement",
+              "description": "The location of the expand/collapse icon.",
               "value": { "type": "'start' | 'end'", "default": "'end'" }
             }
           ],
@@ -1812,11 +1826,11 @@
               {
                 "name": "appearance",
                 "description": "The element's visual appearance.",
-                "type": "'filled' | 'outlined' | 'plain'"
+                "type": "'filled' | 'outlined' | 'filled-outlined' | 'plain'"
               },
               {
-                "name": "iconPosition",
-                "description": "The position of the expand/collapse icon.",
+                "name": "iconPlacement",
+                "description": "The location of the expand/collapse icon.",
                 "type": "'start' | 'end'"
               }
             ],
@@ -1842,7 +1856,7 @@
         },
         {
           "name": "wa-dialog",
-          "description": "Dialogs, sometimes called \"modals\", appear above the page and require the user's immediate attention.\n---\n\n\n### **Events:**\n - **wa-show** - Emitted when the dialog opens.\n- **wa-after-show** - Emitted after the dialog opens and all animations are complete.\n- **wa-hide** - Emitted when the dialog is requested to close. Calling `event.preventDefault()` will prevent the dialog from closing. You can inspect `event.detail.source` to see which element caused the dialog to close. If the source is the dialog element itself, the user has pressed [[Escape]] or the dialog has been closed programmatically. Avoid using this unless closing the dialog will result in destructive behavior such as data loss.\n- **wa-after-hide** - Emitted after the dialog closes and all animations are complete.\n\n### **Slots:**\n - _default_ - The dialog's main content.\n- **label** - The dialog's label. Alternatively, you can use the `label` attribute.\n- **header-actions** - Optional actions to add to the header. Works best with `<wa-button>`.\n- **footer** - The dialog's footer, usually one or more buttons representing various options.\n\n### **CSS Properties:**\n - **--spacing** - The amount of space around and between the dialog's content. _(default: undefined)_\n- **--width** - The preferred width of the dialog. Note that the dialog will shrink to accommodate smaller screens. _(default: undefined)_\n- **--show-duration** - The animation duration when showing the dialog. _(default: 200ms)_\n- **--hide-duration** - The animation duration when hiding the dialog. _(default: 200ms)_\n\n### **CSS Parts:**\n - **header** - The dialog's header. This element wraps the title and header actions.\n- **header-actions** - Optional actions to add to the header. Works best with `<wa-button>`.\n- **title** - The dialog's title.\n- **close-button** - The close button, a `<wa-button>`.\n- **close-button__base** - The close button's exported `base` part.\n- **body** - The dialog's body.\n- **footer** - The dialog's footer.",
+          "description": "Dialogs, sometimes called \"modals\", appear above the page and require the user's immediate attention.\n---\n\n\n### **Events:**\n - **wa-show** - Emitted when the dialog opens.\n- **wa-after-show** - Emitted after the dialog opens and all animations are complete.\n- **wa-hide** - Emitted when the dialog is requested to close. Calling `event.preventDefault()` will prevent the dialog from closing. You can inspect `event.detail.source` to see which element caused the dialog to close. If the source is the dialog element itself, the user has pressed [[Escape]] or the dialog has been closed programmatically. Avoid using this unless closing the dialog will result in destructive behavior such as data loss.\n- **wa-after-hide** - Emitted after the dialog closes and all animations are complete.\n\n### **Slots:**\n - _default_ - The dialog's main content.\n- **label** - The dialog's label. Alternatively, you can use the `label` attribute.\n- **header-actions** - Optional actions to add to the header. Works best with `<wa-button>`.\n- **footer** - The dialog's footer, usually one or more buttons representing various options.\n\n### **CSS Properties:**\n - **--spacing** - The amount of space around and between the dialog's content. _(default: undefined)_\n- **--width** - The preferred width of the dialog. Note that the dialog will shrink to accommodate smaller screens. _(default: undefined)_\n- **--show-duration** - The animation duration when showing the dialog. _(default: 200ms)_\n- **--hide-duration** - The animation duration when hiding the dialog. _(default: 200ms)_\n\n### **CSS Parts:**\n - **dialog** - The dialog's internal `<dialog>` element.\n- **header** - The dialog's header. This element wraps the title and header actions.\n- **header-actions** - Optional actions to add to the header. Works best with `<wa-button>`.\n- **title** - The dialog's title.\n- **close-button** - The close button, a `<wa-button>`.\n- **close-button__base** - The close button's exported `base` part.\n- **body** - The dialog's body.\n- **footer** - The dialog's footer.",
           "doc-url": "",
           "attributes": [
             {
@@ -1973,7 +1987,7 @@
         },
         {
           "name": "wa-drawer",
-          "description": "Drawers slide in from a container to expose additional options and information.\n---\n\n\n### **Events:**\n - **wa-show** - Emitted when the drawer opens.\n- **wa-after-show** - Emitted after the drawer opens and all animations are complete.\n- **wa-hide** - Emitted when the drawer is requesting to close. Calling `event.preventDefault()` will prevent the drawer from closing. You can inspect `event.detail.source` to see which element caused the drawer to close. If the source is the drawer element itself, the user has pressed [[Escape]] or the drawer has been closed programmatically. Avoid using this unless closing the drawer will result in destructive behavior such as data loss.\n- **wa-after-hide** - Emitted after the drawer closes and all animations are complete.\n\n### **Slots:**\n - _default_ - The drawer's main content.\n- **label** - The drawer's label. Alternatively, you can use the `label` attribute.\n- **header-actions** - Optional actions to add to the header. Works best with `<wa-button>`.\n- **footer** - The drawer's footer, usually one or more buttons representing various options.\n\n### **CSS Properties:**\n - **--spacing** - The amount of space around and between the drawer's content. _(default: undefined)_\n- **--size** - The preferred size of the drawer. This will be applied to the drawer's width or height depending on its `placement`. Note that the drawer will shrink to accommodate smaller screens. _(default: undefined)_\n- **--show-duration** - The animation duration when showing the drawer. _(default: 200ms)_\n- **--hide-duration** - The animation duration when hiding the drawer. _(default: 200ms)_\n\n### **CSS Parts:**\n - **header** - The drawer's header. This element wraps the title and header actions.\n- **header-actions** - Optional actions to add to the header. Works best with `<wa-button>`.\n- **title** - The drawer's title.\n- **close-button** - The close button, a `<wa-button>`.\n- **close-button__base** - The close button's exported `base` part.\n- **body** - The drawer's body.\n- **footer** - The drawer's footer.",
+          "description": "Drawers slide in from a container to expose additional options and information.\n---\n\n\n### **Events:**\n - **wa-show** - Emitted when the drawer opens.\n- **wa-after-show** - Emitted after the drawer opens and all animations are complete.\n- **wa-hide** - Emitted when the drawer is requesting to close. Calling `event.preventDefault()` will prevent the drawer from closing. You can inspect `event.detail.source` to see which element caused the drawer to close. If the source is the drawer element itself, the user has pressed [[Escape]] or the drawer has been closed programmatically. Avoid using this unless closing the drawer will result in destructive behavior such as data loss.\n- **wa-after-hide** - Emitted after the drawer closes and all animations are complete.\n\n### **Slots:**\n - _default_ - The drawer's main content.\n- **label** - The drawer's label. Alternatively, you can use the `label` attribute.\n- **header-actions** - Optional actions to add to the header. Works best with `<wa-button>`.\n- **footer** - The drawer's footer, usually one or more buttons representing various options.\n\n### **CSS Properties:**\n - **--spacing** - The amount of space around and between the drawer's content. _(default: undefined)_\n- **--size** - The preferred size of the drawer. This will be applied to the drawer's width or height depending on its `placement`. Note that the drawer will shrink to accommodate smaller screens. _(default: undefined)_\n- **--show-duration** - The animation duration when showing the drawer. _(default: 200ms)_\n- **--hide-duration** - The animation duration when hiding the drawer. _(default: 200ms)_\n\n### **CSS Parts:**\n - **dialog** - The drawer's internal `<dialog>` element.\n- **header** - The drawer's header. This element wraps the title and header actions.\n- **header-actions** - Optional actions to add to the header. Works best with `<wa-button>`.\n- **title** - The drawer's title.\n- **close-button** - The close button, a `<wa-button>`.\n- **close-button__base** - The close button's exported `base` part.\n- **body** - The drawer's body.\n- **footer** - The drawer's footer.",
           "doc-url": "",
           "attributes": [
             {
@@ -2649,9 +2663,14 @@
               "value": { "type": "string" }
             },
             {
-              "name": "fixed-width",
-              "description": "Draws the icon in a fixed-width both.",
-              "value": { "type": "false" }
+              "name": "auto-width",
+              "description": "Sets the width of the icon to match the cropped SVG viewBox. This operates like the Font `fa-width-auto` class.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "swap-opacity",
+              "description": "Swaps the opacity of duotone icons.",
+              "value": { "type": "boolean", "default": "false" }
             },
             {
               "name": "src",
@@ -2697,9 +2716,14 @@
                 "type": "string"
               },
               {
-                "name": "fixedWidth",
-                "description": "Draws the icon in a fixed-width both.",
-                "type": "false"
+                "name": "autoWidth",
+                "description": "Sets the width of the icon to match the cropped SVG viewBox. This operates like the Font `fa-width-auto` class.",
+                "type": "boolean"
+              },
+              {
+                "name": "swapOpacity",
+                "description": "Swaps the opacity of duotone icons.",
+                "type": "boolean"
               },
               {
                 "name": "src",
@@ -2731,7 +2755,7 @@
         },
         {
           "name": "wa-include",
-          "description": "Includes give you the power to embed external HTML files into the page.\n---\n\n\n### **Events:**\n - **wa-load** - Emitted when the included file is loaded.\n- **wa-error** - Emitted when the included file fails to load due to an error.",
+          "description": "Includes give you the power to embed external HTML files into the page.\n---\n\n\n### **Events:**\n - **wa-load** - Emitted when the included file is loaded.\n- **wa-include-error** - Emitted when the included file fails to load due to an error.",
           "doc-url": "",
           "attributes": [
             {
@@ -2759,7 +2783,7 @@
               "description": "Emitted when the included file is loaded."
             },
             {
-              "name": "wa-error",
+              "name": "wa-include-error",
               "type": "{ status: number }",
               "description": "Emitted when the included file fails to load due to an error."
             }
@@ -2788,7 +2812,7 @@
                 "description": "Emitted when the included file is loaded."
               },
               {
-                "name": "wa-error",
+                "name": "wa-include-error",
                 "type": "{ status: number }",
                 "description": "Emitted when the included file fails to load due to an error."
               }
@@ -2797,7 +2821,7 @@
         },
         {
           "name": "wa-input",
-          "description": "Inputs collect data from the user.\n---\n\n\n### **Events:**\n - **input** - Emitted when the control receives input.\n- **change** - Emitted when an alteration to the control's value is committed by the user.\n- **blur** - Emitted when the control loses focus.\n- **focus** - Emitted when the control gains focus.\n- **wa-clear** - Emitted when the clear button is activated.\n- **wa-invalid** - Emitted when the form control has been checked for validity and its constraints aren't satisfied.\n\n### **Methods:**\n - **focus(options: _FocusOptions_)** - Sets focus on the input.\n- **blur()** - Removes focus from the input.\n- **select()** - Selects all the text in the input.\n- **setSelectionRange(selectionStart: _number_, selectionEnd: _number_, selectionDirection: _'forward' | 'backward' | 'none'_)** - Sets the start and end positions of the text selection (0-based).\n- **setRangeText(replacement: _string_, start: _number_, end: _number_, selectMode: _'select' | 'start' | 'end' | 'preserve'_)** - Replaces a range of text with a new string.\n- **showPicker()** - Displays the browser picker for an input element (only works if the browser supports it for the input type).\n- **stepUp()** - Increments the value of a numeric input type by the value of the step attribute.\n- **stepDown()** - Decrements the value of a numeric input type by the value of the step attribute.\n\n### **Slots:**\n - **label** - The input's label. Alternatively, you can use the `label` attribute.\n- **start** - An element, such as `<wa-icon>`, placed at the start of the input control.\n- **end** - An element, such as `<wa-icon>`, placed at the end of the input control.\n- **clear-icon** - An icon to use in lieu of the default clear icon.\n- **show-password-icon** - An icon to use in lieu of the default show password icon.\n- **hide-password-icon** - An icon to use in lieu of the default hide password icon.\n- **hint** - Text that describes how to use the input. Alternatively, you can use the `hint` attribute.\n\n### **CSS Parts:**\n - **label** - The label\n- **hint** - The hint's wrapper.\n- **input** - The wrapper being rendered as an input\n- **base** - The internal `<input>` control.\n- **start** - The container that wraps the `start` slot.\n- **clear-button** - The clear button.\n- **password-toggle-button** - The password toggle button.\n- **end** - The container that wraps the `end` slot.",
+          "description": "Inputs collect data from the user.\n---\n\n\n### **Events:**\n - **input** - Emitted when the control receives input.\n- **change** - Emitted when an alteration to the control's value is committed by the user.\n- **blur** - Emitted when the control loses focus.\n- **focus** - Emitted when the control gains focus.\n- **wa-clear** - Emitted when the clear button is activated.\n- **wa-invalid** - Emitted when the form control has been checked for validity and its constraints aren't satisfied.\n\n### **Methods:**\n - **focus(options: _FocusOptions_)** - Sets focus on the input.\n- **blur()** - Removes focus from the input.\n- **select()** - Selects all the text in the input.\n- **setSelectionRange(selectionStart: _number_, selectionEnd: _number_, selectionDirection: _'forward' | 'backward' | 'none'_)** - Sets the start and end positions of the text selection (0-based).\n- **setRangeText(replacement: _string_, start: _number_, end: _number_, selectMode: _'select' | 'start' | 'end' | 'preserve'_)** - Replaces a range of text with a new string.\n- **showPicker()** - Displays the browser picker for an input element (only works if the browser supports it for the input type).\n- **stepUp()** - Increments the value of a numeric input type by the value of the step attribute.\n- **stepDown()** - Decrements the value of a numeric input type by the value of the step attribute.\n\n### **Slots:**\n - **label** - The input's label. Alternatively, you can use the `label` attribute.\n- **start** - An element, such as `<wa-icon>`, placed at the start of the input control.\n- **end** - An element, such as `<wa-icon>`, placed at the end of the input control.\n- **clear-icon** - An icon to use in lieu of the default clear icon.\n- **show-password-icon** - An icon to use in lieu of the default show password icon.\n- **hide-password-icon** - An icon to use in lieu of the default hide password icon.\n- **hint** - Text that describes how to use the input. Alternatively, you can use the `hint` attribute.\n\n### **CSS Parts:**\n - **label** - The label\n- **hint** - The hint's wrapper.\n- **base** - The wrapper being rendered as an input\n- **input** - The internal `<input>` control.\n- **start** - The container that wraps the `start` slot.\n- **clear-button** - The clear button.\n- **password-toggle-button** - The password toggle button.\n- **end** - The container that wraps the `end` slot.",
           "doc-url": "",
           "attributes": [
             { "name": "title", "value": { "type": "string", "default": "''" } },
@@ -2826,7 +2850,7 @@
               "name": "appearance",
               "description": "The input's visual appearance.",
               "value": {
-                "type": "'filled' | 'outlined'",
+                "type": "'filled' | 'outlined' | 'filled-outlined'",
                 "default": "'outlined'"
               }
             },
@@ -3052,7 +3076,7 @@
               {
                 "name": "appearance",
                 "description": "The input's visual appearance.",
-                "type": "'filled' | 'outlined'"
+                "type": "'filled' | 'outlined' | 'filled-outlined'"
               },
               {
                 "name": "pill",
@@ -3216,6 +3240,97 @@
           }
         },
         {
+          "name": "wa-intersection-observer",
+          "description": "Tracks immediate child elements and fires events as they move in and out of view.\n---\n\n\n### **Events:**\n - **wa-intersect** - Fired when a tracked element begins or ceases intersecting.\n\n### **Slots:**\n - _default_ - Elements to track. Only immediate children of the host are monitored.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "root",
+              "description": "Element ID to define the viewport boundaries for tracked targets.",
+              "value": { "type": "string | null", "default": "null" }
+            },
+            {
+              "name": "root-margin",
+              "description": "Offset space around the root boundary. Accepts values like CSS margin syntax.",
+              "value": { "type": "string", "default": "'0px'" }
+            },
+            {
+              "name": "threshold",
+              "description": "One or more space-separated values representing visibility percentages that trigger the observer callback.",
+              "value": { "type": "string", "default": "'0'" }
+            },
+            {
+              "name": "intersect-class",
+              "description": "CSS class applied to elements during intersection. Automatically removed when elements leave\nthe viewport, enabling pure CSS styling based on visibility state.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "once",
+              "description": "If enabled, observation ceases after initial intersection.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "disabled",
+              "description": "Deactivates the intersection observer functionality.",
+              "value": { "type": "boolean", "default": "false" }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Elements to track. Only immediate children of the host are monitored."
+            }
+          ],
+          "events": [
+            {
+              "name": "wa-intersect",
+              "type": "{ entry: IntersectionObserverEntry }",
+              "description": "Fired when a tracked element begins or ceases intersecting."
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "root",
+                "description": "Element ID to define the viewport boundaries for tracked targets.",
+                "type": "string | null"
+              },
+              {
+                "name": "rootMargin",
+                "description": "Offset space around the root boundary. Accepts values like CSS margin syntax.",
+                "type": "string"
+              },
+              {
+                "name": "threshold",
+                "description": "One or more space-separated values representing visibility percentages that trigger the observer callback.",
+                "type": "string"
+              },
+              {
+                "name": "intersectClass",
+                "description": "CSS class applied to elements during intersection. Automatically removed when elements leave\nthe viewport, enabling pure CSS styling based on visibility state.",
+                "type": "string"
+              },
+              {
+                "name": "once",
+                "description": "If enabled, observation ceases after initial intersection.",
+                "type": "boolean"
+              },
+              {
+                "name": "disabled",
+                "description": "Deactivates the intersection observer functionality.",
+                "type": "boolean"
+              }
+            ],
+            "events": [
+              {
+                "name": "wa-intersect",
+                "type": "{ entry: IntersectionObserverEntry }",
+                "description": "Fired when a tracked element begins or ceases intersecting."
+              }
+            ]
+          }
+        },
+        {
           "name": "wa-mutation-observer",
           "description": "The Mutation Observer component offers a thin, declarative interface to the [`MutationObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).\n---\n\n\n### **Events:**\n - **wa-mutation** - Emitted when a mutation occurs.\n\n### **Slots:**\n - _default_ - The content to watch for mutations.",
           "doc-url": "",
@@ -3371,138 +3486,6 @@
                 "description": "The default label, generated from the element contents. Will be equal to `label` in most cases.",
                 "type": "string"
               }
-            ],
-            "events": []
-          }
-        },
-        {
-          "name": "wa-page",
-          "description": "Pages offer an easy way to scaffold entire page layouts using minimal markup.\n---\n\n\n### **Methods:**\n - **showNavigation()** - Shows the mobile navigation drawer\n- **hideNavigation()** - Hides the mobile navigation drawer\n- **toggleNavigation()** - Toggles the mobile navigation drawer\n\n### **Slots:**\n - _default_ - The page's main content.\n- **banner** - The banner that gets display above the header. The banner will not be shown if no content is provided.\n- **header** - The header to display at the top of the page. If a banner is present, the header will appear below the banner. The header will not be shown if there is no content.\n- **subheader** - A subheader to display below the `header`. This is a good place to put things like breadcrumbs.\n- **menu** - The left side of the page. If you slot an element in here, you will override the default `navigation` slot and will be handling navigation on your own. This also will not disable the fallback behavior of the navigation button. This section \"sticks\" to the top as the page scrolls.\n- **navigation-header** - The header for a navigation area. On mobile this will be the header for `<wa-drawer>`.\n- **navigation** - The main content to display in the navigation area. This is displayed on the left side of the page, if `menu` is not used. This section \"sticks\" to the top as the page scrolls.\n- **navigation-footer** - The footer for a navigation area. On mobile this will be the footer for `<wa-drawer>`.\n- **navigation-toggle** - Use this slot to slot in your own button + icon for toggling the navigation drawer. By default it is a `<wa-button>` + a 3 bars `<wa-icon>`\n- **navigation-toggle-icon** - Use this to slot in your own icon for toggling the navigation drawer. By default it is 3 bars `<wa-icon>`.\n- **main-header** - Header to display inline above the main content.\n- **main-footer** - Footer to display inline below the main content.\n- **aside** - Content to be shown on the right side of the page. Typically contains a table of contents, ads, etc. This section \"sticks\" to the top as the page scrolls.\n- **skip-to-content** - The \"skip to content\" slot. You can override this If you would like to override the `Skip to content` button and add additional \"Skip to X\", they can be inserted here.\n- **footer** - The content to display in the footer. This is always displayed underneath the viewport so will always make the page \"scrollable\".\n\n### **CSS Properties:**\n - **--menu-width** - The width of the page's \"menu\" section. _(default: auto)_\n- **--main-width** - The width of the page's \"main\" section. _(default: 1fr)_\n- **--aside-width** - The wide of the page's \"aside\" section. _(default: auto)_\n- **--banner-height** - The height of the banner. This gets calculated when the page initializes. If the height is known, you can set it here to prevent shifting when the page loads. _(default: 0px)_\n- **--header-height** - The height of the header. This gets calculated when the page initializes. If the height is known, you can set it here to prevent shifting when the page loads. _(default: 0px)_\n- **--subheader-height** - The height of the subheader. This gets calculated when the page initializes. If the height is known, you can set it here to prevent shifting when the page loads. _(default: 0px)_\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **banner** - The banner to show above header.\n- **header** - The header, usually for top level navigation / branding.\n- **subheader** - Shown below the header, usually intended for things like breadcrumbs and other page level navigation.\n- **body** - The wrapper around menu, main, and aside.\n- **menu** - The left hand side of the page. Generally intended for navigation.\n- **navigation** - The `<nav>` that wraps the navigation slots on desktop viewports.\n- **navigation-header** - The header for a navigation area. On mobile this will be the header for `<wa-drawer>`.\n- **navigation-footer** - The footer for a navigation area. On mobile this will be the footer for `<wa-drawer>`.\n- **navigation-toggle** - The default `<wa-button>` that will toggle the `<wa-drawer>` for mobile viewports.\n- **navigation-toggle-icon** - The default `<wa-icon>` displayed inside of the navigation-toggle button.\n- **main-header** - The header above main content.\n- **main-content** - The main content.\n- **main-footer** - The footer below main content.\n- **aside** - The right hand side of the page. Used for things like table of contents, ads, etc.\n- **skip-links** - Wrapper around skip-link\n- **skip-link** - The \"skip to main content\" link\n- **footer** - The footer of the page. This is always below the initial viewport size.\n- **dialog-wrapper** - A wrapper around elements such as dialogs or other modal-like elements.",
-          "doc-url": "",
-          "attributes": [
-            {
-              "name": "view",
-              "description": "The view is a reflection of the \"mobileBreakpoint\", when the page is larger than the `mobile-breakpoint` (768px by\ndefault), it is considered to be a \"desktop\" view. The view is merely a way to distinguish when to show/hide the\nnavigation. You can use additional media queries to make other adjustments to content as necessary.\nThe default is \"desktop\" because the \"mobile navigation drawer\" isn't accessible via SSR due to drawer requiring JS.",
-              "value": {
-                "type": "'mobile' | 'desktop'",
-                "default": "'desktop'"
-              }
-            },
-            {
-              "name": "nav-open",
-              "description": "Whether or not the navigation drawer is open. Note, the navigation drawer is only \"open\" on mobile views.",
-              "value": { "type": "boolean", "default": "false" }
-            },
-            {
-              "name": "mobile-breakpoint",
-              "description": "At what page width to hide the \"navigation\" slot and collapse into a hamburger button.\nAccepts both numbers (interpreted as px) and CSS lengths (e.g. `50em`), which are resolved based on the root element.",
-              "value": { "type": "string", "default": "'768px'" }
-            },
-            {
-              "name": "navigation-placement",
-              "description": "Where to place the navigation when in the mobile viewport.",
-              "value": { "type": "'start' | 'end'", "default": "'start'" }
-            },
-            {
-              "name": "disable-navigation-toggle",
-              "description": "Determines whether or not to hide the default hamburger button.\nThis will automatically flip to \"true\" if you add an element with `data-toggle-nav` anywhere in the element light DOM.\nGenerally this will be set for you and you don't need to do anything, unless you're using SSR, in which case you should set this manually for initial page loads.",
-              "value": { "type": "boolean", "default": "false" }
-            }
-          ],
-          "slots": [
-            { "name": "", "description": "The page's main content." },
-            {
-              "name": "banner",
-              "description": "The banner that gets display above the header. The banner will not be shown if no content is provided."
-            },
-            {
-              "name": "header",
-              "description": "The header to display at the top of the page. If a banner is present, the header will appear below the banner. The header will not be shown if there is no content."
-            },
-            {
-              "name": "subheader",
-              "description": "A subheader to display below the `header`. This is a good place to put things like breadcrumbs."
-            },
-            {
-              "name": "menu",
-              "description": "The left side of the page. If you slot an element in here, you will override the default `navigation` slot and will be handling navigation on your own. This also will not disable the fallback behavior of the navigation button. This section \"sticks\" to the top as the page scrolls."
-            },
-            {
-              "name": "navigation-header",
-              "description": "The header for a navigation area. On mobile this will be the header for `<wa-drawer>`."
-            },
-            {
-              "name": "navigation",
-              "description": "The main content to display in the navigation area. This is displayed on the left side of the page, if `menu` is not used. This section \"sticks\" to the top as the page scrolls."
-            },
-            {
-              "name": "navigation-footer",
-              "description": "The footer for a navigation area. On mobile this will be the footer for `<wa-drawer>`."
-            },
-            {
-              "name": "navigation-toggle",
-              "description": "Use this slot to slot in your own button + icon for toggling the navigation drawer. By default it is a `<wa-button>` + a 3 bars `<wa-icon>`"
-            },
-            {
-              "name": "navigation-toggle-icon",
-              "description": "Use this to slot in your own icon for toggling the navigation drawer. By default it is 3 bars `<wa-icon>`."
-            },
-            {
-              "name": "main-header",
-              "description": "Header to display inline above the main content."
-            },
-            {
-              "name": "main-footer",
-              "description": "Footer to display inline below the main content."
-            },
-            {
-              "name": "aside",
-              "description": "Content to be shown on the right side of the page. Typically contains a table of contents, ads, etc. This section \"sticks\" to the top as the page scrolls."
-            },
-            {
-              "name": "skip-to-content",
-              "description": "The \"skip to content\" slot. You can override this If you would like to override the `Skip to content` button and add additional \"Skip to X\", they can be inserted here."
-            },
-            {
-              "name": "footer",
-              "description": "The content to display in the footer. This is always displayed underneath the viewport so will always make the page \"scrollable\"."
-            }
-          ],
-          "events": [],
-          "js": {
-            "properties": [
-              { "name": "header", "type": "HTMLElement" },
-              { "name": "subheader", "type": "HTMLElement" },
-              { "name": "footer", "type": "HTMLElement" },
-              { "name": "banner", "type": "HTMLElement" },
-              { "name": "navigationDrawer", "type": "WaDrawer" },
-              { "name": "navigationToggleSlot", "type": "HTMLSlotElement" },
-              {
-                "name": "view",
-                "description": "The view is a reflection of the \"mobileBreakpoint\", when the page is larger than the `mobile-breakpoint` (768px by\ndefault), it is considered to be a \"desktop\" view. The view is merely a way to distinguish when to show/hide the\nnavigation. You can use additional media queries to make other adjustments to content as necessary.\nThe default is \"desktop\" because the \"mobile navigation drawer\" isn't accessible via SSR due to drawer requiring JS.",
-                "type": "'mobile' | 'desktop'"
-              },
-              {
-                "name": "navOpen",
-                "description": "Whether or not the navigation drawer is open. Note, the navigation drawer is only \"open\" on mobile views.",
-                "type": "boolean"
-              },
-              {
-                "name": "mobileBreakpoint",
-                "description": "At what page width to hide the \"navigation\" slot and collapse into a hamburger button.\nAccepts both numbers (interpreted as px) and CSS lengths (e.g. `50em`), which are resolved based on the root element.",
-                "type": "string"
-              },
-              {
-                "name": "navigationPlacement",
-                "description": "Where to place the navigation when in the mobile viewport.",
-                "type": "'start' | 'end'"
-              },
-              {
-                "name": "disableNavigationToggle",
-                "description": "Determines whether or not to hide the default hamburger button.\nThis will automatically flip to \"true\" if you add an element with `data-toggle-nav` anywhere in the element light DOM.\nGenerally this will be set for you and you don't need to do anything, unless you're using SSR, in which case you should set this manually for initial page loads.",
-                "type": "boolean"
-              },
-              { "name": "pageResizeObserver" }
             ],
             "events": []
           }
@@ -4082,7 +4065,7 @@
             },
             {
               "name": "appearance",
-              "description": "The radio's value. When selected, the radio group will receive this value.",
+              "description": "The radio's visual appearance.",
               "value": {
                 "type": "'default' | 'button'",
                 "default": "'default'"
@@ -4128,7 +4111,7 @@
               },
               {
                 "name": "appearance",
-                "description": "The radio's value. When selected, the radio group will receive this value.",
+                "description": "The radio's visual appearance.",
                 "type": "'default' | 'button'"
               },
               {
@@ -4248,7 +4231,6 @@
           ],
           "js": {
             "properties": [
-              { "name": "hasRadioButtons", "type": "boolean" },
               { "name": "defaultSlot", "type": "HTMLSlotElement" },
               {
                 "name": "label",
@@ -4601,7 +4583,7 @@
         },
         {
           "name": "wa-select",
-          "description": "Selects allow you to choose items from a menu of predefined options.\n---\n\n\n### **Events:**\n - **input** - Emitted when the control receives input.\n- **change** - Emitted when the control's value changes.\n- **focus** - Emitted when the control gains focus.\n- **blur** - Emitted when the control loses focus.\n- **wa-clear** - Emitted when the control's value is cleared.\n- **wa-show** - Emitted when the select's menu opens.\n- **wa-after-show** - Emitted after the select's menu opens and all animations are complete.\n- **wa-hide** - Emitted when the select's menu closes.\n- **wa-after-hide** - Emitted after the select's menu closes and all animations are complete.\n- **wa-invalid** - Emitted when the form control has been checked for validity and its constraints aren't satisfied.\n\n### **Methods:**\n - **show()** - Shows the listbox.\n- **hide()** - Hides the listbox.\n- **focus(options: _FocusOptions_)** - Sets focus on the control.\n- **blur()** - Removes focus from the control.\n\n### **Slots:**\n - _default_ - The listbox options. Must be `<wa-option>` elements. You can use `<wa-divider>` to group items visually.\n- **label** - The input's label. Alternatively, you can use the `label` attribute.\n- **start** - An element, such as `<wa-icon>`, placed at the start of the combobox.\n- **end** - An element, such as `<wa-icon>`, placed at the end of the combobox.\n- **clear-icon** - An icon to use in lieu of the default clear icon.\n- **expand-icon** - The icon to show when the control is expanded and collapsed. Rotates on open and close.\n- **hint** - Text that describes how to use the input. Alternatively, you can use the `hint` attribute.\n\n### **CSS Properties:**\n - **--tag-max-size** - When using `multiple`, the max size of tags before their content is truncated. _(default: 10ch)_\n\n### **CSS Parts:**\n - **form-control** - The form control that wraps the label, input, and hint.\n- **form-control-label** - The label's wrapper.\n- **form-control-input** - The select's wrapper.\n- **hint** - The hint's wrapper.\n- **combobox** - The container the wraps the start, end, value, clear icon, and expand button.\n- **start** - The container that wraps the `start` slot.\n- **end** - The container that wraps the `end` slot.\n- **display-input** - The element that displays the selected option's label, an `<input>` element.\n- **listbox** - The listbox container where options are slotted.\n- **tags** - The container that houses option tags when `multiselect` is used.\n- **tag** - The individual tags that represent each multiselect option.\n- **tag__content** - The tag's content part.\n- **tag__remove-button** - The tag's remove button.\n- **tag__remove-button__base** - The tag's remove button base part.\n- **clear-button** - The clear button.\n- **expand-icon** - The container that wraps the expand icon.",
+          "description": "Selects allow you to choose items from a menu of predefined options.\n---\n\n\n### **Events:**\n - **input** - Emitted when the control receives input.\n- **change** - Emitted when the control's value changes.\n- **focus** - Emitted when the control gains focus.\n- **blur** - Emitted when the control loses focus.\n- **wa-clear** - Emitted when the control's value is cleared.\n- **wa-show** - Emitted when the select's menu opens.\n- **wa-after-show** - Emitted after the select's menu opens and all animations are complete.\n- **wa-hide** - Emitted when the select's menu closes.\n- **wa-after-hide** - Emitted after the select's menu closes and all animations are complete.\n- **wa-invalid** - Emitted when the form control has been checked for validity and its constraints aren't satisfied.\n\n### **Methods:**\n - **show()** - Shows the listbox.\n- **hide()** - Hides the listbox.\n- **focus(options: _FocusOptions_)** - Sets focus on the control.\n- **blur()** - Removes focus from the control.\n\n### **Slots:**\n - _default_ - The listbox options. Must be `<wa-option>` elements. You can use `<wa-divider>` to group items visually.\n- **label** - The input's label. Alternatively, you can use the `label` attribute.\n- **start** - An element, such as `<wa-icon>`, placed at the start of the combobox.\n- **end** - An element, such as `<wa-icon>`, placed at the end of the combobox.\n- **clear-icon** - An icon to use in lieu of the default clear icon.\n- **expand-icon** - The icon to show when the control is expanded and collapsed. Rotates on open and close.\n- **hint** - Text that describes how to use the input. Alternatively, you can use the `hint` attribute.\n\n### **CSS Properties:**\n - **--show-duration** - The duration of the show animation. _(default: 100ms)_\n- **--hide-duration** - The duration of the hide animation. _(default: 100ms)_\n- **--tag-max-size** - When using `multiple`, the max size of tags before their content is truncated. _(default: 10ch)_\n\n### **CSS Parts:**\n - **form-control** - The form control that wraps the label, input, and hint.\n- **form-control-label** - The label's wrapper.\n- **form-control-input** - The select's wrapper.\n- **hint** - The hint's wrapper.\n- **combobox** - The container the wraps the start, end, value, clear icon, and expand button.\n- **start** - The container that wraps the `start` slot.\n- **end** - The container that wraps the `end` slot.\n- **display-input** - The element that displays the selected option's label, an `<input>` element.\n- **listbox** - The listbox container where options are slotted.\n- **tags** - The container that houses option tags when `multiselect` is used.\n- **tag** - The individual tags that represent each multiselect option.\n- **tag__content** - The tag's content part.\n- **tag__remove-button** - The tag's remove button.\n- **tag__remove-button__base** - The tag's remove button base part.\n- **clear-button** - The clear button.\n- **expand-icon** - The container that wraps the expand icon.",
           "doc-url": "",
           "attributes": [
             {
@@ -4656,7 +4638,7 @@
               "name": "appearance",
               "description": "The select's visual appearance.",
               "value": {
-                "type": "'filled' | 'outlined'",
+                "type": "'filled' | 'outlined' | 'filled-outlined'",
                 "default": "'outlined'"
               }
             },
@@ -4842,7 +4824,7 @@
               {
                 "name": "appearance",
                 "description": "The select's visual appearance.",
-                "type": "'filled' | 'outlined'"
+                "type": "'filled' | 'outlined' | 'filled-outlined'"
               },
               {
                 "name": "pill",
@@ -5139,7 +5121,6 @@
               { "name": "thumbMax", "type": "HTMLElement" },
               { "name": "track", "type": "HTMLElement" },
               { "name": "tooltip", "type": "WaTooltip" },
-              { "name": "tooltips", "type": "NodeListOf<WaTooltip>" },
               {
                 "name": "label",
                 "description": "The slider's label. If you need to provide HTML in the label, use the `label` slot instead.",
@@ -5757,8 +5738,8 @@
               "name": "appearance",
               "description": "The tag's visual appearance.",
               "value": {
-                "type": "'accent' | 'outlined accent' | 'filled' | 'outlined' | 'outlined filled'",
-                "default": "'outlined filled'"
+                "type": "'accent' | 'filled' | 'outlined' | 'filled-outlined'",
+                "default": "'filled-outlined'"
               }
             },
             {
@@ -5797,7 +5778,7 @@
               {
                 "name": "appearance",
                 "description": "The tag's visual appearance.",
-                "type": "'accent' | 'outlined accent' | 'filled' | 'outlined' | 'outlined filled'"
+                "type": "'accent' | 'filled' | 'outlined' | 'filled-outlined'"
               },
               {
                 "name": "size",
@@ -5851,7 +5832,7 @@
               "name": "appearance",
               "description": "The textarea's visual appearance.",
               "value": {
-                "type": "'filled' | 'outlined'",
+                "type": "'filled' | 'outlined' | 'filled-outlined'",
                 "default": "'outlined'"
               }
             },
@@ -6026,7 +6007,7 @@
               {
                 "name": "appearance",
                 "description": "The textarea's visual appearance.",
-                "type": "'filled' | 'outlined'"
+                "type": "'filled' | 'outlined' | 'filled-outlined'"
               },
               {
                 "name": "label",
@@ -6310,7 +6291,7 @@
         },
         {
           "name": "wa-tree",
-          "description": "Trees allow you to display a hierarchical list of selectable [tree items](/docs/components/tree-item). Items with children can be expanded and collapsed as desired by the user.\n---\n\n\n### **Events:**\n - **wa-selection-change** - Emitted when a tree item is selected or deselected.\n\n### **Slots:**\n - _default_ - The default slot.\n- **expand-icon** - The icon to show when the tree item is expanded. Works best with `<wa-icon>`.\n- **collapse-icon** - The icon to show when the tree item is collapsed. Works best with `<wa-icon>`.\n\n### **CSS Properties:**\n - **--indent-size** - The size of the indentation for nested items. _(default: var(--wa-spacing-m))_\n- **--indent-guide-color** - The color of the indentation line. _(default: var(--wa-color-surface-border))_\n- **--indent-guide-offset** - The amount of vertical spacing to leave between the top and bottom of the indentation line's starting position. _(default: 0)_\n- **--indent-guide-style** - The style of the indentation line, e.g. solid, dotted, dashed. _(default: solid)_\n- **--indent-guide-width** - The width of the indentation line. _(default: 0)_\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+          "description": "Trees allow you to display a hierarchical list of selectable [tree items](/docs/components/tree-item). Items with children can be expanded and collapsed as desired by the user.\n---\n\n\n### **Events:**\n - **wa-selection-change** - Emitted when a tree item is selected or deselected.\n\n### **Slots:**\n - _default_ - The default slot.\n- **expand-icon** - The icon to show when the tree item is expanded. Works best with `<wa-icon>`.\n- **collapse-icon** - The icon to show when the tree item is collapsed. Works best with `<wa-icon>`.\n\n### **CSS Properties:**\n - **--indent-size** - The size of the indentation for nested items. _(default: var(--wa-space-m))_\n- **--indent-guide-color** - The color of the indentation line. _(default: var(--wa-color-surface-border))_\n- **--indent-guide-offset** - The amount of vertical spacing to leave between the top and bottom of the indentation line's starting position. _(default: 0)_\n- **--indent-guide-style** - The style of the indentation line, e.g. solid, dotted, dashed. _(default: solid)_\n- **--indent-guide-width** - The width of the indentation line. _(default: 0)_\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
           "doc-url": "",
           "attributes": [
             {

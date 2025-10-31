@@ -49,6 +49,8 @@ export type { WaAfterHideEvent, WaAfterShowEvent, WaClearEvent, WaHideEvent, WaI
  * @csspart clear-button - The clear button.
  * @csspart expand-icon - The container that wraps the expand icon.
  *
+ * @cssproperty [--show-duration=100ms] - The duration of the show animation.
+ * @cssproperty [--hide-duration=100ms] - The duration of the hide animation.
  * @cssproperty [--tag-max-size=10ch] - When using `multiple`, the max size of tags before their content is truncated.
  *
  * @cssstate blank - The select is empty.

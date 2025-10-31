@@ -69,6 +69,10 @@ export default class WaTooltip extends WebAwesomeElement {
     private handleMouseOver;
     private handleMouseOut;
     private hasTrigger;
+    /** Adds the tooltip ID to the aria-labelledby attribute */
+    private addToAriaLabelledBy;
+    /** Removes the tooltip ID from the aria-labelledby attribute */
+    private removeFromAriaLabelledBy;
     handleOpenChange(): Promise<void>;
     handleForChange(): void;
     handleOptionsChange(): Promise<void>;

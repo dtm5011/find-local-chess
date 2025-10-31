@@ -1,9 +1,10 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   skeleton_default
-} from "../../chunks/chunk.53H5K7KN.js";
-import "../../chunks/chunk.JYXJIJVF.js";
-import "../../chunks/chunk.ETAGLSDL.js";
-import "../../chunks/chunk.RBKXYBVR.js";
+} from "../../chunks/chunk.SYEOFPXA.js";
+import "../../chunks/chunk.I2AT6W7B.js";
+import "../../chunks/chunk.LU7TFTYS.js";
+import "../../chunks/chunk.I37X32SU.js";
 export {
   skeleton_default as default
 };

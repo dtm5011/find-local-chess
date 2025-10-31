@@ -29,7 +29,6 @@ export default class WaRadioGroup extends WebAwesomeFormAssociatedElement {
     static css: string[];
     static get validators(): import("../../internal/webawesome-form-associated-element.js").Validator<WebAwesomeFormAssociatedElement>[];
     private readonly hasSlotController;
-    hasRadioButtons: boolean;
     defaultSlot: HTMLSlotElement;
     /**
      * The radio group's label. Required for proper accessibility. If you need to display HTML, use the `label` slot

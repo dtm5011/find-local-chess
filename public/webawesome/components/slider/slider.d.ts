@@ -74,7 +74,6 @@ export default class WaSlider extends WebAwesomeFormAssociatedElement {
     thumbMax: HTMLElement;
     track: HTMLElement;
     tooltip: WaTooltip;
-    tooltips: NodeListOf<WaTooltip>;
     /**
      * The slider's label. If you need to provide HTML in the label, use the `label` slot instead.
      */

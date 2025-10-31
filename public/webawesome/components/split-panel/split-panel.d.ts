@@ -73,8 +73,3 @@ declare global {
         'wa-split-panel': WaSplitPanel;
     }
 }
-declare global {
-    interface HTMLElementTagNameMap {
-        'wa-split-panel': WaSplitPanel;
-    }
-}

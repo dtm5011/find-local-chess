@@ -1,9 +1,10 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   WaDivider
-} from "../../chunks/chunk.UVNMPZWI.js";
-import "../../chunks/chunk.2NT6DI7B.js";
-import "../../chunks/chunk.ETAGLSDL.js";
-import "../../chunks/chunk.RBKXYBVR.js";
+} from "../../chunks/chunk.AWGGNWAQ.js";
+import "../../chunks/chunk.N3AZYXKV.js";
+import "../../chunks/chunk.LU7TFTYS.js";
+import "../../chunks/chunk.I37X32SU.js";
 export {
   WaDivider as default
 };

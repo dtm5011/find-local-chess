@@ -44,7 +44,7 @@ export default class WaTextarea extends WebAwesomeFormAssociatedElement {
     /** The textarea's size. */
     size: 'small' | 'medium' | 'large';
     /** The textarea's visual appearance. */
-    appearance: 'filled' | 'outlined';
+    appearance: 'filled' | 'outlined' | 'filled-outlined';
     /** The textarea's label. If you need to display HTML, use the `label` slot instead. */
     label: string;
     /** The textarea's hint. If you need to display HTML, use the `hint` slot instead. */

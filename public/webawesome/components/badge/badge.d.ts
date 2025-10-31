@@ -17,7 +17,7 @@ export default class WaBadge extends WebAwesomeElement {
     /** The badge's theme variant. Defaults to `brand` if not within another element with a variant. */
     variant: 'brand' | 'neutral' | 'success' | 'warning' | 'danger';
     /** The badge's visual appearance. */
-    appearance: 'accent' | 'filled' | 'outlined';
+    appearance: 'accent' | 'filled' | 'outlined' | 'filled-outlined';
     /** Draws a pill-style badge with rounded edges. */
     pill: boolean;
     /** Adds an animation to draw attention to the badge. */

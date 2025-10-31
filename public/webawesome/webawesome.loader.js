@@ -1,4 +1,5 @@
-import "./chunks/chunk.37ZGXZDM.js";
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
+import "./chunks/chunk.OUHSDUJQ.js";
 import {
   allDefined,
   discover,
@@ -6,29 +7,29 @@ import {
   serialize,
   startLoader,
   stopLoader
-} from "./chunks/chunk.2QJYSVFW.js";
+} from "./chunks/chunk.RRCUZAZD.js";
+import {
+  getAnimationNames,
+  getEasingNames
+} from "./chunks/chunk.TR5VAIBU.js";
 import {
   registerTranslation
-} from "./chunks/chunk.K5GQ3GNY.js";
-import "./chunks/chunk.RCONWWCA.js";
+} from "./chunks/chunk.I24ISEJH.js";
+import "./chunks/chunk.OKWGTFUF.js";
 import {
   getDefaultIconFamily,
   registerIconLibrary,
   setDefaultIconFamily,
   unregisterIconLibrary
-} from "./chunks/chunk.OUUMRN6Q.js";
+} from "./chunks/chunk.LTSJC6DR.js";
 import {
   getBasePath,
   getKitCode,
   setBasePath,
   setKitCode
-} from "./chunks/chunk.HNHPBE3O.js";
-import "./chunks/chunk.UPHXFDHQ.js";
-import {
-  getAnimationNames,
-  getEasingNames
-} from "./chunks/chunk.TJOP7HQP.js";
-import "./chunks/chunk.RBKXYBVR.js";
+} from "./chunks/chunk.I3WWI2TE.js";
+import "./chunks/chunk.64T5YF4D.js";
+import "./chunks/chunk.I37X32SU.js";
 export {
   allDefined,
   discover,

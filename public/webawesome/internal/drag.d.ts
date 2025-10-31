@@ -21,6 +21,8 @@ export declare function drag(container: HTMLElement, options?: Partial<DragOptio
  * Drag functionality will be enabled as soon as the constructor is called. A `start()` and `stop()` method can be used
  * to start and stop it, if needed.
  *
+ * Use `touch-action: none` on touch devices if scrolling occurs while dragging. Avoid preventing the touchstart event!
+ *
  * @usage
  *
  * const draggable = new DraggableElement(element, {

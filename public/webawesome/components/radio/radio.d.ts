@@ -35,7 +35,7 @@ export default class WaRadio extends WebAwesomeFormAssociatedElement {
     form: string | null;
     /** The radio's value. When selected, the radio group will receive this value. */
     value: string;
-    /** The radio's value. When selected, the radio group will receive this value. */
+    /** The radio's visual appearance. */
     appearance: 'default' | 'button';
     /**
      * The radio's size. When used inside a radio group, the size will be determined by the radio group's size so this

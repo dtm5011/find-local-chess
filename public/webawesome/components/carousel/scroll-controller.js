@@ -1,10 +1,11 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   waitForEvent
-} from "../../chunks/chunk.FHRHJUC7.js";
+} from "../../chunks/chunk.MDCY6RAP.js";
 import {
   prefersReducedMotion
-} from "../../chunks/chunk.NXD6DUBY.js";
-import "../../chunks/chunk.RBKXYBVR.js";
+} from "../../chunks/chunk.EFWMJOG7.js";
+import "../../chunks/chunk.I37X32SU.js";
 
 // src/components/carousel/scroll-controller.ts
 var ScrollController = class {

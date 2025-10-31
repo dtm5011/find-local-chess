@@ -1,24 +1,25 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   tag_default
-} from "../../chunks/chunk.5NVG2FIL.js";
-import "../../chunks/chunk.AXAES674.js";
-import "../../chunks/chunk.3HHMA467.js";
-import "../../chunks/chunk.I5CT6KOH.js";
-import "../../chunks/chunk.RH6KZZ6S.js";
-import "../../chunks/chunk.H5XAJ2OS.js";
-import "../../chunks/chunk.DGCYKUU5.js";
-import "../../chunks/chunk.NC5QP643.js";
-import "../../chunks/chunk.K5GQ3GNY.js";
-import "../../chunks/chunk.RCONWWCA.js";
-import "../../chunks/chunk.SZUJSHFH.js";
-import "../../chunks/chunk.YAKPUWOF.js";
-import "../../chunks/chunk.OUUMRN6Q.js";
-import "../../chunks/chunk.HNHPBE3O.js";
-import "../../chunks/chunk.UPHXFDHQ.js";
-import "../../chunks/chunk.2NT6DI7B.js";
-import "../../chunks/chunk.EYAWV5KE.js";
-import "../../chunks/chunk.ETAGLSDL.js";
-import "../../chunks/chunk.RBKXYBVR.js";
+} from "../../chunks/chunk.6WCJFAJA.js";
+import "../../chunks/chunk.PZB7OIJK.js";
+import "../../chunks/chunk.HMRTUFWE.js";
+import "../../chunks/chunk.RVKKM2WU.js";
+import "../../chunks/chunk.47AP2JNT.js";
+import "../../chunks/chunk.4VLK2F22.js";
+import "../../chunks/chunk.R6O3GHMM.js";
+import "../../chunks/chunk.SFADIYDM.js";
+import "../../chunks/chunk.GY3LNU3J.js";
+import "../../chunks/chunk.I24ISEJH.js";
+import "../../chunks/chunk.OKWGTFUF.js";
+import "../../chunks/chunk.7VQYTP6Y.js";
+import "../../chunks/chunk.YNHANM3W.js";
+import "../../chunks/chunk.LTSJC6DR.js";
+import "../../chunks/chunk.I3WWI2TE.js";
+import "../../chunks/chunk.64T5YF4D.js";
+import "../../chunks/chunk.N3AZYXKV.js";
+import "../../chunks/chunk.LU7TFTYS.js";
+import "../../chunks/chunk.I37X32SU.js";
 export {
   tag_default as default
 };

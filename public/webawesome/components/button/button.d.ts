@@ -26,6 +26,12 @@ import '../spinner/spinner.js';
  * @csspart spinner - The spinner that shows when the button is in the loading state.
  */
 export default class WaButton extends WebAwesomeFormAssociatedElement {
+    static shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        serializable?: boolean;
+        slotAssignment?: SlotAssignmentMode;
+    };
     static css: string[];
     static get validators(): import("../../internal/webawesome-form-associated-element.js").Validator<WebAwesomeFormAssociatedElement>[];
     assumeInteractionOn: string[];
@@ -39,7 +45,7 @@ export default class WaButton extends WebAwesomeFormAssociatedElement {
     /** The button's theme variant. Defaults to `neutral` if not within another element with a variant. */
     variant: 'neutral' | 'brand' | 'success' | 'warning' | 'danger';
     /** The button's visual appearance. */
-    appearance: 'accent' | 'filled' | 'outlined' | 'plain';
+    appearance: 'accent' | 'filled' | 'outlined' | 'filled-outlined' | 'plain';
     /** The button's size. */
     size: 'small' | 'medium' | 'large';
     /** Draws the button with a caret. Used to indicate that the button triggers a dropdown menu or similar behavior. */

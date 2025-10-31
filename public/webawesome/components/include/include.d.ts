@@ -6,7 +6,7 @@ import WebAwesomeElement from '../../internal/webawesome-element.js';
  * @since 2.0
  *
  * @event wa-load - Emitted when the included file is loaded.
- * @event {{ status: number }} wa-error - Emitted when the included file fails to load due to an error.
+ * @event {{ status: number }} wa-include-error - Emitted when the included file fails to load due to an error.
  */
 export default class WaInclude extends WebAwesomeElement {
     static css: string;

@@ -1,10 +1,11 @@
+/*! Copyright 2025 Fonticons, Inc. - https://webawesome.com/license */
 import {
   WaAnimation
-} from "../../chunks/chunk.JD4SX5SV.js";
-import "../../chunks/chunk.2NT6DI7B.js";
-import "../../chunks/chunk.TJOP7HQP.js";
-import "../../chunks/chunk.ETAGLSDL.js";
-import "../../chunks/chunk.RBKXYBVR.js";
+} from "../../chunks/chunk.ZUDRDXS3.js";
+import "../../chunks/chunk.TR5VAIBU.js";
+import "../../chunks/chunk.N3AZYXKV.js";
+import "../../chunks/chunk.LU7TFTYS.js";
+import "../../chunks/chunk.I37X32SU.js";
 export {
   WaAnimation as default
 };

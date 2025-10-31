@@ -22,8 +22,6 @@ export default class WaButtonGroup extends WebAwesomeElement {
     label: string;
     /** The button group's orientation. */
     orientation: 'horizontal' | 'vertical';
-    /** The component's size. */
-    size: 'small' | 'medium' | 'large';
     /** The button group's theme variant. Defaults to `neutral` if not within another element with a variant. */
     variant: 'neutral' | 'brand' | 'success' | 'warning' | 'danger';
     updated(changedProperties: PropertyValues<this>): void;

@@ -35,8 +35,10 @@ export default class WaIcon extends WebAwesomeElement {
      * may or may not use this property.
      */
     variant: string;
-    /** Draws the icon in a fixed-width both. */
-    fixedWidth: false;
+    /** Sets the width of the icon to match the cropped SVG viewBox. This operates like the Font `fa-width-auto` class. */
+    autoWidth: boolean;
+    /** Swaps the opacity of duotone icons. */
+    swapOpacity: boolean;
     /**
      * An external URL of an SVG file. Be sure you trust the content you are including, as it will be executed as code and
      * can result in XSS attacks.
